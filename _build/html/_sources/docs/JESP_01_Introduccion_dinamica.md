@@ -4,9 +4,8 @@
 
 Antes de comenzar a estudiar sistemas dinámicos, necesitamos introducir algunos conceptos básicos.
 
-````{prf:definition}
+````{prf:definition} Señal
  :label: signal
- Señal
 
  *Fís*. Variación de una corriente eléctrica u otra magnitud que se utiliza para transmitir información.
 ````
@@ -18,9 +17,8 @@ Tipos de señales eléctricas
 * *Señal digital binaria*. Tiene sólo dos niveles de tensión $V+$ o $0$, en valores binarios $1$ y $0$.
 * *Concepto de sistema*. Conjunto de componentes físicos relacionados que actúan como una unidad completa.
 
-````{prf:definition}
+````{prf:definition} Modelo
  :label: model
- Modelo
 
  m. Esquema teórico, generalmente en forma matemática, de un sistema o de una realidad compleja, como la evolución económica de un país, que se elabora para facilitar su comprensión y el estudio de su comportamiento.
 ````
@@ -161,18 +159,11 @@ $$
 * Fácil interpretación.
 * Ampliamente utilizado para evaluar modelos de predicción.
 
-
-\begin{table}[!htb]
- \centering
- \caption{Tabla de MAPE}
- \label{tab:tabla_MAPE}
- \begin{tabular}{cc} \toprule
-  $\text{MAPE}<10$ & modelo altamente preciso \\
-  $10<\text{MAPE}<20$ & modelo bueno \\
-  $20<\text{MAPE}<50$ & modelo razonable \\
-  $\text{MAPE}>50$ & modelo impreciso \\ \bottomrule
- \end{tabular}
-\end{table}
+**Tabla de MAPE**
+* Si $\text{MAPE}<10$, entonces el modelo es altamente preciso
+* Si $10<\text{MAPE}<20$, entonces el modelo es bueno
+* Si $20<\text{MAPE}<50$, entonces el modelo es razonable
+* Si $\text{MAPE}>50$, entonces el modelo es impreciso
 
 ####  FIT
 

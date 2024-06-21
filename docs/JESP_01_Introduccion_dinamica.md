@@ -12,10 +12,10 @@ Antes de comenzar a estudiar sistemas dinámicos, necesitamos introducir algunos
 
 Tipos de señales eléctricas
 
-* *Señal analógica*. Tiene una variación continua en el tiempo con un número infinito de valores.
-* *Señal digital*. Tiene una variación discreta de valores en el tiempo con un número finito de valores.
-* *Señal digital binaria*. Tiene sólo dos niveles de tensión $V+$ o $0$, en valores binarios $1$ y $0$.
-* *Concepto de sistema*. Conjunto de componentes físicos relacionados que actúan como una unidad completa.
+* **Señal analógica**. Tiene una variación continua en el tiempo con un número infinito de valores.
+* **Señal digital**. Tiene una variación discreta de valores en el tiempo con un número finito de valores.
+* **Señal digital binaria**. Tiene sólo dos niveles de tensión $V+$ o $0$, en valores binarios $1$ y $0$.
+* **Concepto de sistema**. Conjunto de componentes físicos relacionados que actúan como una unidad completa.
 
 ````{prf:definition} Modelo
  :label: model
@@ -35,30 +35,30 @@ Sistemas de regulación automática
 
 Podemos utilizar alguna de las siguientes estrategias para obtener modelos que representen un sistema. Por ejemplo:
 
-* *Modelación de sistemas*. El sistema se suele analizar como subsistemas más simples. Se suelen utilizar leyes físicas, enfoques como Euler-Lagrange  Hamilton, o bloques para el caso de los modelos compartimentales. Los modelos obtenidos suelen llamarse como *modelo de caja blanca* o *modelo interno*.
-* *Identificación de sistemas*. Emplea observaciones de entrada y salida de un sistema para construir un modelo. No considera dinámicas internas sino en su respuesta ante una entrada determinada. En este punto se pueden utilizar estrategias poliniomiales o Redes Neuronales Artificiales, por mencionar algunas. Los modelos obtenidos suelen llamarse como *modelo de caja negra* o *modelo entrada-salida*.
-* *Estrategia híbrida*. Es una combinación de las anteriores. Parte de un modelo obtenido de leyes físicas y los elementos desconocidos son identificados o estimados por alguna estrategia de identificación. Los modelos obtenidos suelen llamarse como *modelo de caja gris*.
+* **Modelación de sistemas**. El sistema se suele analizar como subsistemas más simples. Se suelen utilizar leyes físicas, enfoques como Euler-Lagrange  Hamilton, o bloques para el caso de los modelos compartimentales. Los modelos obtenidos suelen llamarse como *modelo de caja blanca* o *modelo interno**.
+* **Identificación de sistemas**. Emplea observaciones de entrada y salida de un sistema para construir un modelo. No considera dinámicas internas sino en su respuesta ante una entrada determinada. En este punto se pueden utilizar estrategias poliniomiales o Redes Neuronales Artificiales, por mencionar algunas. Los modelos obtenidos suelen llamarse como *modelo de caja negra* o *modelo entrada-salida*.
+* **Estrategia híbrida**. Es una combinación de las anteriores. Parte de un modelo obtenido de leyes físicas y los elementos desconocidos son identificados o estimados por alguna estrategia de identificación. Los modelos obtenidos suelen llamarse como *modelo de caja gris*.
 
 
 En la literatura podemos encontrar la clasificación de los modelos de acuerdo con su tipo. Por ejemplo:
 
 
-* *Modelos causales*. Dependen de las condiciones presentes y pasadas para determinar una futura. En otras palabras, hay una relación de causalidad.
-* *Modelos no causales*.
-* *Modelos estáticos*. Depende de las condiciones presentes y no de las pasadas.
-* *Modelos dinámicos*. Los estados del sistema dependen de lo que haya sucedido con anterioridad debido a que suele haber algún tipo de almacenamiento de energía. Suelen llamarse también como *sistemas con memoria*.
-* *Modelos estocásticos*. Incluye variables aleatorias que afectan el sistema. Por consiguiente, resulta imposible predecir el valor que éstas puedan tomar.
-* *Modelos determinísticos*. Carecen de variables aleatorias. Por consiguiente, es posible conocer su comportamiento.
-* *Modelos de parámetros concentrados*. Requiren de ecuaciones con derivadas o ecuaciones de diferencia ordinarias.
-* *Modelos de parámetros distribuidos*. Su formulación implica ecuaciones diferenciales con derivadas parciales.
-* *Modelos lineales*. Son sistemas que cumplen con la propiedad de proporcionalidad y superposición.
+* **Modelos causales**. Dependen de las condiciones presentes y pasadas para determinar una futura. En otras palabras, hay una relación de causalidad.
+* **Modelos no causales**.
+* **Modelos estáticos**. Depende de las condiciones presentes y no de las pasadas.
+* **Modelos dinámicos**. Los estados del sistema dependen de lo que haya sucedido con anterioridad debido a que suele haber algún tipo de almacenamiento de energía. Suelen llamarse también como *sistemas con memoria*.
+* **Modelos estocásticos**. Incluye variables aleatorias que afectan el sistema. Por consiguiente, resulta imposible predecir el valor que éstas puedan tomar.
+* **Modelos determinísticos**. Carecen de variables aleatorias. Por consiguiente, es posible conocer su comportamiento.
+* **Modelos de parámetros concentrados**. Requiren de ecuaciones con derivadas o ecuaciones de diferencia ordinarias.
+* **Modelos de parámetros distribuidos**. Su formulación implica ecuaciones diferenciales con derivadas parciales.
+* **Modelos lineales**. Son sistemas que cumplen con la propiedad de proporcionalidad y superposición.
 
 
-* *Modelos no lineales*. Modelos cuyos términos llevan multiplicidad entre los estados del sistema, potencias de los estados o funciones trascendentes cuyo argumento es alguna de las variables de estado del sistema.
-* *Modelos invariantes en el tiempo*. Los parámetros del sistema se consideran constantes en el tiempo.
-* *Modelos variantes en el tiempo*. Los parámetros del sistema varían en función del tiempo.
-* *Modelos continuos*. Sistemas que dependen del tiempo $t$, donde $t$ es una variable continua que toma cualquier valor real.
-* *Modelos discretos*. En este tipo de sistemas, el tiempo se considera que es una variable discreta denotada como $k$ y toma sólo unos valores en puntos específicos de la recta de los reales.
+* **Modelos no lineales**. Modelos cuyos términos llevan multiplicidad entre los estados del sistema, potencias de los estados o funciones trascendentes cuyo argumento es alguna de las variables de estado del sistema.
+* **Modelos invariantes en el tiempo**. Los parámetros del sistema se consideran constantes en el tiempo.
+* **Modelos variantes en el tiempo**. Los parámetros del sistema varían en función del tiempo.
+* **Modelos continuos**. Sistemas que dependen del tiempo $t$, donde $t$ es una variable continua que toma cualquier valor real.
+* **Modelos discretos**. En este tipo de sistemas, el tiempo se considera que es una variable discreta denotada como $k$ y toma sólo unos valores en puntos específicos de la recta de los reales.
 
 ## Índices de error
 
@@ -203,4 +203,3 @@ $$
 $$
  \frac{\mathrm{d} N(t)}{\mathrm{d}t} = K \cdot N(t) \cdot \ln{\left( \frac{A}{N(t)} \right)}.
 $$
-

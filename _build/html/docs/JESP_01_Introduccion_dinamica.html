@@ -431,9 +431,8 @@ document.write(`
 <h2>Conceptos básicos<a class="headerlink" href="#conceptos-basicos" title="Link to this heading">#</a></h2>
 <p>Antes de comenzar a estudiar sistemas dinámicos, necesitamos introducir algunos conceptos básicos.</p>
 <div class="proof definition admonition" id="signal">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Señal)</p>
 <section class="definition-content" id="proof-content">
-<p>Señal</p>
 <p><em>Fís</em>. Variación de una corriente eléctrica u otra magnitud que se utiliza para transmitir información.</p>
 </section>
 </div><p>Tipos de señales eléctricas</p>
@@ -444,9 +443,8 @@ document.write(`
 <li><p><em>Concepto de sistema</em>. Conjunto de componentes físicos relacionados que actúan como una unidad completa.</p></li>
 </ul>
 <div class="proof definition admonition" id="model">
-<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Modelo)</p>
 <section class="definition-content" id="proof-content">
-<p>Modelo</p>
 <p>m. Esquema teórico, generalmente en forma matemática, de un sistema o de una realidad compleja, como la evolución económica de un país, que se elabora para facilitar su comprensión y el estudio de su comportamiento.</p>
 </section>
 </div><p>Sistemas seguidores</p>
@@ -592,17 +590,13 @@ document.write(`
 <li><p>Fácil interpretación.</p></li>
 <li><p>Ampliamente utilizado para evaluar modelos de predicción.</p></li>
 </ul>
-<p>\begin{table}[!htb]
-\centering
-\caption{Tabla de MAPE}
-\label{tab:tabla_MAPE}
-\begin{tabular}{cc} \toprule
-<span class="math notranslate nohighlight">\(\text{MAPE}&lt;10\)</span> &amp; modelo altamente preciso \
-<span class="math notranslate nohighlight">\(10&lt;\text{MAPE}&lt;20\)</span> &amp; modelo bueno \
-<span class="math notranslate nohighlight">\(20&lt;\text{MAPE}&lt;50\)</span> &amp; modelo razonable \
-<span class="math notranslate nohighlight">\(\text{MAPE}&gt;50\)</span> &amp; modelo impreciso \ \bottomrule
-\end{tabular}
-\end{table}</p>
+<p><strong>Tabla de MAPE</strong></p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(\text{MAPE}&lt;10\)</span>, entonces el modelo es altamente preciso</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(10&lt;\text{MAPE}&lt;20\)</span>, entonces el modelo es bueno</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(20&lt;\text{MAPE}&lt;50\)</span>, entonces el modelo es razonable</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\text{MAPE}&gt;50\)</span>, entonces el modelo es impreciso</p></li>
+</ul>
 </section>
 <section id="fit">
 <h4>FIT<a class="headerlink" href="#fit" title="Link to this heading">#</a></h4>
