@@ -437,10 +437,10 @@ document.write(`
 </section>
 </div><p>Tipos de señales eléctricas</p>
 <ul class="simple">
-<li><p><em>Señal analógica</em>. Tiene una variación continua en el tiempo con un número infinito de valores.</p></li>
-<li><p><em>Señal digital</em>. Tiene una variación discreta de valores en el tiempo con un número finito de valores.</p></li>
-<li><p><em>Señal digital binaria</em>. Tiene sólo dos niveles de tensión <span class="math notranslate nohighlight">\(V+\)</span> o <span class="math notranslate nohighlight">\(0\)</span>, en valores binarios <span class="math notranslate nohighlight">\(1\)</span> y <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
-<li><p><em>Concepto de sistema</em>. Conjunto de componentes físicos relacionados que actúan como una unidad completa.</p></li>
+<li><p><strong>Señal analógica</strong>. Tiene una variación continua en el tiempo con un número infinito de valores.</p></li>
+<li><p><strong>Señal digital</strong>. Tiene una variación discreta de valores en el tiempo con un número finito de valores.</p></li>
+<li><p><strong>Señal digital binaria</strong>. Tiene sólo dos niveles de tensión <span class="math notranslate nohighlight">\(V+\)</span> o <span class="math notranslate nohighlight">\(0\)</span>, en valores binarios <span class="math notranslate nohighlight">\(1\)</span> y <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p><strong>Concepto de sistema</strong>. Conjunto de componentes físicos relacionados que actúan como una unidad completa.</p></li>
 </ul>
 <div class="proof definition admonition" id="model">
 <p class="admonition-title"><span class="caption-number">Definition 2 </span> (Modelo)</p>
@@ -459,26 +459,26 @@ document.write(`
 </ul>
 <p>Podemos utilizar alguna de las siguientes estrategias para obtener modelos que representen un sistema. Por ejemplo:</p>
 <ul class="simple">
-<li><p><em>Modelación de sistemas</em>. El sistema se suele analizar como subsistemas más simples. Se suelen utilizar leyes físicas, enfoques como Euler-Lagrange  Hamilton, o bloques para el caso de los modelos compartimentales. Los modelos obtenidos suelen llamarse como <em>modelo de caja blanca</em> o <em>modelo interno</em>.</p></li>
-<li><p><em>Identificación de sistemas</em>. Emplea observaciones de entrada y salida de un sistema para construir un modelo. No considera dinámicas internas sino en su respuesta ante una entrada determinada. En este punto se pueden utilizar estrategias poliniomiales o Redes Neuronales Artificiales, por mencionar algunas. Los modelos obtenidos suelen llamarse como <em>modelo de caja negra</em> o <em>modelo entrada-salida</em>.</p></li>
-<li><p><em>Estrategia híbrida</em>. Es una combinación de las anteriores. Parte de un modelo obtenido de leyes físicas y los elementos desconocidos son identificados o estimados por alguna estrategia de identificación. Los modelos obtenidos suelen llamarse como <em>modelo de caja gris</em>.</p></li>
+<li><p><strong>Modelación de sistemas</strong>. El sistema se suele analizar como subsistemas más simples. Se suelen utilizar leyes físicas, enfoques como Euler-Lagrange  Hamilton, o bloques para el caso de los modelos compartimentales. Los modelos obtenidos suelen llamarse como <em>modelo de caja blanca</em> o <em>modelo interno</em>*.</p></li>
+<li><p><strong>Identificación de sistemas</strong>. Emplea observaciones de entrada y salida de un sistema para construir un modelo. No considera dinámicas internas sino en su respuesta ante una entrada determinada. En este punto se pueden utilizar estrategias poliniomiales o Redes Neuronales Artificiales, por mencionar algunas. Los modelos obtenidos suelen llamarse como <em>modelo de caja negra</em> o <em>modelo entrada-salida</em>.</p></li>
+<li><p><strong>Estrategia híbrida</strong>. Es una combinación de las anteriores. Parte de un modelo obtenido de leyes físicas y los elementos desconocidos son identificados o estimados por alguna estrategia de identificación. Los modelos obtenidos suelen llamarse como <em>modelo de caja gris</em>.</p></li>
 </ul>
 <p>En la literatura podemos encontrar la clasificación de los modelos de acuerdo con su tipo. Por ejemplo:</p>
 <ul class="simple">
-<li><p><em>Modelos causales</em>. Dependen de las condiciones presentes y pasadas para determinar una futura. En otras palabras, hay una relación de causalidad.</p></li>
-<li><p><em>Modelos no causales</em>.</p></li>
-<li><p><em>Modelos estáticos</em>. Depende de las condiciones presentes y no de las pasadas.</p></li>
-<li><p><em>Modelos dinámicos</em>. Los estados del sistema dependen de lo que haya sucedido con anterioridad debido a que suele haber algún tipo de almacenamiento de energía. Suelen llamarse también como <em>sistemas con memoria</em>.</p></li>
-<li><p><em>Modelos estocásticos</em>. Incluye variables aleatorias que afectan el sistema. Por consiguiente, resulta imposible predecir el valor que éstas puedan tomar.</p></li>
-<li><p><em>Modelos determinísticos</em>. Carecen de variables aleatorias. Por consiguiente, es posible conocer su comportamiento.</p></li>
-<li><p><em>Modelos de parámetros concentrados</em>. Requiren de ecuaciones con derivadas o ecuaciones de diferencia ordinarias.</p></li>
-<li><p><em>Modelos de parámetros distribuidos</em>. Su formulación implica ecuaciones diferenciales con derivadas parciales.</p></li>
-<li><p><em>Modelos lineales</em>. Son sistemas que cumplen con la propiedad de proporcionalidad y superposición.</p></li>
-<li><p><em>Modelos no lineales</em>. Modelos cuyos términos llevan multiplicidad entre los estados del sistema, potencias de los estados o funciones trascendentes cuyo argumento es alguna de las variables de estado del sistema.</p></li>
-<li><p><em>Modelos invariantes en el tiempo</em>. Los parámetros del sistema se consideran constantes en el tiempo.</p></li>
-<li><p><em>Modelos variantes en el tiempo</em>. Los parámetros del sistema varían en función del tiempo.</p></li>
-<li><p><em>Modelos continuos</em>. Sistemas que dependen del tiempo <span class="math notranslate nohighlight">\(t\)</span>, donde <span class="math notranslate nohighlight">\(t\)</span> es una variable continua que toma cualquier valor real.</p></li>
-<li><p><em>Modelos discretos</em>. En este tipo de sistemas, el tiempo se considera que es una variable discreta denotada como <span class="math notranslate nohighlight">\(k\)</span> y toma sólo unos valores en puntos específicos de la recta de los reales.</p></li>
+<li><p><strong>Modelos causales</strong>. Dependen de las condiciones presentes y pasadas para determinar una futura. En otras palabras, hay una relación de causalidad.</p></li>
+<li><p><strong>Modelos no causales</strong>.</p></li>
+<li><p><strong>Modelos estáticos</strong>. Depende de las condiciones presentes y no de las pasadas.</p></li>
+<li><p><strong>Modelos dinámicos</strong>. Los estados del sistema dependen de lo que haya sucedido con anterioridad debido a que suele haber algún tipo de almacenamiento de energía. Suelen llamarse también como <em>sistemas con memoria</em>.</p></li>
+<li><p><strong>Modelos estocásticos</strong>. Incluye variables aleatorias que afectan el sistema. Por consiguiente, resulta imposible predecir el valor que éstas puedan tomar.</p></li>
+<li><p><strong>Modelos determinísticos</strong>. Carecen de variables aleatorias. Por consiguiente, es posible conocer su comportamiento.</p></li>
+<li><p><strong>Modelos de parámetros concentrados</strong>. Requiren de ecuaciones con derivadas o ecuaciones de diferencia ordinarias.</p></li>
+<li><p><strong>Modelos de parámetros distribuidos</strong>. Su formulación implica ecuaciones diferenciales con derivadas parciales.</p></li>
+<li><p><strong>Modelos lineales</strong>. Son sistemas que cumplen con la propiedad de proporcionalidad y superposición.</p></li>
+<li><p><strong>Modelos no lineales</strong>. Modelos cuyos términos llevan multiplicidad entre los estados del sistema, potencias de los estados o funciones trascendentes cuyo argumento es alguna de las variables de estado del sistema.</p></li>
+<li><p><strong>Modelos invariantes en el tiempo</strong>. Los parámetros del sistema se consideran constantes en el tiempo.</p></li>
+<li><p><strong>Modelos variantes en el tiempo</strong>. Los parámetros del sistema varían en función del tiempo.</p></li>
+<li><p><strong>Modelos continuos</strong>. Sistemas que dependen del tiempo <span class="math notranslate nohighlight">\(t\)</span>, donde <span class="math notranslate nohighlight">\(t\)</span> es una variable continua que toma cualquier valor real.</p></li>
+<li><p><strong>Modelos discretos</strong>. En este tipo de sistemas, el tiempo se considera que es una variable discreta denotada como <span class="math notranslate nohighlight">\(k\)</span> y toma sólo unos valores en puntos específicos de la recta de los reales.</p></li>
 </ul>
 </section>
 <section id="indices-de-error">
