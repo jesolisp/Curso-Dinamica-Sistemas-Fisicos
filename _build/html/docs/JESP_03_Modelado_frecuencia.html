@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/JESP_03_Modelado_frecuencia';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/JESP_03_Modelado_frecuencia.html" />
@@ -418,7 +420,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -434,6 +438,33 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-transferencia">Función de Transferencia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-transferencia-propia">Función de transferencia propia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polos-y-zeros">Polos y zeros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-de-sistemas">Estabilidad de sistemas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polinomio-de-hurwitz">Polinomio de Hurwitz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-sistemas-electricos-y-electro-mecanicos">Modelado de sistemas eléctricos y electro-mecánicos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ley-de-corrientes-de-kirchhoff">Ley de corrientes de Kirchhoff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ley-de-tensiones-de-kirchhoff">Ley de tensiones de Kirchhoff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diodo-tunel">Diodo tunel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-r-c">Circuito R-C</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-sistemas-hidraulicos-y-termicos">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otro-tipo-de-sistemas">Otro tipo de sistemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atractor-de-lorenz">Atractor de Lorenz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-presa-depredador">Modelo presa-depredador</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -445,6 +476,398 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modelado-en-el-dominio-de-la-frecuencia">
 <h1>Modelado en el dominio de la frecuencia<a class="headerlink" href="#modelado-en-el-dominio-de-la-frecuencia" title="Link to this heading">#</a></h1>
+<section id="funcion-de-transferencia">
+<h2>Función de Transferencia<a class="headerlink" href="#funcion-de-transferencia" title="Link to this heading">#</a></h2>
+<p>Considere un sistema lineal invariante en el tiempo (<em>LTI</em>) cuya <em>función de transferencia</em> es <span class="math notranslate nohighlight">\(G(s)\)</span> y la entrada así como la salida se representan por <span class="math notranslate nohighlight">\(x(t)\)</span>, <span class="math notranslate nohighlight">\(y(t)\)</span>, respectivamente. Dicha función se puede escribir como el cociente de dos polinomios en <span class="math notranslate nohighlight">\(s\)</span>, esto es</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s) = \frac{p(s)}{q(s)} = \frac{p(s)}{(s+s_{1})(s+s_{2})\cdots(s+s_{n})},
+\]</div>
+<p>o bien</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s) = \frac{b_{n}s^{n} + \cdots + b_{3}s^{3} + b_{2}s^{2} + b_{1}s + b_{0}}{a_{n}s^{n} + \cdots + a_{3}s^{3} + a_{2}s^{2} + a_{1}s + a_{0}}.
+\]</div>
+<p>La <em>transformada de Laplace</em> de la salida <span class="math notranslate nohighlight">\(Y(s)\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+ Y(s) = G(s)X(s) = \frac{p(s)}{q(s)}X(s),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(X(s)\)</span> es la transformada de Laplace de la entrada <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<p>La respuesta en estado estacionario de un sistema estable LTI a una entrada sinusoidal no depende de las condiciones iniciales. Considerando que <span class="math notranslate nohighlight">\(Y(s)\)</span> tiene  únicamente polos distintos (simples), la ecuación anterior se puede representar en fracciones parciales como sigue:</p>
+<div class="math notranslate nohighlight">
+\[
+ Y(s) = G(s)X(s) = G(s) \frac{\omega X}{s^{2} + \omega^{2}},
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-y-fracciones-parciales">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eqn-y-fracciones-parciales" title="Link to this equation">#</a></span>\[
+ Y(s) = \frac{a}{s + j\omega} + \frac{\bar{a}}{s - j\omega} + \frac{b_{1}}{s + s_{1}} + \frac{b_{2}}{s + s_{2}} + \dots + \frac{b_{n}}{s + s_{n}},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b_{i},i=1,2,\dots,n\)</span> son constantes y <span class="math notranslate nohighlight">\(\bar{a}\)</span> es el complejo conjugado de <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<p>Por consiguiente, si aplicamos la transformada inversa de Laplace a la \cref{eqn:y_fracciones_parciales} tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ y(t) = ae^{-j\omega t} + \bar{a}e^{j\omega t} + b_{1}e^{-s_{1} t} + b_{2}e^{-s_{2} t} + \cdots + b_{n}e^{-s_{n} t}, \quad t\geq 0.
+\]</div>
+<section id="funcion-de-transferencia-propia">
+<h3>Función de transferencia propia<a class="headerlink" href="#funcion-de-transferencia-propia" title="Link to this heading">#</a></h3>
+<p>Considere la siguiente función de transferencia</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s) = \frac{N(s)}{D(s)},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(N(s)\)</span> y <span class="math notranslate nohighlight">\(D(s)\)</span> son dos polinomios con coeficientes reales, entonces tenemos</p>
+<ul class="simple">
+<li><p><em>Función impropia</em>. El <span class="math notranslate nohighlight">\(\text{deg }N(s) &gt; \text{deg }D(s)\)</span>.</p></li>
+<li><p><em>Función propia</em>. El <span class="math notranslate nohighlight">\(\text{deg }N(s) \leq \text{deg }D(s)\)</span>.</p></li>
+<li><p><em>Función estrictamente propia</em>. El <span class="math notranslate nohighlight">\(\text{deg }N(s) &lt; \text{deg }D(s)\)</span>.</p></li>
+<li><p><em>Función bipropia</em>. El <span class="math notranslate nohighlight">\(\text{deg }N(s) = \text{deg }D(s)\)</span>.</p></li>
+</ul>
+</section>
+<section id="polos-y-zeros">
+<h3>Polos y zeros<a class="headerlink" href="#polos-y-zeros" title="Link to this heading">#</a></h3>
+<p>Considere una función de transferencia racional propia</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s)=\frac{N(s)}{D(s)},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(N(s)\)</span> y <span class="math notranslate nohighlight">\(D(s)\)</span> son polinomios con coeficientes reales y <span class="math notranslate nohighlight">\(\text{deg }N(s) \leq \text{deg }D(s)\)</span>.</p>
+<div class="proof definition admonition" id="polo-zero">
+<p class="admonition-title"><span class="caption-number">Definition 18 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Un número complejo o real finito <span class="math notranslate nohighlight">\(\lambda\)</span> es un <em>polo</em> de <span class="math notranslate nohighlight">\(G(s)\)</span> si <span class="math notranslate nohighlight">\(|G(s)| = \infty\)</span>, donde <span class="math notranslate nohighlight">\(|\cdot|\)</span> denota el valor absoluto. Por otro lado, si <span class="math notranslate nohighlight">\(G(\lambda)=0\)</span> entonces es un <em>zero</em> de <span class="math notranslate nohighlight">\(G(s)\)</span>.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Considere la siguiente función de transferencia</p>
+<div class="math notranslate nohighlight">
+\[
+  G(s) = \frac{N(s)}{D(s)} = \frac{2\left( s^{3} + 3s^{2} - s - 3 \right)}{\left( s - 1 \right)\left( s + 2 \right)\left(s + 1 \right)^{3}},
+ \]</div>
+<p>obtenga sus polos y zeros.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Sea <span class="math notranslate nohighlight">\(u(t)=1\)</span> con <span class="math notranslate nohighlight">\(t\leq 0\)</span> la respuesta de escalón unitario, calcule la respuesta de estado cero de la siguiente función de transferencia</p>
+<div class="math notranslate nohighlight">
+\[
+  Y(s) = G(s)U(s) = \frac{3s-1}{(s+1)(s+2)}\cdot U(s).
+ \]</div>
+</section>
+<section id="estabilidad-de-sistemas">
+<h3>Estabilidad de sistemas<a class="headerlink" href="#estabilidad-de-sistemas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><em>Sistema absolutamente estable</em>. Todos los polos del sistema estén estrictamente en el semi-plano izquierdo, sin importar la multiplicidad.</p></li>
+<li><p><em>Sistema marginalmente estable</em>. Al menos un polo está sobre el eje imaginario con multiplicidad uno y el resto están estrictamente en el semi-plano izquierdo, sin importar la multiplicidad.</p></li>
+<li><p><em>Sistema inestable</em>. Al menos un polo está sobre el eje imaginario con multiplicidad mayor a uno o en el semiplano derecho.</p></li>
+</ul>
+<figure class="align-default" id="fig-pzmap-example">
+<a class="reference internal image-reference" href="../_images/pzmap_example.png"><img alt="../_images/pzmap_example.png" src="../_images/pzmap_example.png" style="height: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Mapa de polos y zeros.</span><a class="headerlink" href="#fig-pzmap-example" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="polinomio-de-hurwitz">
+<h2>Polinomio de Hurwitz<a class="headerlink" href="#polinomio-de-hurwitz" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Un polinomio con coeficientes reales es llamado <em>polinomio de Hurwitz</em> si todas sus raíces tienen partes reales negativas.</p>
+</section>
+</div><p>Considere el siguiente polinomio</p>
+<div class="math notranslate nohighlight">
+\[
+ D(s) = a_{n}s^{n} + a_{n-1}s^{n-1} + \dots + a_{1}s + a_{0}, \quad a_{n}&gt;0,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(a_{i},i=0,1,\dots,n\)</span> son constantes reales.</p>
+<p>Condiciones necesarias</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(D(s)\)</span> es <em>Hurwitz</em>, entonces todos los coeficientes de <span class="math notranslate nohighlight">\(D(s)\)</span> deben ser positivos.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(D(s)\)</span> tiene un término perdido o un coeficiente cero, entonces no es Hurwitz.</p></li>
+</ul>
+<div class="proof theorem admonition" id="polinomio-hurwitz">
+<p class="admonition-title"><span class="caption-number">Theorem 7 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Un polinomio con coeficientes positivos es un polinomio Hurwitz si y sólo si cada entrada en la tabla Routh es positivo, o equivalentemente, si y sólo si cada entrada en la primer columna de la tabla <span class="math notranslate nohighlight">\((b_{61}\)</span>,<span class="math notranslate nohighlight">\(b_{51}\)</span>,<span class="math notranslate nohighlight">\(b_{41}\)</span>,<span class="math notranslate nohighlight">\(b_{31}\)</span>,<span class="math notranslate nohighlight">\(b_{21}\)</span>,<span class="math notranslate nohighlight">\(b_{11}\)</span>,<span class="math notranslate nohighlight">\(b_{01})\)</span> es positivo.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Considere el siguiente polinomio</p>
+<div class="math notranslate nohighlight">
+\[
+ 2s^{4} + s^{3} + 5s^{2} + 3s + 4.
+\]</div>
+<p>Determine si el sistema es estable o no estable utilizando el método de Routh-Hurwitz.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Considere el siguiente polinomio</p>
+<div class="math notranslate nohighlight">
+\[
+ 2s^{5} + s^{4} + 7s^{3} + 3s^{2} + 4s + 2.
+\]</div>
+<p>Determine si el sistema es estable o no estable utilizando el método de Routh-Hurwitz.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Considere el siguiente polinomio</p>
+<div class="math notranslate nohighlight">
+\[
+ 2s^{5} + s^{4} + 7s^{3} + 3s^{2} + 4s + 1.5.
+\]</div>
+<p>Determine si el sistema es estable o no estable utilizando el método de Routh-Hurwitz.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Considere la siguiente función de transferencia</p>
+<div class="math notranslate nohighlight">
+\[
+ G_{o}(s) = \frac{(2s + 1)(s + 1)}{s^{5} + 5s^{4} + 12s^{3} + 14s^{2} + 3s + 1}.
+\]</div>
+<p>Determine si el sistema es estable o no estable utilizando:</p>
+<ul class="simple">
+<li><p>Polos y zeros.</p></li>
+<li><p>El método de Routh-Hurwitz.</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Considere la siguiente función de transferencia</p>
+<div class="math notranslate nohighlight">
+\[
+ G_{o}(s) = \frac{8k}{(s + 1)(s^{2} + 2s + 2) + 8k}.
+\]</div>
+<p>Determine si el sistema es estable o no estable utilizando el método de Routh-Hurwitz.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Determine el intervalo de estabilidad para el siguiente sistema</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s) = \frac{k(s^{2} - 2s + 5)}{s^{3} + (5 + k)s^{2} + (12 - 2k)s + 5k - 18}.
+\]</div>
+<p>Utilice el criterio de Routh-Hurwitz para resolver este ejercicio.</p>
+</section>
+<section id="modelado-de-sistemas-electricos-y-electro-mecanicos">
+<h2>Modelado de sistemas eléctricos y electro-mecánicos<a class="headerlink" href="#modelado-de-sistemas-electricos-y-electro-mecanicos" title="Link to this heading">#</a></h2>
+<section id="ley-de-corrientes-de-kirchhoff">
+<h3>Ley de corrientes de Kirchhoff<a class="headerlink" href="#ley-de-corrientes-de-kirchhoff" title="Link to this heading">#</a></h3>
+<p>Tiene como base el principio de conservación de la carga eléctrica. Por ejemplo, considere un nudo en el que convergen tres corrientes como se muestra en la <a class="reference internal" href="#fig-lck-nodo"><span class="std std-numref">Fig. 2</span></a></p>
+<figure class="align-default" id="fig-lck-nodo">
+<a class="reference internal image-reference" href="../_images/LCK_nodo.png"><img alt="../_images/LCK_nodo.png" src="../_images/LCK_nodo.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Sistema masa-resorte-amortiguador.</span><a class="headerlink" href="#fig-lck-nodo" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>La primera ley de Kirchhoff denotada como <em>LCK</em>, permite establecer la siguiente relación</p>
+<div class="math notranslate nohighlight">
+\[
+ I_{1} + I_{3} = I_{2},
+\]</div>
+<p>de la cual se desprende la siguiente definición.</p>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span></p>
+<section class="definition-content" id="proof-content">
+<p>La suma de las corrientes que entran en un nudo es igual a la suma de las corrientes que salen del mismo <span id="id1">[<a class="reference internal" href="references.html#id4" title="J.C.Á. Antón, L.M. Pascual, and F.J.F. Martín. Introduccion al analisis de circuitos electricos. Textos universitarios. Universidad de Oviedo, 2007. ISBN 9788483176375. URL: https://books.google.com.cu/books?id=L00nvc3kAFYC.">Antón <em>et al.</em>, 2007</a>]</span></p>
+</section>
+</div><p>Equivalentemente podemos tener</p>
+<div class="math notranslate nohighlight">
+\[
+ I_{1} + I_{3} + (-I_{2}) = 0,
+\]</div>
+<p>que nos dice, según la siguiente definición</p>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 21 </span></p>
+<section class="definition-content" id="proof-content">
+<p>La suma algebráica de todas las corrientes que entran en un nudo es igual cero <span id="id2">[<a class="reference internal" href="references.html#id4" title="J.C.Á. Antón, L.M. Pascual, and F.J.F. Martín. Introduccion al analisis de circuitos electricos. Textos universitarios. Universidad de Oviedo, 2007. ISBN 9788483176375. URL: https://books.google.com.cu/books?id=L00nvc3kAFYC.">Antón <em>et al.</em>, 2007</a>]</span>.</p>
+</section>
+</div><div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Las corrientes que entran en el nudo son positivas mientras que las corrientes que salen son negativas.</p>
+</div>
+</section>
+<section id="ley-de-tensiones-de-kirchhoff">
+<h3>Ley de tensiones de Kirchhoff<a class="headerlink" href="#ley-de-tensiones-de-kirchhoff" title="Link to this heading">#</a></h3>
+<p>Tiene como base el principio de conservación de la energía. Por ejemplo, considere el circuito mostrado en la <a class="reference internal" href="#fig-ltk"><span class="std std-numref">Fig. 3</span></a> donde la polaridad de la tensión fue elegida de forma arbitraria</p>
+<figure class="align-default" id="fig-ltk">
+<a class="reference internal image-reference" href="../_images/LTK.png"><img alt="../_images/LTK.png" src="../_images/LTK.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Sistema masa-resorte-amortiguador.</span><a class="headerlink" href="#fig-ltk" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Si recorremos un lazo en un sentido arbitrario -escogido de forma arbitraria en el sentido de las agujas del reloj- y aplicamos la segunda ley de Kirchhoff, llegamos a la siguiente expresión</p>
+<div class="math notranslate nohighlight">
+\[
+ V_{a} + V_{b} + V_{e} = V_{c} + V_{d},
+\]</div>
+<p>o equivalentemente</p>
+<div class="math notranslate nohighlight">
+\[
+ V_{a} + V_{b} - V_{c} - V_{d} + V_{e} = 0,
+\]</div>
+<p>finalmente, reacomodando términos, obtenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ -V_{a} - V_{b} + V_{c} + V_{d} - V_{e} = 0.
+\]</div>
+</section>
+<section id="diodo-tunel">
+<h3>Diodo tunel<a class="headerlink" href="#diodo-tunel" title="Link to this heading">#</a></h3>
+<p>El circuito de diodo tunel se muestra en la siguiente figura</p>
+<figure class="align-default" id="fig-diodo-tunel">
+<a class="reference internal image-reference" href="../_images/diodo_tunel.png"><img alt="../_images/diodo_tunel.png" src="../_images/diodo_tunel.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Diodo túnel.</span><a class="headerlink" href="#fig-diodo-tunel" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>donde la relación constitutiva que caracteriza el tunel diodo está dada por <span class="math notranslate nohighlight">\(i_{R} = h(v_{R})\)</span>. Los elementos almacenadores de energía son el inductor <span class="math notranslate nohighlight">\(L\)</span> y el capacitor <span class="math notranslate nohighlight">\(C\)</span>. Asumiendo que estos elementos son lineales e invariantes en el tiempo, podemos llegar a representar este sistema a partir del siguiente modelo</p>
+<div class="math notranslate nohighlight" id="equation-eqn-diode-tunel">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-diode-tunel" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  i_{C} &amp;= C \dot{v}_{C}, \\
+  v_{L} &amp;= L \frac{\mathrm{d}i_{L}}{\mathrm{d}t},
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(v\)</span> e <span class="math notranslate nohighlight">\(i\)</span> denotan el voltaje y corriente a través de un elemento. Además, el sub índice especifica el elemento.</p>
+<p>Las ecuaciones del circuito de diodo tunel se pueden representar en forma de espacio-estados si consideramos <span class="math notranslate nohighlight">\(u=E\)</span> como una entrada constante, <span class="math notranslate nohighlight">\(x_{1} = v_{C}\)</span> (tensión en el capacitor) y <span class="math notranslate nohighlight">\(x_{2} = i_{L}\)</span> (corriente en el inductor).</p>
+<p>Utilizando las <em>Leyes de Kirchhoff</em> y expresando <span class="math notranslate nohighlight">\(i_{C}\)</span> como una función de las variables de estado <span class="math notranslate nohighlight">\(x_{1}\)</span>, <span class="math notranslate nohighlight">\(x_{2}\)</span> y la entrada <span class="math notranslate nohighlight">\(u\)</span>, tenemos lo siguiente</p>
+<div class="math notranslate nohighlight">
+\[
+ i_{C} + i_{R} - i_{L} = 0,
+\]</div>
+<p>por consiguiente</p>
+<div class="math notranslate nohighlight">
+\[
+ i_{C} = -h(x_{1}) + x_{2}.
+\]</div>
+<p>Del mismo modo, expresamos <span class="math notranslate nohighlight">\(v_{L}\)</span> como una función de las variables <span class="math notranslate nohighlight">\(x_{1}\)</span>, <span class="math notranslate nohighlight">\(x_{2}\)</span>, <span class="math notranslate nohighlight">\(u\)</span> y utilizamos las <em>Leyes de Kirchhoff</em> como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ v_{C} - E + Ri_{L} + v_{L} = 0.
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(v_{L} = -x_{1} - Rx_{2} + u\)</span>.</p>
+<p>Reescribiendo las ecuaciones del sistema <a class="reference internal" href="#equation-eqn-diode-tunel">(4)</a>, tenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-diode-tunel-ee">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-diode-tunel-ee" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= \frac{1}{C}\left(-h(x_{1}) + x_{2} \right) ,\\
+  \dot{x}_{2} &amp;= \frac{1}{L}\left(-x_{1} - Rx_{2} + u \right),
+ \end{aligned}
+\end{split}\]</div>
+</section>
+<section id="circuito-r-c">
+<h3>Circuito R-C<a class="headerlink" href="#circuito-r-c" title="Link to this heading">#</a></h3>
+<p>La relación que establece el flujo electromagnético <span class="math notranslate nohighlight">\(\phi\)</span> y la corriente <span class="math notranslate nohighlight">\(i\)</span> que lo produce está dada por la siguiente ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+ \phi = L i,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(L\)</span> es una constante que depende de los factores geométricos y de entorno llamada inductancia.</p>
+<p>Los cambios de flujo electromagnético originan potenciales eléctricos relacionados por la <em>Ley de Faraday</em></p>
+<div class="math notranslate nohighlight">
+\[
+ u_{L} = - \dot{\phi},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(u_{L}\)</span> denota el voltaje en las terminales de la inductancia a razón del cambio de flujo. Por consiguiente, la <em>Ley de Faraday</em> se puede expresar como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ u_{L} = - L \dot{\phi}.
+\]</div>
+<p>En elementos resistivos el voltaje <span class="math notranslate nohighlight">\(u_{R}\)</span> entre el componente y la corriente <span class="math notranslate nohighlight">\(i\)</span> que circula por él obedecen a la <em>Ley de Ohm</em> dada como siguiente</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ley-ohm">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-ley-ohm" title="Link to this equation">#</a></span>\[
+ u_{R} = Ri,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(R\)</span> es una constante que depende del componente denominado resistencia.</p>
+<p>El voltaje <span class="math notranslate nohighlight">\(u_{C}\)</span> entre las terminales de una capacitancia y la carga <span class="math notranslate nohighlight">\(q\)</span> siguen la siguiente relación</p>
+<div class="math notranslate nohighlight">
+\[
+ u_{C} = \frac{Q}{C} \equiv \frac{1}{C} \int i \mathrm{d}t,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(C\)</span> es una constante que depende de la geometría y el entorno denominada capacitancia. Si consideramos que la corriente se define como una variación temporal de carga</p>
+<div class="math notranslate nohighlight">
+\[
+ i = \dot{Q}, \quad Q = \int i \mathrm{d}t,
+\]</div>
+<p>entonces <span class="math notranslate nohighlight">\(u_{C}\)</span> se expresa en los siguientes términos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-uc">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-uc" title="Link to this equation">#</a></span>\[
+ u_{C} = \frac{1}{C} \int i\mathrm{d}t.
+\]</div>
+<p>Considere el circuito mostrado en la <a class="reference internal" href="#fig-rc"><span class="std std-numref">Fig. 5</span></a></p>
+<p>Aplicando la <em>Ley de tensiones de Kirchhoff</em>, obtenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-tensiones-kirchoff">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-tensiones-kirchoff" title="Link to this equation">#</a></span>\[
+ u_{R} + u_{C} = V_{in}.
+\]</div>
+<p>Sustituyendo <a class="reference internal" href="#equation-eqn-ley-ohm">(6)</a> y <a class="reference internal" href="#equation-eqn-uc">(7)</a> en <a class="reference internal" href="#equation-eqn-tensiones-kirchoff">(8)</a>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ Ri + \frac{1}{C} \int i \mathrm{d}t = V_{in},
+\]</div>
+<p>expresado la ecuación anterior en términos de la carga <span class="math notranslate nohighlight">\(Q\)</span>, tenemos la siguiente expresión</p>
+<div class="math notranslate nohighlight" id="equation-eqn-modelo-malla">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-modelo-malla" title="Link to this equation">#</a></span>\[
+ R \dot{Q} + \frac{1}{C}Q = V_{in},
+\]</div>
+<p>Aplicando la <em>Ley de corrientes de Kirchhoff</em>, obtenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ i_{R} + i_{C} = i,
+\]</div>
+<p>dado que el voltaje entre los componentes eléctricos es el mismo y lo denotamos por <span class="math notranslate nohighlight">\(u\)</span>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{u}{R} + C \dot{u} = i.
+\]</div>
+<p>Considerando el modelo dado en la Ec. <a class="reference internal" href="#equation-eqn-modelo-malla">(9)</a> y tomando <span class="math notranslate nohighlight">\(V\)</span> como la carga en el capacitor dividida por la capacitancia <span class="math notranslate nohighlight">\(V := \frac{Q}{C}\)</span> y <span class="math notranslate nohighlight">\(\dot{V}:= \frac{\dot{Q}}{C}\)</span>, sustituyendo tenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  R\dot{V}C + \frac{1}{C}VC &amp;= V_{in}, \\
+  R\dot{V}C + V &amp;= V_{in}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Entonces, el modelo del circuito RC mostrado en la <a class="reference internal" href="#fig-rc"><span class="std std-numref">Fig. 5</span></a> está dado por la siguiente ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{V} + \frac{1}{RC}V = \frac{1}{RC} V_{in}.
+\]</div>
+<figure class="align-default" id="fig-rc">
+<a class="reference internal image-reference" href="../_images/RC.png"><img alt="../_images/RC.png" src="../_images/RC.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Modelo de circuito R-C.</span><a class="headerlink" href="#fig-rc" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="modelado-de-sistemas-hidraulicos-y-termicos">
+<h2>Modelado de sistemas hidráulicos y térmicos<a class="headerlink" href="#modelado-de-sistemas-hidraulicos-y-termicos" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="fig-single-tank-system">
+<a class="reference internal image-reference" href="../_images/single_tank_system.png"><img alt="../_images/single_tank_system.png" src="../_images/single_tank_system.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Modelo de un tanque.</span><a class="headerlink" href="#fig-single-tank-system" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-two-tanks-system">
+<a class="reference internal image-reference" href="../_images/two_tanks_system.png"><img alt="../_images/two_tanks_system.png" src="../_images/two_tanks_system.png" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Modelo de dos tanques en cascada.</span><a class="headerlink" href="#fig-two-tanks-system" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="otro-tipo-de-sistemas">
+<h2>Otro tipo de sistemas<a class="headerlink" href="#otro-tipo-de-sistemas" title="Link to this heading">#</a></h2>
+<section id="atractor-de-lorenz">
+<h3>Atractor de Lorenz<a class="headerlink" href="#atractor-de-lorenz" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= \sigma\left(y - x\right), \\
+  \dot{y} &amp;= x\left(\rho - z\right) - y, \\
+  \dot{z} &amp;= xy - \beta z,\\
+ \end{aligned}
+\end{split}\]</div>
+</section>
+<section id="modelo-presa-depredador">
+<h3>Modelo presa-depredador<a class="headerlink" href="#modelo-presa-depredador" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= \alpha x - \beta xy, \\
+  \dot{y} &amp;= \delta xy - \gamma y, \\
+ \end{aligned}
+\end{split}\]</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -501,6 +924,40 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-transferencia">Función de Transferencia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-transferencia-propia">Función de transferencia propia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polos-y-zeros">Polos y zeros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-de-sistemas">Estabilidad de sistemas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polinomio-de-hurwitz">Polinomio de Hurwitz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-sistemas-electricos-y-electro-mecanicos">Modelado de sistemas eléctricos y electro-mecánicos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ley-de-corrientes-de-kirchhoff">Ley de corrientes de Kirchhoff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ley-de-tensiones-de-kirchhoff">Ley de tensiones de Kirchhoff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diodo-tunel">Diodo tunel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-r-c">Circuito R-C</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-sistemas-hidraulicos-y-termicos">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otro-tipo-de-sistemas">Otro tipo de sistemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atractor-de-lorenz">Atractor de Lorenz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-presa-depredador">Modelo presa-depredador</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

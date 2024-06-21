@@ -27,7 +27,7 @@
 
 | **Unidad** | **Tema** | **Contenido** | **Material** |
 |:---:|:---:|:---|:---:|
-| I | Introducción a la dinámica de los sistemas lineales | <li>Conceptos básicos.</li> <li>Modelos analíticos de estudio de sistemas.</li> | <ol><li>[Código (Live Script)](JESP_01_Introduccion_dinamica.ipynb)</li>  </ol> |
+| I | Introducción a la dinámica de los sistemas lineales | <li>Conceptos básicos.</li> <li>Modelos analíticos de estudio de sistemas.</li> | <ol><li>[Código (Live Script)](JESP_01_Introduccion_dinamica.md)</li>  </ol> |
 | II | Antecedentes matemáticos | <li>Álgebra Lineal.</li> <li>Ecuaciones Diferenciales.</li> <li> Transformada de Fourier. </li> <li> Transformada de Laplace. </li> | <ol><li>[Código (Live Script)](JESP_02_Antecedentes_matematicos.ipynb)</li> </ol> |
 | III | Modelado en el dominio de la frecuencia | <li> Función de Transferencia. </li> <li> Modelado de sistemas mecánicos. </li> <li> Modelado de sistemas eléctricos y electro-mecánicos. </li> <li> Modelado de sistemas hidráulicos y térmicos. </li> <li> Otro tipo de sistemas. </li> | <ol><li>[Código (Live Script)](JESP_03_Modelado_frecuencia.ipynb)</li>  </ol> |
 | IV | Modelado en el dominio del tiempo | <li> Ecuaciones en variables de estado. </li> <li> Modelado de sistemas mediante ecuaciones de estado. </li> <li> Relación entre el modelo en variables de estado y la función de transferencia. </li> | <ol><li>[Código (Live Script)](JESP_04_Modelado_tiempo)</li>  </ol> |

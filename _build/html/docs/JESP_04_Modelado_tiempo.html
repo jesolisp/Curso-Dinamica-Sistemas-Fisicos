@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/JESP_04_Modelado_tiempo';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/JESP_04_Modelado_tiempo.html" />
@@ -418,7 +420,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -434,6 +438,30 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecuaciones-en-variables-de-estado">Ecuaciones en variables de estado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-los-factores-integrantes">Método de los factores integrantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-lineales-desacoplados">Sistemas lineales desacoplados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonalizacion">Diagonalización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ecuaciones en variables de estado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-definido-en-espacio-de-estados">Sistema definido en espacio de estados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-sistemas-mediante-ecuaciones-de-estado">Modelado de sistemas mediante ecuaciones de estado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-no-lineales">Sistemas no lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-euler">Método de Euler</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-runge-kutta">Método de Runge-Kutta</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion-entre-el-modelo-en-variables-de-estado-y-la-funcion-de-transferencia">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -445,6 +473,702 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modelado-en-el-dominio-del-tiempo">
 <h1>Modelado en el dominio del tiempo<a class="headerlink" href="#modelado-en-el-dominio-del-tiempo" title="Link to this heading">#</a></h1>
+<section id="ecuaciones-en-variables-de-estado">
+<h2>Ecuaciones en variables de estado<a class="headerlink" href="#ecuaciones-en-variables-de-estado" title="Link to this heading">#</a></h2>
+<section id="metodo-de-los-factores-integrantes">
+<h3>Método de los factores integrantes<a class="headerlink" href="#metodo-de-los-factores-integrantes" title="Link to this heading">#</a></h3>
+<p>Para resolver una ecuación diferencial ordinaria de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ ax''+bx'+cx=0,
+\]</div>
+<p>podemos sustituir <span class="math notranslate nohighlight">\(u(t) = e^{mt}\)</span> en la ecuación anterior, para obtener</p>
+<div class="math notranslate nohighlight">
+\[
+ (am^{2}+bm+c)e^{mt} = 0.
+\]</div>
+<p>Puesto que <span class="math notranslate nohighlight">\(e^{mt}\)</span> no se anula, tenemos la siguiente ecuación característica</p>
+<div class="math notranslate nohighlight">
+\[
+ am^{2}+ bm + c = 0,
+\]</div>
+<p>de donde tenemos tres casos que considerar:</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(b^{2}-4ac&gt;0\)</span>, la ecuación anterior tiene dos soluciones reales <span class="math notranslate nohighlight">\(m_{1}\)</span> y <span class="math notranslate nohighlight">\(m_{2}\)</span>. Entonces la solución general es <span class="math notranslate nohighlight">\(u(t) = c_{1}e^{m_{1}t} + c_{2}e^{m_{2}t}\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(b^{2}-4ac&lt;0\)</span>, la ecuación tiene dos raíces complejas conjugadas <span class="math notranslate nohighlight">\(\mu\pm i\sigma\)</span>. Entonces la solución general es <span class="math notranslate nohighlight">\(u(t) = e^{\mu t}(c_{1}\cos(\sigma t)+ c_{2}\sin(\sigma t))\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(b^{2}-4ac=0\)</span>, la ecuación tiene una raíz doble <span class="math notranslate nohighlight">\(m\)</span>. Entonces la solución general es <span class="math notranslate nohighlight">\(u(t)=e^{mt}(c_{1}+c_{2}t)\)</span>.</p></li>
+</ul>
+</section>
+<section id="sistemas-lineales-desacoplados">
+<h3>Sistemas lineales desacoplados<a class="headerlink" href="#sistemas-lineales-desacoplados" title="Link to this heading">#</a></h3>
+<p>El método de factores integrantes se puede usar para resolver la ecuación diferencial lineal de primer orden de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x} = Ax.
+\]</div>
+<p>La rescribimos como <span class="math notranslate nohighlight">\(\dot{x}-Ax = 0\)</span>, la multiplicamos por <span class="math notranslate nohighlight">\(e^{-at}\)</span> para obtener</p>
+<div class="math notranslate nohighlight">
+\[
+ (xe^{-at})'=0,
+\]</div>
+<p>con lo que <span class="math notranslate nohighlight">\(xe^{-at} = c\)</span>, donde <span class="math notranslate nohighlight">\(c\)</span> es una constante. La solución general está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ x(t) = ce^{at},
+\]</div>
+<p>donde la constante <span class="math notranslate nohighlight">\(c=x(0)\)</span>, es el valor de la función en el tiempo <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Consideremos ahora el sistema lineal desacoplado</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \dot{x}_{1} &amp;= -x_{1}, \\
+   \dot{x}_{2} &amp;= 2x_{2}.
+  \end{aligned}
+ \end{split}\]</div>
+<p>Este sistema se puede escribir en forma matricial como</p>
+<div class="math notranslate nohighlight">
+\[
+  \dot{x}=Ax,
+ \]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = \begin{bmatrix} -1 &amp; 0 \\ 0 &amp; 2 \end{bmatrix}
+ \end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Observe que <span class="math notranslate nohighlight">\(A\)</span> es una matriz diagonal, y en general siempre que <span class="math notranslate nohighlight">\(A\)</span> sea una matriz diagonal, el sistema se reduce a un sistema lineal desacoplado.</p>
+</div>
+<p>La solución general del sistema desacoplado anterior puede obtenerse mediante el método de los factores integrantes (o usando el de separación de variables) y se expresa como</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  x_{1}(t) &amp;= c_{1}e^{-t}, \\
+  x_{2}(t) &amp;= c_{2}e^{2t},
+ \end{aligned}
+\end{split}\]</div>
+<p>o equivalentemente por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ x(t) = \begin{bmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{2t} \end{bmatrix}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(c=x(0)\)</span>.</p>
+<div class="proof definition admonition" id="def:retrato-fase">
+<p class="admonition-title"><span class="caption-number">Definition 22 </span></p>
+<section class="definition-content" id="proof-content">
+<p>El <em>retrato fase</em>, o <em>diagrama de órbitas</em>, de un sistema de ecuaciones diferenciales tales con <span class="math notranslate nohighlight">\(x\in \mathbb{R}^{n}\)</span>, es el conjunto de todas las curvas integrales en el espacio fase.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Consideremos el siguiente sistema lineal desacoplado en</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \dot{x}_{1} &amp;= x_{1}, \\
+   \dot{x}_{2} &amp;= x_{2}, \\
+   \dot{x}_{3} &amp;= -x_{3},
+  \end{aligned}
+ \end{split}\]</div>
+<p>cuya solución general está dada por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   x_{1}(t) &amp;= c_{1}e^{t}, \\
+   x_{2}(t) &amp;= c_{2}e^{t}, \\
+   x_{3}(t) &amp;= c_{3}e^{-t}.
+  \end{aligned}
+ \end{split}\]</div>
+<p>El retrato fase para este sistema se muestra a continuación</p>
+<p>El plano <span class="math notranslate nohighlight">\(x_{1}x_{2}\)</span> se define como <em>subespacio inestable</em> y al eje <span class="math notranslate nohighlight">\(x_{3}\)</span> se le llama el <em>subespacio estable</em>.</p>
+</section>
+<section id="diagonalizacion">
+<h3>Diagonalización<a class="headerlink" href="#diagonalizacion" title="Link to this heading">#</a></h3>
+<p>Se pueden usar las técnicas algebraicas para diagonalizar una matriz <span class="math notranslate nohighlight">\(A\)</span> cuadrada para reducir el sistema lineal</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=Ax,
+\]</div>
+<p>a un sistema lineal desacoplado. Primero consideramos el caso cuando <span class="math notranslate nohighlight">\(A\)</span> tiene eigenvalores reales y distintos. El siguiente teorema del Algebra Lineal nos ayudará a resolver este problema.</p>
+<div class="proof theorem admonition" id="thm:eigenvectores">
+<p class="admonition-title"><span class="caption-number">Theorem 8 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Si los eigenvalores <span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\dots,\lambda_{n}\)</span> de una matriz <span class="math notranslate nohighlight">\(A\)</span> de orden <span class="math notranslate nohighlight">\(n\times n\)</span> son reales y distintos, entonces cualquier conjunto de eigenvectores correpondientes <span class="math notranslate nohighlight">\(v_{1},v_{2},\dots,v_{n}\)</span> forma una base para <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, la matriz <span class="math notranslate nohighlight">\(P = [v_{1}~v_{2}~\dots~v_{n}]\)</span> es invertible y</p>
+<div class="math notranslate nohighlight">
+\[
+  P^{-1}AP=diag\left[\lambda_{1},\lambda_{2},\dots,\lambda_{n} \right].
+ \]</div>
+</section>
+</div><div class="proof definition admonition" id="def:poli-caracteristico">
+<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Polinomio característico)</p>
+<section class="definition-content" id="proof-content">
+<p>Sean <span class="math notranslate nohighlight">\(A, I~ \in \mathbb{R}^{n\times n}\)</span> con <span class="math notranslate nohighlight">\(I\)</span> definida como la matriz identidad. Sea <span class="math notranslate nohighlight">\(\lambda\in \mathbb{R}\)</span>, entonces</p>
+<ul class="simple">
+<li><p>La matriz característica de <span class="math notranslate nohighlight">\(A\)</span> se define como <span class="math notranslate nohighlight">\(A-\lambda I\)</span>.</p></li>
+<li><p>El determinante de la matriz característica de <span class="math notranslate nohighlight">\(A\)</span> es un polinomio en <span class="math notranslate nohighlight">\(\lambda\)</span>; se denomina <em>polinomio característico</em> de <span class="math notranslate nohighlight">\(A\)</span> y se define como <span class="math notranslate nohighlight">\(\phi_{A}(\lambda) = \left| A - \lambda I \right|\)</span>.</p></li>
+<li><p>La <em>ecuación característica</em> de <span class="math notranslate nohighlight">\(A\)</span> se define como <span class="math notranslate nohighlight">\(\phi_{A}(\lambda) = \left| A - \lambda I \right| = 0\)</span>.</p></li>
+</ul>
+</section>
+</div><div class="proof definition admonition" id="def:eigenvalores">
+<p class="admonition-title"><span class="caption-number">Definition 24 </span> (Eigenvalores)</p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n\times n}\)</span>. Se dice que un escalar <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span> es un <em>eigenvalor</em> de <span class="math notranslate nohighlight">\(A\)</span> si satisface la ecuación característica de A</p>
+<div class="math notranslate nohighlight">
+\[
+   \phi_{A}(\lambda) = \left| A - \lambda I \right| = 0.
+  \]</div>
+<p>Si <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n\times n}\)</span> y <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span>, entonces <span class="math notranslate nohighlight">\(\phi_{A}(\lambda) = \left| A - \lambda I \right| = 0\)</span> sí, y sólo sí, el sistema</p>
+<div class="math notranslate nohighlight">
+\[
+   (A-\lambda I)\nu = 0,
+  \]</div>
+<p>tiene soluciones no triviales. La ecuación anterior se puede expresar como</p>
+<div class="math notranslate nohighlight">
+\[
+   A\nu = \lambda \nu.
+  \]</div>
+<p>Así, tenemos que <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span> es un <em>eigenvalor</em> de <span class="math notranslate nohighlight">\(A\)</span> si existe un <span class="math notranslate nohighlight">\(\nu \mathbb{R}^{n}\)</span>, con <span class="math notranslate nohighlight">\(\nu \neq 0\)</span> tal que <span class="math notranslate nohighlight">\((A - \lambda I)\nu = 0\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="def:eigenvectores">
+<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Eigenvectores)</p>
+<section class="definition-content" id="proof-content">
+<p>Todo vector <span class="math notranslate nohighlight">\(\nu\)</span> que satisfaga <span class="math notranslate nohighlight">\((A- \lambda I )\nu = 0\)</span>, se llama un <em>Eigenvector</em> de <span class="math notranslate nohighlight">\(A\)</span> correspondiente a <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</section>
+</div><div class="proof theorem admonition" id="thm:cayley_hamilton">
+<p class="admonition-title"><span class="caption-number">Theorem 9 </span> (Cayley-Hamilton)</p>
+<section class="theorem-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(A^{n\times n}\)</span> una matriz con polinomio característico <span class="math notranslate nohighlight">\(\phi_{A}(\lambda)\)</span> entonces <span class="math notranslate nohighlight">\(\phi_{A}(A) = 0\)</span>.</p>
+</section>
+</div><p>Considere la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = \begin{bmatrix}
+   -6 &amp; -\frac{7}{2} \\
+   6 &amp; 4
+  \end{bmatrix},
+ \end{split}\]</div>
+<p>cuyo polinomio característico está definido como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \phi_{A}(\lambda) &amp;= \left| \begin{bmatrix} -6 &amp; -\frac{7}{2} \\ 6 &amp; 4 \end{bmatrix} - \begin{bmatrix} \lambda &amp; 0 \\ 0 &amp; \lambda \end{bmatrix} \right| = \left| \begin{bmatrix} - 6 - \lambda &amp; -\frac{7}{2} \\ 6 &amp; 4 - \lambda \end{bmatrix} \right|, \\
+   &amp;= (-\lambda - 6)(4 - \lambda) - (6)\left(-\frac{7}{2}\right) = \lambda^{2} + 2\lambda - 3.
+  \end{aligned}
+ \end{split}\]</div>
+<p>Entonces, <span class="math notranslate nohighlight">\(\phi_{A}(A)\)</span> se define como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \phi_{A}(A) &amp;= A^{2} + 2A - 3I, \\
+   &amp;= \begin{bmatrix}
+   -6 &amp; -\frac{7}{2} \\
+   6 &amp; 4
+  \end{bmatrix}
+  \begin{bmatrix}
+   -6 &amp; -\frac{7}{2} \\
+   6 &amp; 4
+  \end{bmatrix} +
+  2\begin{bmatrix}
+   -6 &amp; -\frac{7}{2} \\
+   6 &amp; 4
+  \end{bmatrix} -
+  \begin{bmatrix}
+   3 &amp; 0 \\
+   0 &amp; 3
+  \end{bmatrix}, \\
+  &amp;= \begin{bmatrix}
+   15 &amp; 7 \\
+   -12 &amp; -5
+  \end{bmatrix} +
+  \begin{bmatrix}
+   -12 &amp; -7 \\
+   12 &amp; 8
+  \end{bmatrix} -
+  \begin{bmatrix}
+   3 &amp; 0 \\
+   0 &amp; 3
+  \end{bmatrix}, \\
+  &amp;= \begin{bmatrix}
+   0 &amp; 0 \\
+   0 &amp; 0
+  \end{bmatrix}.
+  \end{aligned}
+ \end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Considere el sistema lineal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \dot{x}_{1} &amp;= -x_{1}- 3x_{2}, \\
+   \dot{x}_{2} &amp;= 2x_{2}.
+  \end{aligned}
+ \end{split}\]</div>
+<p>Escriba el sistema anterior en la forma <span class="math notranslate nohighlight">\(\dot{x}=Ax\)</span>, encuentre los eigenvalores de <span class="math notranslate nohighlight">\(A\)</span> así como un par de eigenvectores correspondientes. A partir de esto, obtenga el sistema desacoplado.</p>
+<div class="proof definition admonition" id="subespacios">
+<p class="admonition-title"><span class="caption-number">Definition 26 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Supongamos que la matriz <span class="math notranslate nohighlight">\(A\)</span> de orden <span class="math notranslate nohighlight">\(n\times n\)</span> tiene <span class="math notranslate nohighlight">\(k\)</span> eigenvalores negativos <span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\dots,\lambda_{k}\)</span> y <span class="math notranslate nohighlight">\(n-k\)</span> eigenvalores positivos <span class="math notranslate nohighlight">\(\lambda_{k+1},\dots,\lambda_{n}\)</span> y que estos eigenvalores son distintos. Sea <span class="math notranslate nohighlight">\(\{v_{1},v_{2},\dots,v_{n}\}\)</span> el conjunto de eigenvectores correspondientes. Entonces los <em>subespacios estable</em> e <em>inestable</em> del sistema lineal, <span class="math notranslate nohighlight">\(E^{e}\)</span> y <span class="math notranslate nohighlight">\(E^{i}\)</span>, son los subespacios generados por <span class="math notranslate nohighlight">\(\{v_{1},v_{2},\dots,v_{k}\}\)</span> y <span class="math notranslate nohighlight">\(\{v_{k+1},\dots,v_{n}\}\)</span>, respectivamente, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+  E^{e} = gen\{v_{1},\dots,v_{k}\},
+ \]</div>
+<div class="math notranslate nohighlight">
+\[
+  E^{i} = gen\{v_{k+1},\dots,v_{n}\}.
+ \]</div>
+<p>Si la matriz <span class="math notranslate nohighlight">\(A\)</span> tiene eigenvalores imaginarios puros, entonces también hay otro subespacio llamado el subespacio centro, <span class="math notranslate nohighlight">\(E^{c}\)</span>.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Encuentre los eigenvalores y eigenvectores de la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}
+ \end{split}\]</div>
+<p><strong>Ejemplo</strong>
+Encuentre los eigenvalores y eigenvectores de la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = \begin{bmatrix} 1 &amp; 3 \\ 3 &amp; 1 \end{bmatrix}
+ \end{split}\]</div>
+<p><strong>Ejemplo</strong>
+Encuentre los eigenvalores y eigenvectores de la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = \begin{bmatrix} -1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}
+ \end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Encuentre los eigenvalores y eigenvectores de la matriz <span class="math notranslate nohighlight">\(A\)</span>, resuelva el sistema lineal <span class="math notranslate nohighlight">\(\dot{x} = Ax\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 2 &amp; 0 \\ 1 &amp; 0 &amp; -2 \end{bmatrix}
+ \end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Escriba las siguientes ecuaciones diferenciales lineales en la forma <span class="math notranslate nohighlight">\(\dot{x} = Ax\)</span> y resuelva</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\ddot{x}+\dot{x}-2x=0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ddot{x}+\dot{x}=0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dddot{x}-2\ddot{x}-x+2x=0\)</span>.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Ecuaciones en variables de estado<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>La representación de un sistema <em>LTI</em> en espacio de estados tiene la siguiente forma</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1}(t) &amp;= a_{11}x_{1}(t) + a_{12}x_{2}(t) + a_{13}x_{3}(t) + b_{1}u(t), \\
+  \dot{x}_{2}(t) &amp;= a_{21}x_{1}(t) + a_{22}x_{2}(t) + a_{23}x_{3}(t) + b_{2}u(t), \\
+  \dot{x}_{3}(t) &amp;= a_{31}x_{1}(t) + a_{22}x_{2}(t) + a_{33}x_{3}(t) + b_{3}u(t), \\
+  y(t) &amp;= c_{1}x_{1}(t) + c_{2}x_{2}(t) + c_{3}x_{3}(t) + du(t),
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> son la entrada y la salida; <span class="math notranslate nohighlight">\(x_{i}, i=1,2,3\)</span> son llamadas las <em>variables de estado</em>; <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_{i}\)</span>, <span class="math notranslate nohighlight">\(c_{i}\)</span> y <span class="math notranslate nohighlight">\(d\)</span> son constantes; <span class="math notranslate nohighlight">\(\dot{x}_{i} := \mathrm{d}x_{i}(t)/\mathrm{d}t\)</span>.</p>
+</section>
+<section id="sistema-definido-en-espacio-de-estados">
+<h3>Sistema definido en espacio de estados<a class="headerlink" href="#sistema-definido-en-espacio-de-estados" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \dot{x} = \begin{bmatrix} \dot{x}_{1} \\ \dot{x}_{2} \\ \dot{x}_{3} \end{bmatrix}, \quad
+ x = \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}, \quad
+ A = \begin{bmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33} \end{bmatrix}, \quad
+ b = \begin{bmatrix} b_{1} \\ b_{2} \\ b_{3} \end{bmatrix}
+\end{split}\]</div>
+<p>además <span class="math notranslate nohighlight">\(C = \begin{bmatrix} c_{1} &amp; c_{2} &amp; c_{3} \end{bmatrix}\)</span>.</p>
+<p>Considérese el sistema definido mediante</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= Ax + Bu, \\
+  y &amp;= Cx + Du,
+ \end{aligned}
+\end{split}\]</div>
+<p>donde</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> = vector de estado (vector de dimensión <span class="math notranslate nohighlight">\(n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> = vector de salida (vector de dimensión <span class="math notranslate nohighlight">\(m\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(u\)</span> = vector de control (vector de dimensión <span class="math notranslate nohighlight">\(r\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = matriz de estado (matriz de dimensión <span class="math notranslate nohighlight">\(n\times n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> = matriz de control (matriz de dimensión <span class="math notranslate nohighlight">\(n\times r\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> = matriz de salida (matriz de dimensión <span class="math notranslate nohighlight">\(m\times n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> = matriz de transmisión directa (matriz de dimensión <span class="math notranslate nohighlight">\(m\times r\)</span>)</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Considere el siguiente sistema</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \dot{x}_{1} &amp;= -6x_{1} - 3.5x_{2} -u, \\
+   \dot{x}_{2} &amp;= 6 x_{1} + 4 x_{2} + u, \\
+   y &amp;= 4x_{1} + 5x_{2}.
+  \end{aligned}
+ \end{split}\]</div>
+<p>Determine</p>
+<ul class="simple">
+<li><p>Si la función de transferencia es propia o impropia.</p></li>
+<li><p>Sus polos y zeros.</p></li>
+<li><p>La respuesta ante una entrada tipo escalón unitario <span class="math notranslate nohighlight">\(u(t)=1\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="modelado-de-sistemas-mediante-ecuaciones-de-estado">
+<h2>Modelado de sistemas mediante ecuaciones de estado<a class="headerlink" href="#modelado-de-sistemas-mediante-ecuaciones-de-estado" title="Link to this heading">#</a></h2>
+<section id="sistemas-no-lineales">
+<h3>Sistemas no lineales<a class="headerlink" href="#sistemas-no-lineales" title="Link to this heading">#</a></h3>
+<p>La solución de una ecuación diferencial elemental</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=g(x),
+\]</div>
+<p>está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ x(t) = x(0) + \int_{0}^{t}g(s)\mathrm{d}s,
+\]</div>
+<p>si <span class="math notranslate nohighlight">\(g\)</span> es integrable.</p>
+<p>Para tratar con sistemas dinámicos que son modelados por un número finito de ecuaciones diferenciales de primer orden acopladas</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= f_{1}(t,x_{1},\dots,x_{n},u_{1},\dots,u_{p}), \\
+  \dot{x}_{2} &amp;= f_{2}(t,x_{1},\dots,x_{n},u_{1},\dots,u_{p}), \\
+  \vdots &amp;= \vdots \\
+  \dot{x}_{n} &amp;= f_{n}(t,x_{1},\dots,x_{n},u_{1},\dots,u_{p}),
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\dot{x}_{i}\)</span> denota la derivada de <span class="math notranslate nohighlight">\({x}_{i}\)</span> con respecto a la variable tiempo <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(u_{1},u_{2},\dots,u_{p}\)</span>. Del mismo modo, llamamos a las variables <span class="math notranslate nohighlight">\(x_{1},x_{2},\dots,x_{n}\)</span> <em>variables de estado</em>.</p>
+<p>Usualmente utilizamos la notación vectorial para escribir estas ecuaciones de una forma compacta, <em>i.e.</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \dot{x} = \begin{bmatrix} {x}_{1} \\ {x}_{2} \\ {x}_{3} \\ \vdots \\ x_{n} \end{bmatrix}, \quad
+ u = \begin{bmatrix} {u}_{1} \\ {u}_{2} \\ {u}_{3} \\ \vdots \\ u_{p} \end{bmatrix}, \quad
+ f(t,x,u) = \begin{bmatrix} f_{1}(t,x,u) \\ f_{2}(t,x,u) \\ f_{3}(t,x,u) \\ \vdots \\ f_{n}(t,x,u) \end{bmatrix}
+\end{split}\]</div>
+<p>y reescribimos las <span class="math notranslate nohighlight">\(n\)</span> ecuaciones diferenciales diferenciales de primer orden como una ecuación diferencial vectorial de primer orden de dimensión <span class="math notranslate nohighlight">\(n\)</span>, <em>i.e.</em></p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=f(t,x,u),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(x\)</span> es el estado y <span class="math notranslate nohighlight">\(u\)</span> como la entrada. Aquí, definimos la salida del sistema como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ y=h(t,x,u).
+\]</div>
+<section id="metodo-de-euler">
+<h4>Método de Euler<a class="headerlink" href="#metodo-de-euler" title="Link to this heading">#</a></h4>
+<p>Considere una Ecuación Diferencial Ordinaria (<em>EDO</em>) de la forma</p>
+<div class="math notranslate nohighlight" id="equation-eqn-edoform">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-edoform" title="Link to this equation">#</a></span>\[
+ \dot{y} = f(x),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(f\)</span> es una función. La solución general a la Ec. <a class="reference internal" href="#equation-eqn-edoform">(10)</a> está dada por la siguiente expresión</p>
+<div class="math notranslate nohighlight">
+\[
+ y = \int f(x)\mathrm{d}x + c,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(c\)</span> es una constante arbitraria. Para obtener una solución, dependemos de un valor inicial de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ y\left(x_{0}\right) = y_{0}.
+\]</div>
+<p>Para la mayoría de problemas de valor inicial no es posible encontrar una solución exacta (analítica) ya que las ecuaciones son no lineales, discontinuas, o estocásticas. Por ejemplo, <span class="math notranslate nohighlight">\(\dot{y} = e^{{xy}^{4}}\)</span>. Por lo tanto, necesitamos de un método numérico para aproximar la solución.</p>
+<p>Es posible aproximar el término del lado izquierdo de un problema de valor inicial <span class="math notranslate nohighlight">\(\frac{\mathrm{d}f}{\mathrm{d}x}\)</span> utilizando el <em>teorema de Taylor</em> alrededor de un punto dado <span class="math notranslate nohighlight">\(x_{0}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(x_{1}\right) = f\left(x_{0}\right) + \left(x_{1}-x_{0}\right)\dot{f}\left(x_{0}\right) + \tau,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\tau\)</span> es el error de truncamiento</p>
+<div class="math notranslate nohighlight">
+\[
+ \tau = \frac{\left(x_{1} - x_{0}\right)^{2}}{2!}\ddot{f}\left(\xi \right), \quad \xi\in\left[x_{0}, x_{1}\right].
+\]</div>
+<p>Recordando que <span class="math notranslate nohighlight">\(h = x_{1} - x_{0}\)</span>, las ecuación anterior queda definida como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}\left(x_{0}\right) = \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{h} - \frac{h}{2}\ddot{f}\left(\xi\right)
+\]</div>
+<p>Es posible obtener el método de Euler directo utilizando una variación de la <em>interpolación de Lagrange</em> llamada <em>diferencia dividida</em>.</p>
+<p>Podemos aproximar cualquier función <span class="math notranslate nohighlight">\(f(x)\)</span> utilizando un polinomio de grado <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> y un término de error</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  f(x) &amp;= P_{n}(x) + \text{error}, \\
+  &amp;= f\left(x_{0}\right) + f\left[x_{0}, x_{1}\right]\left(x - x_{0}\right) + f\left[x_{0}, x_{1}, x_{2}\right]\left(x - x_{0}\right)\left(x - x_{1}\right), \\
+  &amp;+ \cdots + f\left[x_{0},\dots,x_{n}\right]\prod_{i=0}^{n-1}\left(x - x_{1}\right) + \text{error},
+ \end{aligned}
+\end{split}\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  f\left[x_{0}, x_{1}\right] &amp;= \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{x_{1} - x_{0}}, \\
+  f\left[x_{0}, x_{1}, x_{2}\right] &amp;= \frac{f\left[x_{1},x_{2}\right] - f\left[x_{0},x_{1}\right]}{x_{2} - x_{0}}, \\
+  f\left[x_{0}, x_{1}, \dots, x_{n}\right] &amp;= \frac{f\left[x_{1},x_{2},\dots,x_{n}\right] - f\left[x_{0},x_{1},\dots,x_{n-1}\right]}{x_{n} - x_{0}}. \\
+ \end{aligned}
+\end{split}\]</div>
+<p>Derivando <span class="math notranslate nohighlight">\(P_{n}(x)\)</span>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{P}_{n}(x) &amp;= f\left[x_{0},x_{1}\right] + f\left[x_{0},x_{1},x_{2}\right]\left\{\left(x - x_{0}\right) + \left(x - x_{1}\right) \right\}, \\
+  &amp;+ \cdots + f\left[x_{0},\dots,x_{n}\right]\sum_{i=0}^{n-1} \frac{\left(x - x_{0}\right)\dots\left(x - x_{n-1}\right)}{\left(x - x_{i}\right)},
+ \end{aligned}
+\end{split}\]</div>
+<p>por consiguiente el error se define como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \text{error} = \left(x - x_{0}\right)\dots\left(x - x_{n}\right)\frac{f^{n+1}\left(\xi\right)}{\left(n + 1\right)!}.
+\]</div>
+<p>Definimos entonces la primer derivada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}(x) = \left[x_{0}, x_{1}\right] = \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{x_{1} - x_{0}},
+\]</div>
+<p>lo que implica</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}(x) =  \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{x_{1} - x_{0}} + O\left(h\right), \quad \text{Euler},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}(x) =  \frac{f\left(x_{1}\right) - f\left(x_{-1}\right)}{x_{1} - x_{-1}} + O\left(h^{2}\right), \quad \text{Central}.
+\]</div>
+<p>Utilizando el mismo método, obtenemos una aproximación a la segunda derivada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \ddot{f}\left(x_{0}\right) = \frac{f_{2} - 2f_{1} + f_{0}}{h^{2}} + O\left(h^{2} \right),
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \ddot{f}\left(x_{0}\right) = \frac{f_{1} - 2f_{0} + f_{-1}}{h^{2}} + O\left(h^{2} \right), \quad \text{central}.
+\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Resuelva numéricamente la ecuación diferencial de primer orden</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \dot{y} = f\left(x,y\right), \\
+   a \leq x \leq b.
+  \end{aligned}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Aplique la fórmula de Euler a la ecuación de primer orden con una entrada oscilante</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{y} = \sin(x), \quad 0 \leq x \leq 10.
+\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>El crecimiento demográfico simple está descrito por una ecuación diferencial de primer orden de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{y} = \varepsilon y,
+\]</div>
+<p>cuya solución exacta está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ y = Ce^{\varepsilon x}.
+\]</div>
+<p>Dada la siguiente condición inicial</p>
+<div class="math notranslate nohighlight">
+\[
+ y\left(0\right) = 1,
+\]</div>
+<p>con una tasa de cambio de <span class="math notranslate nohighlight">\(\varepsilon = 0.5\)</span>, la solución analítica queda expresada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ y = e^{0.5 x}.
+\]</div>
+<p>Aplique la fórmula de Euler para obtener una solución aproximada.</p>
+</section>
+<section id="metodo-de-runge-kutta">
+<h4>Método de Runge-Kutta<a class="headerlink" href="#metodo-de-runge-kutta" title="Link to this heading">#</a></h4>
+<p>El método de Runge-Kutta (\gls{RK}) está relacionado con la expansión de la <em>serie de Taylor</em>, con la diferencia de que no es necesaria la diferenciación de <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Los métodos RK se escriben de la siguiente forma</p>
+<div class="math notranslate nohighlight">
+\[
+ w_{n+1} = w_{n} + hF\left(t,w,h; f\right), \quad n\geq 0,
+\]</div>
+<p>donde el error de truncamiento está definido por</p>
+<div class="math notranslate nohighlight">
+\[
+ T_{n}\left(y\right) = y\left(t_{n+1}\right) - y\left(t_{n}\right) - hF\left(t_{n},y\left(t_{n}\right),h;f\right),
+\]</div>
+<p>tal que el error está dado como sigue <span class="math notranslate nohighlight">\(\tau_{n}\left(y\right)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ T_{n} = h\tau_{n}\left(y\right).
+\]</div>
+<p>Reescribiendo términos, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ y\left(t_{n+1}\right) = y\left(t_{n}\right) - hF \left(t_{n}, y\left(t_{n}\right), h; f \right) + h\tau_{n}\left(y\right).
+\]</div>
+<p>Considere el método explícito de un paso</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{w_{i+1} - w_{i}}{h} = F\left(f, t_{i}, w_{i},h \right),
+\]</div>
+<p>con</p>
+<div class="math notranslate nohighlight">
+\[
+ F\left(f, t, y, h \right) = a_{0}k_{1} + a_{1}k_{2},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ F\left(f, t, y, h \right) = a_{0}\left(t, y \right) + a_{1}\left(t + \alpha_{1}, y + \beta_{1} \right),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\alpha_{0} + \alpha_{1} = 1\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>En la formulación del <em>método de Runge-Kutta</em> existe un parámetro libre. En este caso, <span class="math notranslate nohighlight">\(\alpha_{0}\)</span>.</p>
+</div>
+<div class="proof theorem admonition" id="thm:polynomial">
+<p class="admonition-title"><span class="caption-number">Theorem 10 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f\left(t,y\right)\)</span> y todas sus derivadas parciales de orden menor o igual a <span class="math notranslate nohighlight">\(n+1\)</span> continuas sobre <span class="math notranslate nohighlight">\(D = \left\{ \left(t,y \right) | a \leq t \leq b, c \leq y \leq d \right\}\)</span> y sea <span class="math notranslate nohighlight">\(\left(t_{0}, y_{0}\right)\in D\)</span> para cada <span class="math notranslate nohighlight">\(\left(t, y\right) \in D\)</span>, <span class="math notranslate nohighlight">\(\exists \xi \in \left(t, t_{0}\right)\)</span> y <span class="math notranslate nohighlight">\(\mu \in \left(y, y_{0}\right)\)</span> con</p>
+<div class="math notranslate nohighlight">
+\[
+  f\left(t,y\right) = P_{n} \left(t,y\right) + R_{n}\left(t,y\right),
+ \]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   P_{n}\left(t,y\right) &amp;= f\left(t_{0},y_{0}\right) + \left[ \left(t - t_{0}\right) \frac{\partial f}{\partial t}\left(t_{0},y_{0}\right) + \left(y - y_{0}\right)\frac{\partial f}{\partial y}\left(t_{0}, y_{0}\right) \right] \\
+   &amp;+ \left[ \frac{\left(t -t_{0}\right)^{2}}{2}\frac{\partial^{2}f}{\partial t^{2}}\left(t_{0}, y_{0}\right) + \left(y - y_{0}\right)\left(t - t_{0}\right) \frac{\partial^{2} f}{\partial y\partial t}\left(t_{0}, y_{0}\right) \right. \\
+   &amp;+ \left. \frac{\left(y - y_{0}\right)^{2}}{2}\frac{\partial^{2} f}{\partial y^{2}} \left(t_{0}, y_{0} \right) \right] \\
+   &amp;+ \dots + \\
+   &amp;+ \left[ \frac{1}{n!} \sum_{j=0}^{n} \binom{n}{j} \left(t - t_{0}\right)^{n-j}\left(y - y_{0}\right)^{j}\frac{\partial^{n} f}{\partial y^{j}\partial t^{n-j}}\left(t_{0},y_{0}\right) \right].
+  \end{aligned}
+ \end{split}\]</div>
+</section>
+</div><p>Podemos utilizar el <a class="reference internal" href="#thm:polynomial">Theorem 10</a> para encontrar los valores <span class="math notranslate nohighlight">\(a_{1}\)</span>, <span class="math notranslate nohighlight">\(\alpha_{1}\)</span> y <span class="math notranslate nohighlight">\(\beta_{1}\)</span> considerando que <span class="math notranslate nohighlight">\(\alpha_{1}f\left(t+\alpha_{1}, y + \beta_{1}\right)\)</span> aproxima a Taylor de segundo orden</p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(t,y\right) + \frac{h}{2}\dot{f}\left(t,y\right)
+\]</div>
+<p>con un error no mayor a <span class="math notranslate nohighlight">\(O\left(h^{2}\right)\)</span>.</p>
+<p>Utilizando</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}\left(t,y\right) = \frac{\partial f}{\partial t}\left(y,t\right) + \frac{\partial f}{\partial y}\left(t,y\right)\dot{y}(t),
+\]</div>
+<p>la expresión de Taylor de segundo orden se puede escribir como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(t,y\right) + \frac{h}{2}\frac{\partial f}{\partial t}\left(y,t\right) + \frac{h}{2}\frac{\partial f}{\partial y}\left(t,y\right)f\left(t,y\right).
+\]</div>
+<p>Expandiendo <span class="math notranslate nohighlight">\(\alpha_{1}f\left(t+\alpha_{1}, y + \beta_{1}\right)\)</span> y su <em>polinomio de Taylor</em> de grado uno alrededor de <span class="math notranslate nohighlight">\(\left(t,y\right)\)</span>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \alpha_{1}f\left(t+\alpha_{1}, y + \beta_{1}\right) = \alpha_{1}f\left(t, y\right) + a_{1}\alpha_{1}\frac{\partial f}{\partial t}\left(t, y\right) + a_{1}\beta_{1}\frac{\partial f}{\partial y} + a_{1}R_{1}\left(t + \alpha_{1}, y + \beta_{1}\right),
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+ R_{1}\left(t + \alpha_{1}, y + \beta_{1} \right) = \frac{\alpha_{1}^{2}}{2}\frac{\partial^{2}f}{\partial t^{2}}\left(\xi, \mu \right) + \alpha_{1}\beta_{1} \frac{\partial^{2}f}{\partial t\partial y}\left(\xi,\mu \right) + \frac{\beta_{1}^{2}}{2}\frac{\partial^{2}f}{\partial y^{2}}\left(\xi,\mu \right),
+\]</div>
+<p>para algún <span class="math notranslate nohighlight">\(\xi \in \left[t,t + \alpha_{1} \right]\)</span> y <span class="math notranslate nohighlight">\(\mu \in \left[y,y + \beta_{1} \right]\)</span>.</p>
+<p>Los métodos de orden mayor se obtienen de forma similar. Por ejemplo, Runge-Kutta de tercer orden se expresa como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{w_{i+1} - w_{i}}{h} = F\left(f, t_{i}, w_{i}, h \right),
+\]</div>
+<p>con</p>
+<div class="math notranslate nohighlight">
+\[
+ F\left(f, t, w, h \right) = a_{0}k_{1} + a_{1}k_{2} + a_{2}k_{3},
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+ a_{0} + a_{1} + a_{2} = 1,
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  k_{1} &amp;= f\left(t_{i}, w_{i} \right), \\
+  k_{2} &amp;= f\left(t_{i} + \alpha_{1}h, t_{i} + \beta_{11}k_{1} \right), \\
+  k_{3} &amp;= f\left(t_{i} + \alpha_{2}h, t_{i} + \beta_{21}k_{1} + \beta_{22}k_{2} \right).
+ \end{aligned}
+\end{split}\]</div>
+<p>Escogiendo <span class="math notranslate nohighlight">\(\alpha_{2} = 1\)</span>, <span class="math notranslate nohighlight">\(\beta_{11} = \frac{1}{2}\)</span>, obtenemos la siguiente ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+ w_{i+1} = w_{i} + \frac{h}{6}\left(k_{1} + 4k_{2} + k_{3} \right),
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  k_{1} &amp;= f\left(t_{i}, w_{i} \right), \\
+  k_{2} &amp;= f\left(t_{n} + \frac{h}{2}, w_{n} + \frac{h}{2}k_{1} \right), \\
+  k_{3} &amp;= f\left(t_{n} + h, w_{n} - hk_{1} + 2hk_{2} \right). \\
+ \end{aligned}
+\end{split}\]</div>
+<p>Para obtener el método de Runge-Kutta de cuarto orden, consideramos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  w_{0} &amp;= \alpha, \\
+  k_{1} &amp;= hf\left(t_{i}, w_{i} \right), \\
+  k_{2} &amp;= hf\left(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{1}}{2} \right), \\
+  k_{3} &amp;= hf\left(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{2}}{2} \right), \\
+  k_{4} &amp;= hf\left(t_{i+1}, w_{i} + k_{3} \right), \\
+  w_{i+1} &amp;= w_{i} + \frac{1}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4} \right).
+ \end{aligned}
+\end{split}\]</div>
+</section>
+</section>
+</section>
+<section id="relacion-entre-el-modelo-en-variables-de-estado-y-la-funcion-de-transferencia">
+<h2>Relación entre el modelo en variables de estado y la función de transferencia<a class="headerlink" href="#relacion-entre-el-modelo-en-variables-de-estado-y-la-funcion-de-transferencia" title="Link to this heading">#</a></h2>
+<p>Considere el siguiente sistema</p>
+<div class="math notranslate nohighlight" id="equation-eqn-lti-ss-ex">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eqn-lti-ss-ex" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= Ax + Bu, \\
+  y &amp;= Cx.
+ \end{aligned}
+\end{split}\]</div>
+<p>Podemos obtener la función de transferencia <span class="math notranslate nohighlight">\(G(s)\)</span> del sistema <a class="reference internal" href="#equation-eqn-lti-ss-ex">(11)</a> si aplicamos \gls{Laplace} en ambos lados de la igualdad</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \mathcal{L}\left\{\dot{x}\right\} = A\mathcal{L}\left\{x\right\} + B\mathcal{L}\left\{u\right\}, \\
+\end{split}\]</div>
+<p>de <a class="reference internal" href="JESP_02_Antecedentes_matematicos.html#equation-eqn-laplace-df-dt">(1)</a>, tenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-xs-tf">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eqn-xs-tf" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  s X(s) - X(0) &amp;= AX(s) + bU(s), \\
+  s X(s) - AX(s) &amp;= BU(s) + X(0), \\
+  \left(sI - A \right)X(s) &amp;= BU(s) + X(0), \\
+  X(s) &amp;= \left(sI - A \right)^{-1}\left[ BU(s) + x_{0} \right].
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(x_{0}:=X(0)\)</span>.</p>
+<p>Recordando que <span class="math notranslate nohighlight">\(y = Cx\)</span>, aplicando Laplace tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathcal{L}\left\{y\right\} = C\mathcal{L}\left\{x\right\},
+\]</div>
+<p>por consiguiente</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ys-tf">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eqn-ys-tf" title="Link to this equation">#</a></span>\[
+ Y(s) = CX(s).
+\]</div>
+<p>Sustituyendo <a class="reference internal" href="#equation-eqn-xs-tf">(12)</a> en <a class="reference internal" href="#equation-eqn-ys-tf">(13)</a></p>
+<div class="math notranslate nohighlight" id="equation-eqn-ys-tf-2">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eqn-ys-tf-2" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  Y(s) &amp;= C\left(sI - A \right)^{-1}\left[ BU(s) + x_{0} \right], \\
+   &amp;= C\left(sI - A \right)^{-1}BU(s) + C\left(sI - A \right)^{-1}x_{0}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Asumiendo condiciones iniciales iguales a cero <span class="math notranslate nohighlight">\(x_{0} = 0\)</span>, podemos obtener la función de transferencia del sistema <a class="reference internal" href="#equation-eqn-lti-ss-ex">(11)</a> como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s) := \frac{Y(s)}{U(s)} = C\left(sI - A \right)^{-1}B.
+\]</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -501,6 +1225,37 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecuaciones-en-variables-de-estado">Ecuaciones en variables de estado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-los-factores-integrantes">Método de los factores integrantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-lineales-desacoplados">Sistemas lineales desacoplados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonalizacion">Diagonalización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ecuaciones en variables de estado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-definido-en-espacio-de-estados">Sistema definido en espacio de estados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-de-sistemas-mediante-ecuaciones-de-estado">Modelado de sistemas mediante ecuaciones de estado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-no-lineales">Sistemas no lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-euler">Método de Euler</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-runge-kutta">Método de Runge-Kutta</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion-entre-el-modelo-en-variables-de-estado-y-la-funcion-de-transferencia">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

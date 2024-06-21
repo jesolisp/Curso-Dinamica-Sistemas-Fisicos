@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/JESP_01_Introduccion_dinamica';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/JESP_01_Introduccion_dinamica.html" />
@@ -226,55 +228,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/JESP_01_Introduccion_dinamica.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/JESP_01_Introduccion_dinamica.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -300,7 +253,7 @@
       
       
       
-      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/JESP_01_Introduccion_dinamica.ipynb" target="_blank"
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/JESP_01_Introduccion_dinamica.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -347,7 +300,7 @@
       
       
       
-      <li><a href="../_sources/docs/JESP_01_Introduccion_dinamica.ipynb" target="_blank"
+      <li><a href="../_sources/docs/JESP_01_Introduccion_dinamica.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +310,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -441,8 +394,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos">Conceptos básicos.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-analiticos-de-estudio-de-sistemas">Modelos analíticos de estudio de sistemas.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos">Conceptos básicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-de-error">Índices de error</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-integrales">Criterios integrales</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-error-absoluto-iae">Integral del Error Absoluto (IAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-tiempo-por-el-error-absoluto-itae">Integral del Tiempo por el Error Absoluto (ITAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-error-cuadratico-ise">Integral del Error Cuadrático (ISE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-tiempo-por-el-error-cuadratico-itse">Integral del Tiempo por el Error Cuadrático (ITSE)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-estadisticos">Criterios estadísticos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-square-error-mse">Mean Square Error (MSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#root-mean-square-error-rmse">Root Mean Square Error (RMSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-absolute-error-mae">Mean Absolute Error (MAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fit">FIT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-analiticos-de-estudio-de-sistemas">Modelos analíticos de estudio de sistemas</a></li>
 </ul>
             </nav>
         </div>
@@ -457,10 +428,222 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-la-dinamica-de-los-sistemas-lineales">
 <h1>Introducción a la dinámica de los sistemas lineales<a class="headerlink" href="#introduccion-a-la-dinamica-de-los-sistemas-lineales" title="Link to this heading">#</a></h1>
 <section id="conceptos-basicos">
-<h2>Conceptos básicos.<a class="headerlink" href="#conceptos-basicos" title="Link to this heading">#</a></h2>
+<h2>Conceptos básicos<a class="headerlink" href="#conceptos-basicos" title="Link to this heading">#</a></h2>
+<p>Antes de comenzar a estudiar sistemas dinámicos, necesitamos introducir algunos conceptos básicos.</p>
+<div class="proof definition admonition" id="signal">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Señal</p>
+<p><em>Fís</em>. Variación de una corriente eléctrica u otra magnitud que se utiliza para transmitir información.</p>
+</section>
+</div><p>Tipos de señales eléctricas</p>
+<ul class="simple">
+<li><p><em>Señal analógica</em>. Tiene una variación continua en el tiempo con un número infinito de valores.</p></li>
+<li><p><em>Señal digital</em>. Tiene una variación discreta de valores en el tiempo con un número finito de valores.</p></li>
+<li><p><em>Señal digital binaria</em>. Tiene sólo dos niveles de tensión <span class="math notranslate nohighlight">\(V+\)</span> o <span class="math notranslate nohighlight">\(0\)</span>, en valores binarios <span class="math notranslate nohighlight">\(1\)</span> y <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p><em>Concepto de sistema</em>. Conjunto de componentes físicos relacionados que actúan como una unidad completa.</p></li>
+</ul>
+<div class="proof definition admonition" id="model">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Modelo</p>
+<p>m. Esquema teórico, generalmente en forma matemática, de un sistema o de una realidad compleja, como la evolución económica de un país, que se elabora para facilitar su comprensión y el estudio de su comportamiento.</p>
+</section>
+</div><p>Sistemas seguidores</p>
+<ul class="simple">
+<li><p>La entrada de referencia cambia de valor frecuentemente.</p></li>
+<li><p>Ejemplo: servomecanismos; la salida es alguna posición, velocidad o aceleración mecánica.</p></li>
+</ul>
+<p>Sistemas de regulación automática</p>
+<ul class="simple">
+<li><p>La entrada de referencia es o bien constante o bien varía lentamente con el tiempo, y donde la tarea fundamental consiste en mantener la salida en el valor deseado a pensar de las perturbaciones presentes.</p></li>
+<li><p>Ejemplos: el sistema de calefacción de una casa, un regulador de voltaje, un regulador de presión de suministro de agua.</p></li>
+</ul>
+<p>Podemos utilizar alguna de las siguientes estrategias para obtener modelos que representen un sistema. Por ejemplo:</p>
+<ul class="simple">
+<li><p><em>Modelación de sistemas</em>. El sistema se suele analizar como subsistemas más simples. Se suelen utilizar leyes físicas, enfoques como Euler-Lagrange  Hamilton, o bloques para el caso de los modelos compartimentales. Los modelos obtenidos suelen llamarse como <em>modelo de caja blanca</em> o <em>modelo interno</em>.</p></li>
+<li><p><em>Identificación de sistemas</em>. Emplea observaciones de entrada y salida de un sistema para construir un modelo. No considera dinámicas internas sino en su respuesta ante una entrada determinada. En este punto se pueden utilizar estrategias poliniomiales o Redes Neuronales Artificiales, por mencionar algunas. Los modelos obtenidos suelen llamarse como <em>modelo de caja negra</em> o <em>modelo entrada-salida</em>.</p></li>
+<li><p><em>Estrategia híbrida</em>. Es una combinación de las anteriores. Parte de un modelo obtenido de leyes físicas y los elementos desconocidos son identificados o estimados por alguna estrategia de identificación. Los modelos obtenidos suelen llamarse como <em>modelo de caja gris</em>.</p></li>
+</ul>
+<p>En la literatura podemos encontrar la clasificación de los modelos de acuerdo con su tipo. Por ejemplo:</p>
+<ul class="simple">
+<li><p><em>Modelos causales</em>. Dependen de las condiciones presentes y pasadas para determinar una futura. En otras palabras, hay una relación de causalidad.</p></li>
+<li><p><em>Modelos no causales</em>.</p></li>
+<li><p><em>Modelos estáticos</em>. Depende de las condiciones presentes y no de las pasadas.</p></li>
+<li><p><em>Modelos dinámicos</em>. Los estados del sistema dependen de lo que haya sucedido con anterioridad debido a que suele haber algún tipo de almacenamiento de energía. Suelen llamarse también como <em>sistemas con memoria</em>.</p></li>
+<li><p><em>Modelos estocásticos</em>. Incluye variables aleatorias que afectan el sistema. Por consiguiente, resulta imposible predecir el valor que éstas puedan tomar.</p></li>
+<li><p><em>Modelos determinísticos</em>. Carecen de variables aleatorias. Por consiguiente, es posible conocer su comportamiento.</p></li>
+<li><p><em>Modelos de parámetros concentrados</em>. Requiren de ecuaciones con derivadas o ecuaciones de diferencia ordinarias.</p></li>
+<li><p><em>Modelos de parámetros distribuidos</em>. Su formulación implica ecuaciones diferenciales con derivadas parciales.</p></li>
+<li><p><em>Modelos lineales</em>. Son sistemas que cumplen con la propiedad de proporcionalidad y superposición.</p></li>
+<li><p><em>Modelos no lineales</em>. Modelos cuyos términos llevan multiplicidad entre los estados del sistema, potencias de los estados o funciones trascendentes cuyo argumento es alguna de las variables de estado del sistema.</p></li>
+<li><p><em>Modelos invariantes en el tiempo</em>. Los parámetros del sistema se consideran constantes en el tiempo.</p></li>
+<li><p><em>Modelos variantes en el tiempo</em>. Los parámetros del sistema varían en función del tiempo.</p></li>
+<li><p><em>Modelos continuos</em>. Sistemas que dependen del tiempo <span class="math notranslate nohighlight">\(t\)</span>, donde <span class="math notranslate nohighlight">\(t\)</span> es una variable continua que toma cualquier valor real.</p></li>
+<li><p><em>Modelos discretos</em>. En este tipo de sistemas, el tiempo se considera que es una variable discreta denotada como <span class="math notranslate nohighlight">\(k\)</span> y toma sólo unos valores en puntos específicos de la recta de los reales.</p></li>
+</ul>
+</section>
+<section id="indices-de-error">
+<h2>Índices de error<a class="headerlink" href="#indices-de-error" title="Link to this heading">#</a></h2>
+<p>Uno de los criterios que debe cumplir el modelo de un sistema es la validación. Para ello, evualuamos cuán preciso es para representar los datos experimentales del fenómeno que estamos estudiante. Es decir, evaluamos la diferencia entre los datos experimentales y los datos obtenidos por nuestro modelo. A esta diferencia le llamamos error y se puede cuantificar a partir de algunos de los siguientes índices.</p>
+<section id="criterios-integrales">
+<h3>Criterios integrales<a class="headerlink" href="#criterios-integrales" title="Link to this heading">#</a></h3>
+<section id="integral-del-error-absoluto-iae">
+<h4>Integral del Error Absoluto (IAE)<a class="headerlink" href="#integral-del-error-absoluto-iae" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{IAE} = \int_{0}^{\infty} | e(t) |\mathrm{d} t,
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+ e(t) = y(t) - \hat{y}(t).
+\]</div>
+<ul class="simple">
+<li><p>Fácil aplicación.</p></li>
+<li><p>No se pueden optimizar sistemas altamente sub ni altamente sobre amortiguados.</p></li>
+<li><p>Difícil de evaluar analíticamente.</p></li>
+</ul>
+</section>
+<section id="integral-del-tiempo-por-el-error-absoluto-itae">
+<h4>Integral del Tiempo por el Error Absoluto (ITAE)<a class="headerlink" href="#integral-del-tiempo-por-el-error-absoluto-itae" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{ITAE} = \int_{0}^{\infty}t |e(t)|\mathrm{d}t.
+\]</div>
+<ul class="simple">
+<li><p>Los errores tardíos son más castigados.</p></li>
+<li><p>Buena selectividad.</p></li>
+<li><p>Difícil de evaluar analíticamente.</p></li>
+</ul>
+</section>
+<section id="integral-del-error-cuadratico-ise">
+<h4>Integral del Error Cuadrático (ISE)<a class="headerlink" href="#integral-del-error-cuadratico-ise" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{ISE} = \int_{0}^{\infty} e^{2}(t)\mathrm{d}t.
+\]</div>
+<ul class="simple">
+<li><p>Da mayor importancia a los errores grandes.</p></li>
+<li><p>No es un criterio muy selectivo.</p></li>
+<li><p>Respuesta rápida pero oscilatoria, estabilidad pobre.</p></li>
+</ul>
+</section>
+<section id="integral-del-tiempo-por-el-error-cuadratico-itse">
+<h4>Integral del Tiempo por el Error Cuadrático (ITSE)<a class="headerlink" href="#integral-del-tiempo-por-el-error-cuadratico-itse" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{ITSE} = \int_{0}^{\infty} te^{2}(t)\mathrm{d}t.
+\]</div>
+<ul class="simple">
+<li><p>Los grandes errores iniciales tienen poco peso pero los que se producen más tarde son fuertemente penados.</p></li>
+<li><p>Mejor selectividad con respecto al ISE</p></li>
+</ul>
+</section>
+</section>
+<section id="criterios-estadisticos">
+<h3>Criterios estadísticos<a class="headerlink" href="#criterios-estadisticos" title="Link to this heading">#</a></h3>
+<section id="mean-square-error-mse">
+<h4>Mean Square Error (MSE)<a class="headerlink" href="#mean-square-error-mse" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{MSE} = \frac{1}{N} \sum_{k=0}^{N} e_{k}^{2}.
+\]</div>
+<ul class="simple">
+<li><p>No recomendable para estudiar modelos de predicción.</p></li>
+<li><p>No tiene escala original el error porque está elevado al cuadrado.</p></li>
+<li><p>No se mide en unidades de los datos experimentales.</p></li>
+</ul>
+</section>
+<section id="root-mean-square-error-rmse">
+<h4>Root Mean Square Error (RMSE)<a class="headerlink" href="#root-mean-square-error-rmse" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{RMSE} = \sqrt{\frac{1}{N} \sum_{k=0}^{N} e_{k}^{2}}.
+\]</div>
+<ul class="simple">
+<li><p>Sensible a valores atípicos.</p></li>
+<li><p>No se ajusta a la demanda (¿qué es demanda?).</p></li>
+<li><p>Se mide en unidades de los datos experimentales.</p></li>
+</ul>
+</section>
+<section id="mean-absolute-error-mae">
+<h4>Mean Absolute Error (MAE)<a class="headerlink" href="#mean-absolute-error-mae" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{MAE} = \frac{1}{N} \sum_{k=0}^{N} |e_{k}|.
+\]</div>
+<ul class="simple">
+<li><p>Mide la precisión de los datos simulados.</p></li>
+<li><p>Se mide en unidades de los datos experimentales.</p></li>
+<li><p>No es sensible a valores atípicos.</p></li>
+<li><p>Utilizado para analizar series temporales.</p></li>
+</ul>
+</section>
+<section id="mean-absolute-percentage-error-mape">
+<h4>Mean Absolute Percentage Error (MAPE)<a class="headerlink" href="#mean-absolute-percentage-error-mape" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ \text{MAPE} = \frac{100\%}{N} \sum_{k=0}^{N} \frac{e_{k}}{y_{k}}.
+\]</div>
+<ul class="simple">
+<li><p>Mide el error en porcentajes.</p></li>
+<li><p>Indicador de desempeño.</p></li>
+<li><p>Fácil interpretación.</p></li>
+<li><p>Ampliamente utilizado para evaluar modelos de predicción.</p></li>
+</ul>
+<p>\begin{table}[!htb]
+\centering
+\caption{Tabla de MAPE}
+\label{tab:tabla_MAPE}
+\begin{tabular}{cc} \toprule
+<span class="math notranslate nohighlight">\(\text{MAPE}&lt;10\)</span> &amp; modelo altamente preciso \
+<span class="math notranslate nohighlight">\(10&lt;\text{MAPE}&lt;20\)</span> &amp; modelo bueno \
+<span class="math notranslate nohighlight">\(20&lt;\text{MAPE}&lt;50\)</span> &amp; modelo razonable \
+<span class="math notranslate nohighlight">\(\text{MAPE}&gt;50\)</span> &amp; modelo impreciso \ \bottomrule
+\end{tabular}
+\end{table}</p>
+</section>
+<section id="fit">
+<h4>FIT<a class="headerlink" href="#fit" title="Link to this heading">#</a></h4>
+<p>Obtiene el porcentaje de variación de salida que es explicado por un modelo</p>
+<div class="math notranslate nohighlight">
+\[
+ \text{FIT} = 100\left(1 - \frac{\|y - \hat{y}\|}{\|y - \bar{y}\|}\right).
+\]</div>
+</section>
+</section>
 </section>
 <section id="modelos-analiticos-de-estudio-de-sistemas">
-<h2>Modelos analíticos de estudio de sistemas.<a class="headerlink" href="#modelos-analiticos-de-estudio-de-sistemas" title="Link to this heading">#</a></h2>
+<h2>Modelos analíticos de estudio de sistemas<a class="headerlink" href="#modelos-analiticos-de-estudio-de-sistemas" title="Link to this heading">#</a></h2>
+<p><strong>Modelo empírico</strong>. Se obtiene a partir de las leyes físicas del sistema. Por ejemplo, las siguientes ecuaciones describen la zona líquida del flujo bifásico en un intercambiador de calor de doble tubo helicoidal</p>
+<ul class="simple">
+<li><p>Ecuación de continuidad</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ \dot{m}_{i+1} = \dot{m}_{i},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ v_{l_{i}} = \left[\frac{\dot{m}_{i}}{\rho_{l_{i}}A} \right],
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ v_{l_{i+1}} = \left[\frac{\dot{m}_{i+1}}{\rho_{l_{i+1}}A} \right].
+\]</div>
+<ul class="simple">
+<li><p>Ecuación de cantidad de movimiento</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ p_{i+1} = p_{i} - \frac{\triangle z}{A} \left( \frac{\Phi \bar{f}\bar{\dot{m}} p}{8 \bar{\rho}A^{2}} + \bar{\rho} Ag\sin(\theta) + \left[ \frac{\dot{m}\left( x_{g}v_{g} + (1-x_{g})v_{l}\right)}{\triangle z} \right]_{i}^{i+1} \right).
+\]</div>
+<p><strong>Modelo analítico</strong>. Es la representación matemática de un problema. Por ejemplo, la siguiente ecuación diferencial representa a un modelo para describir el crecimiento poblacional de ciertos organismos</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\mathrm{d} N(t)}{\mathrm{d}t} = K \cdot N(t) \cdot \ln{\left( \frac{A}{N(t)} \right)}.
+\]</div>
 </section>
 </section>
 
@@ -528,8 +711,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos">Conceptos básicos.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-analiticos-de-estudio-de-sistemas">Modelos analíticos de estudio de sistemas.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos">Conceptos básicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-de-error">Índices de error</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-integrales">Criterios integrales</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-error-absoluto-iae">Integral del Error Absoluto (IAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-tiempo-por-el-error-absoluto-itae">Integral del Tiempo por el Error Absoluto (ITAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-error-cuadratico-ise">Integral del Error Cuadrático (ISE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integral-del-tiempo-por-el-error-cuadratico-itse">Integral del Tiempo por el Error Cuadrático (ITSE)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-estadisticos">Criterios estadísticos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-square-error-mse">Mean Square Error (MSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#root-mean-square-error-rmse">Root Mean Square Error (RMSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-absolute-error-mae">Mean Absolute Error (MAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fit">FIT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-analiticos-de-estudio-de-sistemas">Modelos analíticos de estudio de sistemas</a></li>
 </ul>
   </nav></div>
 
