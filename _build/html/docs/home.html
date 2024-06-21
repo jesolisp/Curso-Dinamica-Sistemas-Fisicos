@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -424,13 +424,13 @@ document.write(`
 <section id="prerequisitos">
 <h2>Prerequisitos<a class="headerlink" href="#prerequisitos" title="Link to this heading">#</a></h2>
 <ol>
- <li> Dinámica de Sistemas Físicos </li>
+ <li> Cálculo I y II, Álgebra Lineal y Geometría Analítica, Variable Compleja  </li>
 </ol>
 </section>
 <section id="software-requerido-y-herramientas">
 <h2>Software requerido y herramientas<a class="headerlink" href="#software-requerido-y-herramientas" title="Link to this heading">#</a></h2>
 <ol>
- <li> Python & Jupyter Notebook. </li>
+ <li> MATLAB y MATLAB Simulink. </li>
  <li> Sistema operativo: Windows 10, Linux, o macOS. </li>
  <li> Navegador: Google Chrome, Opera o Firefox. </li>
  <li> Markdown para escribir documentación. </li>
@@ -449,34 +449,34 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p>I</p></td>
-<td class="text-center"><p>Introducción al análisis de la dinámica de sistemas</p></td>
-<td class="text-left"><p><li>Ejemplos prácticos.</li></p></td>
-<td class="text-center"><p><ol><li><a class="reference internal" href="#JESP_01_Introduccion_analisis.ipynb"><span class="xref myst">Código (Live Script)</span></a></li> </ol></p></td>
+<td class="text-center"><p>Introducción a la dinámica de los sistemas lineales</p></td>
+<td class="text-left"><p><li>Conceptos básicos.</li> <li>Modelos analíticos de estudio de sistemas.</li></p></td>
+<td class="text-center"><p><ol><li><a class="reference internal" href="JESP_01_Introduccion_dinamica.html"><span class="std std-doc">Código (Live Script)</span></a></li>  </ol></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>II</p></td>
 <td class="text-center"><p>Antecedentes matemáticos</p></td>
-<td class="text-left"><p><li> Ecuaciones diferenciales no lineales. </li> <li> Análisis de la existencia, unicidad y continuidad de soluciones. </li></p></td>
-<td class="text-center"><p><ol><li><a class="reference internal" href="#JESP_02_Antecedentes_mat.ipynb"><span class="xref myst">Código (Live Script)</span></a></li> </ol></p></td>
+<td class="text-left"><p><li>Álgebra Lineal.</li> <li>Ecuaciones Diferenciales.</li> <li> Transformada de Fourier. </li> <li> Transformada de Laplace. </li></p></td>
+<td class="text-center"><p><ol><li><a class="reference internal" href="JESP_02_Antecedentes_matematicos.html"><span class="std std-doc">Código (Live Script)</span></a></li> </ol></p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>III</p></td>
-<td class="text-center"><p>Fundamentos del análisi de estabilidad en el sentido de Lyapunov</p></td>
-<td class="text-left"><p><li> Localización de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li> <li> Linealización de sistemas en torno a un punto de equilibrio. </li> <li> Análisis de la estabilidad de sistemas dinámicos linealizados. </li> <li> Análisis de estabilidad por el método directo de Lyapunov. </li></p></td>
-<td class="text-center"><p><ol><li><a class="reference internal" href="#JESP_03_Fundamentos_estabilidad.ipynb"><span class="xref myst">Código (Live Script)</span></a></li> </ol></p></td>
+<td class="text-center"><p>Modelado en el dominio de la frecuencia</p></td>
+<td class="text-left"><p><li> Función de Transferencia. </li> <li> Modelado de sistemas mecánicos. </li> <li> Modelado de sistemas eléctricos y electro-mecánicos. </li> <li> Modelado de sistemas hidráulicos y térmicos. </li> <li> Otro tipo de sistemas. </li></p></td>
+<td class="text-center"><p><ol><li><a class="reference internal" href="JESP_03_Modelado_frecuencia.html"><span class="std std-doc">Código (Live Script)</span></a></li>  </ol></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>IV</p></td>
-<td class="text-center"><p>Controlabilidad de sistemas dinámicos</p></td>
-<td class="text-left"><p><li> Concepto de controlabilidad. </li> <li> Condiciones para la controlabilidad. </li> <li> Formas canónicas de controlabilidad. </li></p></td>
-<td class="text-center"><p><ol><li><a class="reference internal" href="#JESP_04_Controlabilidad_sistemas.ipynb"><span class="xref myst">Código (Live Script)</span></a></li> </ol></p></td>
+<td class="text-center"><p>Modelado en el dominio del tiempo</p></td>
+<td class="text-left"><p><li> Ecuaciones en variables de estado. </li> <li> Modelado de sistemas mediante ecuaciones de estado. </li> <li> Relación entre el modelo en variables de estado y la función de transferencia. </li></p></td>
+<td class="text-center"><p><ol><li><a class="reference internal" href="JESP_04_Modelado_tiempo.html"><span class="doc std std-doc">Código (Live Script)</span></a></li>  </ol></p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>V</p></td>
-<td class="text-center"><p>Observabilidad de sistemas dinámicos</p></td>
-<td class="text-left"><p><li> Concepto de observabilidad. </li> <li> Teorema de dualidad. </li> <li> Fromas irreductibles de un sistema dinámico. </li></p></td>
-<td class="text-center"><p><ol><li><a class="reference internal" href="#JESP_05_Observabilidad_sistemas.ipynb"><span class="xref myst">Código (Live Script)</span></a></li> </ol></p></td>
+<td class="text-center"><p>Análisis de dinámicas de sistemas en el dominio del tiempo</p></td>
+<td class="text-left"><p><li> Respuesta en el tiempo. </li> <li> Análisis de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li></p></td>
+<td class="text-center"><p><ol><li><a class="reference internal" href="JESP_05_Analisis_tiempo.html"><span class="std std-doc">Código (Live Script)</span></a></li>  </ol></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>VI</p></td>
-<td class="text-center"><p>Identificación de sistemas dinámicos</p></td>
-<td class="text-left"><p><li> Objetivo del problema de identificación. </li> <li> Representación de sistemas dinámicos en forma lineal con respecto a los parámetros. </li> <li> Métodos de estimación de parámetros. </li> <li> Diseño de experimentos para la identificación paramétrica. </li></p></td>
-<td class="text-center"><p><ol><li><a class="reference internal" href="#JESP_06_Identificacion_sistemas.ipynb"><span class="xref myst">Código (Live Script)</span></a></li> </ol></p></td>
+<td class="text-center"><p>Análisis de sistemas dinámicos en el dominio de la frecuencia</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-center"><p><ol><li><a class="reference internal" href="JESP_06_Analisis_frecuencia.html"><span class="std std-doc">Código (Live Script)</span></a></li>  </ol></p></td>
 </tr>
 </tbody>
 </table>

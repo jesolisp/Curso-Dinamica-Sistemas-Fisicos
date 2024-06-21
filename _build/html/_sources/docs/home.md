@@ -11,12 +11,12 @@
 
 ## Prerequisitos
 <ol>
- <li> Dinámica de Sistemas Físicos </li>
+ <li> Cálculo I y II, Álgebra Lineal y Geometría Analítica, Variable Compleja  </li>
 </ol>
 
 ## Software requerido y herramientas
 <ol>
- <li> Python & Jupyter Notebook. </li>
+ <li> MATLAB y MATLAB Simulink. </li>
  <li> Sistema operativo: Windows 10, Linux, o macOS. </li>
  <li> Navegador: Google Chrome, Opera o Firefox. </li>
  <li> Markdown para escribir documentación. </li>
@@ -27,12 +27,12 @@
 
 | **Unidad** | **Tema** | **Contenido** | **Material** |
 |:---:|:---:|:---|:---:|
-| I | Introducción al análisis de la dinámica de sistemas | <li>Ejemplos prácticos.</li> | <ol><li>[Código (Live Script)](JESP_01_Introduccion_analisis.ipynb)</li> </ol> |
-| II | Antecedentes matemáticos | <li> Ecuaciones diferenciales no lineales. </li> <li> Análisis de la existencia, unicidad y continuidad de soluciones. </li> | <ol><li>[Código (Live Script)](JESP_02_Antecedentes_mat.ipynb)</li> </ol> |
-| III | Fundamentos del análisi de estabilidad en el sentido de Lyapunov | <li> Localización de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li> <li> Linealización de sistemas en torno a un punto de equilibrio. </li> <li> Análisis de la estabilidad de sistemas dinámicos linealizados. </li> <li> Análisis de estabilidad por el método directo de Lyapunov. </li> | <ol><li>[Código (Live Script)](JESP_03_Fundamentos_estabilidad.ipynb)</li> </ol> |
-| IV | Controlabilidad de sistemas dinámicos | <li> Concepto de controlabilidad. </li> <li> Condiciones para la controlabilidad. </li> <li> Formas canónicas de controlabilidad. </li> | <ol><li>[Código (Live Script)](JESP_04_Controlabilidad_sistemas.ipynb)</li> </ol> |
-| V | Observabilidad de sistemas dinámicos | <li> Concepto de observabilidad. </li> <li> Teorema de dualidad. </li> <li> Fromas irreductibles de un sistema dinámico. </li> | <ol><li>[Código (Live Script)](JESP_05_Observabilidad_sistemas.ipynb)</li> </ol> |
-| VI | Identificación de sistemas dinámicos | <li> Objetivo del problema de identificación. </li> <li> Representación de sistemas dinámicos en forma lineal con respecto a los parámetros. </li> <li> Métodos de estimación de parámetros. </li> <li> Diseño de experimentos para la identificación paramétrica. </li> | <ol><li>[Código (Live Script)](JESP_06_Identificacion_sistemas.ipynb)</li> </ol> |
+| I | Introducción a la dinámica de los sistemas lineales | <li>Conceptos básicos.</li> <li>Modelos analíticos de estudio de sistemas.</li> | <ol><li>[Código (Live Script)](JESP_01_Introduccion_dinamica.ipynb)</li>  </ol> |
+| II | Antecedentes matemáticos | <li>Álgebra Lineal.</li> <li>Ecuaciones Diferenciales.</li> <li> Transformada de Fourier. </li> <li> Transformada de Laplace. </li> | <ol><li>[Código (Live Script)](JESP_02_Antecedentes_matematicos.ipynb)</li> </ol> |
+| III | Modelado en el dominio de la frecuencia | <li> Función de Transferencia. </li> <li> Modelado de sistemas mecánicos. </li> <li> Modelado de sistemas eléctricos y electro-mecánicos. </li> <li> Modelado de sistemas hidráulicos y térmicos. </li> <li> Otro tipo de sistemas. </li> | <ol><li>[Código (Live Script)](JESP_03_Modelado_frecuencia.ipynb)</li>  </ol> |
+| IV | Modelado en el dominio del tiempo | <li> Ecuaciones en variables de estado. </li> <li> Modelado de sistemas mediante ecuaciones de estado. </li> <li> Relación entre el modelo en variables de estado y la función de transferencia. </li> | <ol><li>[Código (Live Script)](JESP_04_Modelado_tiempo)</li>  </ol> |
+| V | Análisis de dinámicas de sistemas en el dominio del tiempo | <li> Respuesta en el tiempo. </li> <li> Análisis de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li> | <ol><li>[Código (Live Script)](JESP_05_Analisis_tiempo.ipynb)</li>  </ol> |
+| VI | Análisis de sistemas dinámicos en el dominio de la frecuencia | | <ol><li>[Código (Live Script)](JESP_06_Analisis_frecuencia.ipynb)</li>  </ol> |
 
 ## Para presentar examen
 Tendrán derecho a presentar exámenes parciales aquellos estudiantes que hayan cubierto por lo menos el 80% de asistencia.
