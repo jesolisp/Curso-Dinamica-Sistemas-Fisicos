@@ -32,7 +32,7 @@
 | III | Modelado en el dominio de la frecuencia | <li> Función de Transferencia. </li> <li> Modelado de sistemas mecánicos. </li> <li> Modelado de sistemas eléctricos y electro-mecánicos. </li> <li> Modelado de sistemas hidráulicos y térmicos. </li> <li> Otro tipo de sistemas. </li> | <ol><li>[Código (Live Script)](JESP_03_Modelado_frecuencia.ipynb)</li>  </ol> |
 | IV | Modelado en el dominio del tiempo | <li> Ecuaciones en variables de estado. </li> <li> Modelado de sistemas mediante ecuaciones de estado. </li> <li> Relación entre el modelo en variables de estado y la función de transferencia. </li> | <ol><li>[Código (Live Script)](JESP_04_Modelado_tiempo)</li>  </ol> |
 | V | Análisis de dinámicas de sistemas en el dominio del tiempo | <li> Respuesta en el tiempo. </li> <li> Análisis de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li> | <ol><li>[Código (Live Script)](JESP_05_Analisis_tiempo.ipynb)</li>  </ol> |
-| VI | Análisis de sistemas dinámicos en el dominio de la frecuencia | | <ol><li>[Código (Live Script)](JESP_06_Analisis_frecuencia.ipynb)</li>  </ol> |
+
 
 ## Para presentar examen
 Tendrán derecho a presentar exámenes parciales aquellos estudiantes que hayan cubierto por lo menos el 80% de asistencia.
