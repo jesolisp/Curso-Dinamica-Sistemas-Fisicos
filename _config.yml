@@ -7,12 +7,13 @@
 # Book settings
 title: Dinámica de Sistemas Físicos # The title of the book. Will be placed in the left navbar.
 author: Dr. Jesús Emmanuel Solís Pérez # The author of the book
-copyright: "2024" # Copyright year to be placed in the footer
-logo: docs/images/Duffing_frequency.png # A path to the book logo
+copyright: "2025" # Copyright year to be placed in the footer
+logo: docs/images/dynamic_systems.png # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
 only_build_toc_files: true
+email: jsolisp@unam.mx
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -47,19 +48,19 @@ html:
   use_issues_button: true
   use_edit_page_button: true
   use_download_button: true
-  # thebe: true
-  # google_analytics_id: G-XXXXXXX
+  toc_title: "Contenido"
+  extra_css:
+    - "_static/custom.css"  # Link your custom CSS file
 
 sphinx:
   extra_extensions:
-    # This is to work around the bug of no syntax highlighting
     - "IPython.sphinxext.ipython_console_highlighting"
     - sphinx_proof
   config:
-    # html_extra_path: ["CNAME", "robots.txt"]
+    language: es
     html_theme_options:
       use_download_button: true
-      repository_url: https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos
+      repository_url: https://github.com/jesolisp/Curso-Ecuaciones-Diferenciales-I
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: true
@@ -70,14 +71,14 @@ sphinx:
         }
     bibtex_reference_style: author_year
     html_js_files:
-      # This is for plotly to work
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    latex_toplevel_sectioning: 'part'
 
 # Define the name of the latex output file for PDF builds
-# latex:
-#   latex_documents:
-#     targetname: book.tex
+latex:
+  latex_documents:
+    targetname: book.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
@@ -90,3 +91,11 @@ parse:
     - amsmath
     - dollarmath
     - html_image
+    - colon_fence
+    - linkify
+    - substitution
+    - deflist
+    - replacements
+    - smartquotes
+    - substitution
+    - html_admonition

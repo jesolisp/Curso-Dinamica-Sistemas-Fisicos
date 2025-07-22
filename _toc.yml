@@ -3,12 +3,46 @@
 
 format: jb-book
 root: docs/home
+parts:
 
-chapters:
-- file: docs/JESP_01_Introduccion_dinamica
-- file: docs/JESP_02_Antecedentes_matematicos
-- file: docs/JESP_03_Modelado_frecuencia
-- file: docs/JESP_04_Modelado_tiempo
-- file: docs/JESP_05_Analisis_tiempo
-- file: docs/JESP_06_Analisis_frecuencia
-- file: docs/references
+- caption: I. Introducción a la dinámica de los sistemas lineales
+  chapters:
+    - file: docs/conceptos
+    - file: docs/indices_error
+    - file: docs/modelos_analiticos
+- caption: II. Antecedentes matemáticos
+  chapters:
+    - file: docs/algebra_lineal
+    - file: docs/ecuaciones_lineales
+    - file: docs/matriz_escalonada
+    - file: docs/sistemaseclin_homogeneos
+    - file: docs/algebra_matrices
+    - file: docs/ecuaciones_diferenciales
+    - file: docs/sol_ecuaciones_diferenciales
+    - file: docs/transformada_Laplace
+- caption: III. Modelado en el dominio de la frecuencia
+  chapters:
+    - file: docs/funcion_transferencia
+    - file: docs/polinomio_hurwitz
+    - file: docs/modelado_sistemas_mec
+    - file: docs/modelado_sistemas_elec
+    - file: docs/modelado_sistemas_hidt
+    - file: docs/otros_sistemas
+- caption: IV. Modelado en el dominio del tiempo
+  chapters:
+    - file: docs/variables_estado
+    - file: docs/modelado_sist_ee
+    - file: docs/relacion_ee_ft
+- caption: V. Análisis de dinámicas de sistemas en el dominio del tiempo
+  chapters:
+    - file: docs/analisis_dinamica_dt
+    - file: docs/analisis_estabilidad_sdl
+    - file: docs/respuesta_estado_est
+- caption: Referencias
+  chapters:
+    - file: docs/references
+- caption: Apéndices
+  chapters:
+    - file: docs/metodo_poshenloh
+    - file: docs/metodo_ruffini
+    - file: docs/regla_cadena

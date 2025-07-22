@@ -25,17 +25,17 @@
 
 ## Temario
 
-| **Unidad** | **Tema** | **Contenido** | **Material** |
-|:---:|:---:|:---|:---:|
-| I | Introducción a la dinámica de los sistemas lineales | <li>Conceptos básicos.</li> <li>Modelos analíticos de estudio de sistemas.</li> | <ol><li>[Código (Live Script)](JESP_01_Introduccion_dinamica.md)</li>  </ol> |
-| II | Antecedentes matemáticos | <li>Álgebra Lineal.</li> <li>Ecuaciones Diferenciales.</li> <li> Transformada de Fourier. </li> <li> Transformada de Laplace. </li> | <ol><li>[Código (Live Script)](JESP_02_Antecedentes_matematicos.ipynb)</li> </ol> |
-| III | Modelado en el dominio de la frecuencia | <li> Función de Transferencia. </li> <li> Modelado de sistemas mecánicos. </li> <li> Modelado de sistemas eléctricos y electro-mecánicos. </li> <li> Modelado de sistemas hidráulicos y térmicos. </li> <li> Otro tipo de sistemas. </li> | <ol><li>[Código (Live Script)](JESP_03_Modelado_frecuencia.ipynb)</li>  </ol> |
-| IV | Modelado en el dominio del tiempo | <li> Ecuaciones en variables de estado. </li> <li> Modelado de sistemas mediante ecuaciones de estado. </li> <li> Relación entre el modelo en variables de estado y la función de transferencia. </li> | <ol><li>[Código (Live Script)](JESP_04_Modelado_tiempo)</li>  </ol> |
-| V | Análisis de dinámicas de sistemas en el dominio del tiempo | <li> Respuesta en el tiempo. </li> <li> Análisis de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li> | <ol><li>[Código (Live Script)](JESP_05_Analisis_tiempo.ipynb)</li>  </ol> |
+| **Unidad** | **Tema** | **Contenido** |
+|:---:|:---:|:---|
+| I | Introducción a la dinámica de los sistemas lineales | <li>Conceptos básicos.</li> <li>Modelos analíticos de estudio de sistemas.</li> |
+| II | Antecedentes matemáticos | <li>Álgebra Lineal.</li> <li>Ecuaciones Diferenciales.</li> <li> Transformada de Fourier. </li> <li> Transformada de Laplace. </li> |
+| III | Modelado en el dominio de la frecuencia | <li> Función de Transferencia. </li> <li> Modelado de sistemas mecánicos. </li> <li> Modelado de sistemas eléctricos y electro-mecánicos. </li> <li> Modelado de sistemas hidráulicos y térmicos. </li> <li> Otro tipo de sistemas. </li> |
+| IV | Modelado en el dominio del tiempo | <li> Ecuaciones en variables de estado. </li> <li> Modelado de sistemas mediante ecuaciones de estado. </li> <li> Relación entre el modelo en variables de estado y la función de transferencia. </li> |
+| V | Análisis de dinámicas de sistemas en el dominio del tiempo | <li> Respuesta en el tiempo. </li> <li> Análisis de los puntos de equilibrio. </li> <li> Estabilidad de los puntos de equilibrio. </li> |
 
 
-## Para presentar examen
-Tendrán derecho a presentar exámenes parciales aquellos estudiantes que hayan cubierto por lo menos el 80% de asistencia.
+## Exámenes ordinarios
+Tendrán derecho a presentarlos aquellas personas que hayan obtenido una calificación no aprobatoria mayor o igual a 55.
 
 ## Código de conducta
 La conducta del profesorado y alumnado del curso será acorde con los principios y valores especificados en el Código de Ética de la Universidad Nacional Autónoma de México aprobado el 1 de julio del 2015 por el Consejo Universitario, en especial en lo referente a la integridad y honestidad académica. “La integridad y la honestidad académica implican: Citar las fuentes de ideas, textos, imágenes, gráficos u obras artı́sticas que se empleen en el trabajo universitario, y no sustraer o tomar la información generada por otros o por sı́ mismo sin señalar la cita correspondiente u obtener su consentimiento y acuerdo. No falsificar, alterar, manipular, fabricar, inventar o fingir la autenticidad de datos, resultados, imágenes o información en los trabajos académicos, proyectos de investigación, exámenes, ensayos, informes, reportes, tesis, audiencias, procedimientos de orden disciplinario o en cualquier documento inherente a la vida académica universitaria” (Gaceta UNAM, 30 de julio 2015).
@@ -50,4 +50,4 @@ La conducta del profesorado y alumnado del curso será acorde con los principios
 </ol>
 
 
-(Última modificación: 10 de julio de 2024)
+(Última modificación: 21 de julio de 2025)
