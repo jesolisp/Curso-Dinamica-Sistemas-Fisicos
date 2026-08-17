@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
   
@@ -507,11 +507,11 @@ document.write(`
 <h1>Análisis de dinámicas de sistemas en el dominio del tiempo<a class="headerlink" href="#analisis-de-dinamicas-de-sistemas-en-el-dominio-del-tiempo" title="Link to this heading">#</a></h1>
 <p>Considere un sistema autónomo representado por la siguiente ecuación</p>
 <div class="math notranslate nohighlight" id="equation-eqn-sys-aut">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-sys-aut" title="Link to this equation">#</a></span>\[
+<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-sys-aut" title="Link to this equation">#</a></span>\[
  \dot{x} = f(x),
 \]</div>
 <p>donde <span class="math notranslate nohighlight">\(f:D\leftarrow R^{n}\)</span> es un mapa local de Lipschitz de un dominio <span class="math notranslate nohighlight">\(D\subset R^{n}\)</span> en <span class="math notranslate nohighlight">\(R^{n}\)</span>.</p>
-<p>Para poder estudiar la estabilidad del sistema <a class="reference internal" href="#equation-eqn-sys-aut">(48)</a>, es necesario obtener <span class="math notranslate nohighlight">\(\bar{x}\in D\)</span> que denota el punto de equilibrio</p>
+<p>Para poder estudiar la estabilidad del sistema <a class="reference internal" href="#equation-eqn-sys-aut">(54)</a>, es necesario obtener <span class="math notranslate nohighlight">\(\bar{x}\in D\)</span> que denota el punto de equilibrio</p>
 <div class="math notranslate nohighlight">
 \[
  f(\bar{x}) = 0.
@@ -550,7 +550,7 @@ document.write(`
 <h2>Linealización de sistemas en torno a un punto de equilibrio<a class="headerlink" href="#linealizacion-de-sistemas-en-torno-a-un-punto-de-equilibrio" title="Link to this heading">#</a></h2>
 <p>Un sistema (LTI) de la forma</p>
 <div class="math notranslate nohighlight" id="equation-eqn-lti">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-lti" title="Link to this equation">#</a></span>\[
+<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-lti" title="Link to this equation">#</a></span>\[
  \dot{x} = Ax,
 \]</div>
 <p>tiene un punto de equilibrio en el origen. Este punto de equilibrio está aislado si y sólo si <span class="math notranslate nohighlight">\(\text{det}(A)\neq0\)</span>. Si <span class="math notranslate nohighlight">\(\text{det}(A)=0\)</span>, la matriz <span class="math notranslate nohighlight">\(A\)</span> tiene un espacio nulo no trivial.</p>
@@ -594,13 +594,13 @@ document.write(`
 <h3>Linealización<a class="headerlink" href="#linealizacion" title="Link to this heading">#</a></h3>
 <p>Suponga que las funciones <span class="math notranslate nohighlight">\(f_{1}\)</span> y <span class="math notranslate nohighlight">\(f_{2}\)</span> del sistema autónomo de segundo orden</p>
 <div class="math notranslate nohighlight" id="equation-eqn-second-order-aut">
-<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-second-order-aut" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(56)<a class="headerlink" href="#equation-eqn-second-order-aut" title="Link to this equation">#</a></span>\[\begin{split}
  \begin{aligned}
   \dot{x}_{1} &amp;= f_{1}(x_{1},x_{2}), \\
   \dot{x}_{2} &amp;= f_{2}(x_{1},x_{2}), \\
  \end{aligned}
 \end{split}\]</div>
-<p>son continuamente diferenciables y que además <span class="math notranslate nohighlight">\(p=(p_{1},p_{2})\)</span> es un punto de equilibrio, el sistema <a class="reference internal" href="#equation-eqn-second-order-aut">(50)</a> se puede expandir mediante serie de Taylor en torno a <span class="math notranslate nohighlight">\((p_{1},p_{2})\)</span> como sigue</p>
+<p>son continuamente diferenciables y que además <span class="math notranslate nohighlight">\(p=(p_{1},p_{2})\)</span> es un punto de equilibrio, el sistema <a class="reference internal" href="#equation-eqn-second-order-aut">(56)</a> se puede expandir mediante serie de Taylor en torno a <span class="math notranslate nohighlight">\((p_{1},p_{2})\)</span> como sigue</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
  \begin{aligned}
@@ -681,7 +681,7 @@ document.write(`
 </figure>
 <p>donde los elementos de almacenamiento de energía son el capacitor <span class="math notranslate nohighlight">\(C\)</span> y el inductor <span class="math notranslate nohighlight">\(L\)</span> mientras que el diodo tunel es representado por la relación <span class="math notranslate nohighlight">\(i_{R} = h(v_{R})\)</span>. Asumiendo que los elementos del circuito son lineales e invariantes en el tiempo, el circuito de diodo tunel se puede representar matemáticamente como sigue</p>
 <div class="math notranslate nohighlight" id="equation-eqn-diodo-tunel">
-<span class="eqno">(51)<a class="headerlink" href="#equation-eqn-diodo-tunel" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(57)<a class="headerlink" href="#equation-eqn-diodo-tunel" title="Link to this equation">#</a></span>\[\begin{split}
  \begin{aligned}
   i_{C} &amp;= C \frac{\mathrm{d}v_{C}}{\mathrm{d}t}, \\
   v_{L} &amp;= L \frac{\mathrm{d}i_{L}}{\mathrm{d}t}, \\
@@ -713,7 +713,7 @@ document.write(`
 <p>donde <span class="math notranslate nohighlight">\(l\)</span> denota la longitud de la varilla, y <span class="math notranslate nohighlight">\(m\)</span> la masa de la bola.</p>
 <p>Cuya representación en espacio de estados está dada como sigue</p>
 <div class="math notranslate nohighlight" id="equation-eqn-single-pendulum">
-<span class="eqno">(52)<a class="headerlink" href="#equation-eqn-single-pendulum" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(58)<a class="headerlink" href="#equation-eqn-single-pendulum" title="Link to this equation">#</a></span>\[\begin{split}
  \begin{aligned}
   \dot{x_{1}} &amp;= x_{2}, \\
   \dot{x_{2}} &amp;= -\frac{g}{l}\sin(x_{1}) - \frac{k}{m}x_{2}.

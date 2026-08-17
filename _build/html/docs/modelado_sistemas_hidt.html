@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
   
@@ -547,25 +547,25 @@ document.write(`
 </section>
 <section id="nivel-de-liquido-de-dos-tanques-en-cascada">
 <h2>Nivel de líquido de dos tanques en cascada<a class="headerlink" href="#nivel-de-liquido-de-dos-tanques-en-cascada" title="Link to this heading">#</a></h2>
-<p>Para obtener un sistema que permita describir el nivel de líquido en dos tanques como se muestra en la , podemos seguir el procedimiento anterior. Donde el flujo de entrada del segundo tanque, es el flujo de salida del primero. Entonces, obtenemos el siguiente sistema de ecuaciones</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Para obtener un sistema que permita describir el nivel de líquido en dos tanques como se muestra en la <a class="reference internal" href="#fig-two-tanks-system"><span class="std std-numref">Figura 13</span></a>, podemos seguir el procedimiento anterior. En este caso, el flujo de entrada del segundo tanque corresponde al flujo de salida del primero (al cual denominaremos flujo intermedio <span class="math notranslate nohighlight">\(q_{m}\)</span>). Entonces, obtenemos el siguiente sistema de ecuaciones:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-diferencia-altura-tanque1">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eqn-diferencia-altura-tanque1" title="Link to this equation">#</a></span>\[
  A_{1} \frac{\mathrm{d}~h_{1}}{\mathrm{d}t} = q_{i} - q_{m},
 \]</div>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eqn-diferencia-altura-tanque2">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eqn-diferencia-altura-tanque2" title="Link to this equation">#</a></span>\[
  A_{2} \frac{\mathrm{d}~h_{2}}{\mathrm{d}t} = q_{m} - q_{o}.
 \]</div>
-<p>Sabiendo que</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Sabiendo que los flujos se definen como</p>
+<div class="math notranslate nohighlight" id="equation-eqn-flujo-intermedio">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eqn-flujo-intermedio" title="Link to this equation">#</a></span>\[
  q_{m} := k_{1} \sqrt{h_{1}},
 \]</div>
-<div class="math notranslate nohighlight">
-\[
- q_{o} := k_{2} \sqrt{h_{2}}.
+<div class="math notranslate nohighlight" id="equation-eqn-flujo-salida-tanque2">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eqn-flujo-salida-tanque2" title="Link to this equation">#</a></span>\[
+ q_{o} := k_{2} \sqrt{h_{2}},
 \]</div>
-<p>Sustituyendo tenemos</p>
+<p>donde <span class="math notranslate nohighlight">\(k_{1} := S_{1} \sqrt{2g}\)</span> y <span class="math notranslate nohighlight">\(k_{2} := S_{2} \sqrt{2g}\)</span>, y sustituyendo estas relaciones en las ecuaciones diferenciales, obtenemos:</p>
 <div class="math notranslate nohighlight">
 \[
  A_{1} \frac{\mathrm{d}~h_{1}}{\mathrm{d}t} = q_{i} - k_{1} \sqrt{h_{1}},
@@ -575,12 +575,12 @@ document.write(`
  A_{2} \frac{\mathrm{d}~h_{2}}{\mathrm{d}t} = k_{1} \sqrt{h_{1}} - k_{2} \sqrt{h_{2}},
 \]</div>
 <p>o bien</p>
-<div class="math notranslate nohighlight">
-\[
- \frac{\mathrm{d}~h_{1}}{\mathrm{d}t} = \frac{q_{i}}{A_{1} } - \frac{k_{1}}{A_{1} } \sqrt{h_{1}},
+<div class="math notranslate nohighlight" id="equation-eqn-modelo-tanque1-final">
+<span class="eqno">(47)<a class="headerlink" href="#equation-eqn-modelo-tanque1-final" title="Link to this equation">#</a></span>\[
+ \frac{\mathrm{d}~h_{1}}{\mathrm{d}t} = \frac{q_{i}}{A_{1}} - \frac{k_{1}}{A_{1}} \sqrt{h_{1}},
 \]</div>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eqn-modelo-tanque2-final">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-modelo-tanque2-final" title="Link to this equation">#</a></span>\[
  \frac{\mathrm{d}~h_{2}}{\mathrm{d}t} = \frac{k_{1}}{A_{2}} \sqrt{h_{1}} - \frac{k_{2}}{A_{2}} \sqrt{h_{2}}.
 \]</div>
 <figure class="align-default" id="fig-two-tanks-system">

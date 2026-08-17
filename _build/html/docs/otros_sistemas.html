@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
   
@@ -487,8 +487,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atractor-de-lorenz">Atractor de Lorenz</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-presa-depredador">Modelo presa-depredador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-caoticos">Sistemas caóticos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atractor-de-lorenz">Atractor de Lorenz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-biologicos">Sistemas biológicos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-presa-depredador">Modelo presa-depredador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-seir">Modelo SEIR</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -502,9 +509,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="otro-tipo-de-sistemas">
 <h1>Otro tipo de sistemas<a class="headerlink" href="#otro-tipo-de-sistemas" title="Link to this heading">#</a></h1>
-<p>Sistemas caóticos</p>
+<section id="sistemas-caoticos">
+<h2>Sistemas caóticos<a class="headerlink" href="#sistemas-caoticos" title="Link to this heading">#</a></h2>
 <section id="atractor-de-lorenz">
-<h2>Atractor de Lorenz<a class="headerlink" href="#atractor-de-lorenz" title="Link to this heading">#</a></h2>
+<h3>Atractor de Lorenz<a class="headerlink" href="#atractor-de-lorenz" title="Link to this heading">#</a></h3>
+<p>Propuesto por Edward Lorenz en 1963, este sistema simplifica las ecuaciones de la convección térmica en la atmósfera. Es el ejemplo clásico de un sistema no lineal autónomo de tercer orden que exhibe caos determinista.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
  \begin{aligned}
@@ -513,9 +522,26 @@ document.write(`
   \dot{z} &amp;= xy - \beta z,\\
  \end{aligned}
 \end{split}\]</div>
+<p><strong>Variables del sistema:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span>: Intensidad del movimiento convectivo (velocidad del fluido).</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>: Diferencia de temperatura horizontal entre las corrientes ascendentes y descendentes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(z\)</span>: Distorsión del perfil vertical de temperatura respecto a un gradiente lineal.</p></li>
+</ul>
+<p><strong>Parámetros y valores clásicos:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> (<strong>Número de Prandtl</strong>): Relación entre la viscosidad cinemática y la difusividad térmica (<span class="math notranslate nohighlight">\(\sigma = 10\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span> (<strong>Número de Rayleigh normalizado</strong>): Representa la diferencia de temperatura impulsora entre la parte inferior y superior del fluido (<span class="math notranslate nohighlight">\(\rho = 28\)</span> para régimen caótico).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span> (<strong>Factor geométrico</strong>): Relación de aspecto de las celdas de convección (<span class="math notranslate nohighlight">\(\beta = \frac{8}{3} \approx 2.667\)</span>).</p></li>
+</ul>
 </section>
+</section>
+<hr class="docutils" />
+<section id="sistemas-biologicos">
+<h2>Sistemas biológicos<a class="headerlink" href="#sistemas-biologicos" title="Link to this heading">#</a></h2>
 <section id="modelo-presa-depredador">
-<h2>Modelo presa-depredador<a class="headerlink" href="#modelo-presa-depredador" title="Link to this heading">#</a></h2>
+<h3>Modelo presa-depredador<a class="headerlink" href="#modelo-presa-depredador" title="Link to this heading">#</a></h3>
+<p>El modelo de Lotka-Volterra describe la dinámica de poblaciones ecológicas en las que interactúan un depredador y su presa:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
  \begin{aligned}
@@ -523,6 +549,45 @@ document.write(`
   \dot{y} &amp;= \delta xy - \gamma y, \\
  \end{aligned}
 \end{split}\]</div>
+<p><strong>Variables del sistema:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span>: Número de individuos de la población de presas.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>: Número de individuos de la población de depredadores.</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>: Tasa de crecimiento natural de las presas en ausencia de depredadores.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>: Tasa de mortalidad de las presas debida a la depredación.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span>: Tasa de crecimiento de los depredadores basada en la cantidad de presas consumidas.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span>: Tasa de mortalidad natural de los depredadores en ausencia de presas.</p></li>
+</ul>
+</section>
+<section id="modelo-seir">
+<h3>Modelo SEIR<a class="headerlink" href="#modelo-seir" title="Link to this heading">#</a></h3>
+<p>El modelo SEIR es un sistema compartimental utilizado en epidemiología para describir la propagación de enfermedades infecciosas donde existe un período de incubación significativo. Su dinámica se define mediante el siguiente sistema de ecuaciones diferenciales:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{S} &amp;= -\beta S I, \\
+  \dot{E} &amp;= \beta S I - \sigma E, \\
+  \dot{I} &amp;= \sigma E - \gamma I, \\
+  \dot{R} &amp;= \gamma I,
+ \end{aligned}
+\end{split}\]</div>
+<p><strong>Variables del sistema:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S\)</span> (<strong>Susceptibles</strong>): Personas sanas que aún no han contraído la enfermedad y pueden infectarse.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\)</span> (<strong>Expuestos / Latentes</strong>): Personas que han contraído el patógeno pero se encuentran en período de incubación.</p></li>
+<li><p><span class="math notranslate nohighlight">\(I\)</span> (<strong>Infecciosos</strong>): Personas enfermas que pueden transmitir activamente la infección.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> (<strong>Recuperados / Removidos</strong>): Personas que se han recuperado (con inmunidad) o han fallecido.</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>: Tasa de transmisión de la infección.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span>: Tasa a la cual los individuos expuestos pasan al estado infeccioso (inverso del período de incubación).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span>: Tasa de recuperación de los individuos infecciosos (inverso del período infeccioso).</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -590,8 +655,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atractor-de-lorenz">Atractor de Lorenz</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-presa-depredador">Modelo presa-depredador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-caoticos">Sistemas caóticos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atractor-de-lorenz">Atractor de Lorenz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-biologicos">Sistemas biológicos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-presa-depredador">Modelo presa-depredador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-seir">Modelo SEIR</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
