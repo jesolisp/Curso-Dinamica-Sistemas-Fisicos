@@ -1,0 +1,906 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Álgebra Lineal &#8212; Dinámica de Sistemas Físicos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/algebra_lineal';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/algebra_lineal.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Ecuaciones lineales y sus soluciones" href="ecuaciones_lineales.html" />
+    <link rel="prev" title="Modelos analíticos de estudio de sistemas" href="modelos_analiticos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dynamic_systems.png" class="logo__image only-light" alt="Dinámica de Sistemas Físicos - Home"/>
+    <script>document.write(`<img src="../_static/dynamic_systems.png" class="logo__image only-dark" alt="Dinámica de Sistemas Físicos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">I. Introducción a la dinámica de los sistemas lineales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conceptos.html">Conceptos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices_error.html">Índices de error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos_analiticos.html">Modelos analíticos de estudio de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II. Antecedentes matemáticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Álgebra Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_lineales.html">Ecuaciones lineales y sus soluciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matriz_escalonada.html">Matrices escalonadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sistemaseclin_homogeneos.html">Sistema de ecuaciones lineales homogéneos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algebra_matrices.html">Álgebra de matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_diferenciales.html">Ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sol_ecuaciones_diferenciales.html">Soluciones de ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformada_Laplace.html">Transformada de Laplace</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">III. Modelado en el dominio de la frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="funcion_transferencia.html">Función de transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polinomio_hurwitz.html">Polinomio de Hurwitz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_mec.html">Modelado de sistemas mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_elec.html">Modelado de sistemas eléctricos y electro-mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_hidt.html">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otros_sistemas.html">Otro tipo de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IV. Modelado en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="variables_estado.html">Ecuaciones en variables de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sist_ee.html">Modelado de sistemas mediante ecuaciones de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relacion_ee_ft.html">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">V. Análisis de dinámicas de sistemas en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="analisis_dinamica_dt.html">Análisis de dinámicas de sistemas en el dominio del tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_estabilidad_sdl.html">Análisis de la estabilidad de sistemas dinámicos linealizados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="respuesta_estado_est.html">Respuesta de estado estacionario</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="metodo_poshenloh.html">Método de Po-Shen Loh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo_ruffini.html">Método de Ruffini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regla_cadena.html">Regla de la cadena</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/algebra_lineal.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/algebra_lineal.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/algebra_lineal.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/issues/new?title=Issue%20on%20page%20%2Fdocs/algebra_lineal.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/algebra_lineal.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Álgebra Lineal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaciones-lineales">Combinaciones lineales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencia-lineal">Dependencia lineal</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="algebra-lineal">
+<h1>Álgebra Lineal<a class="headerlink" href="#algebra-lineal" title="Link to this heading">#</a></h1>
+<p>En este capitulo, vamos a recordar algunos conceptos de álgebra lineal que nos servirán para analizar sistemas dinámicos. Para ello, vamos a extender la noción de combinación lineal de vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> a un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> cualquiera.</p>
+<section id="combinaciones-lineales">
+<h2>Combinaciones lineales<a class="headerlink" href="#combinaciones-lineales" title="Link to this heading">#</a></h2>
+<p>Un <strong>sistema no homogéneo</strong> de <span class="math notranslate nohighlight">\(m\)</span> ecuaciones con <span class="math notranslate nohighlight">\(n\)</span> incógnitas de la forma</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  a_{11}x_{1} + a_{12}x_{2} + \dots + a_{1n}x_{n} &amp;= b_{1}, \\
+  a_{21}x_{1} + a_{22}x_{2} + \dots + a_{2n}x_{n} &amp;= b_{2}, \\
+  a_{31}x_{1} + a_{32}x_{2} + \dots + a_{3n}x_{n} &amp;= b_{3}, \\
+  \vdots \quad \quad &amp;= \vdots \\
+  a_{m1}x_{1} + a_{m2}x_{2} + \dots + a_{mn}x_{n} &amp;= b_{m},
+ \end{aligned}
+\end{split}\]</div>
+<p>puede ser representado de forma vectorial como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ x_1 \left\lbrack \begin{array}{c}
+a_{11} \\
+a_{21} \\
+\vdots \\
+a_{\mathrm{m1}}
+\end{array}\right\rbrack +x_2 \left\lbrack \begin{array}{c}
+a_{12} \\
+a_{22} \\
+\vdots \\
+a_{\mathrm{m2}}
+\end{array}\right\rbrack +x_3 \left\lbrack \begin{array}{c}
+a_{13} \\
+a_{23} \\
+\vdots \\
+a_{\mathrm{m3}}
+\end{array}\right\rbrack +\cdots +x_n \left\lbrack \begin{array}{c}
+a_{1n} \\
+a_{2n} \\
+\vdots \\
+a_{\mathrm{mn}}
+\end{array}\right\rbrack =\left\lbrack \begin{array}{c}
+b_1 \\
+b_2 \\
+\vdots \\
+b_m
+\end{array}\right\rbrack,
+\end{split}\]</div>
+<p>o equivalentemente como</p>
+<div class="math notranslate nohighlight">
+\[
+ x_{1}u_{1} + x_{2}u_{2} + \dots + x_{n}u_{n} = v,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(u_{1}\)</span>, <span class="math notranslate nohighlight">\(u_{2}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(u_{n}\)</span>, <span class="math notranslate nohighlight">\(v\)</span> son los vectores columnas, respectivamente.</p>
+<div class="proof definition admonition" id="combinacion-lineal">
+<p class="admonition-title"><span class="caption-number">Definición 3 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Un vector <span class="math notranslate nohighlight">\(v\)</span> es una <strong>combinación lineal</strong> de los vectores <span class="math notranslate nohighlight">\(u_{1}\)</span>, <span class="math notranslate nohighlight">\(u_{2}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(u_{n}\)</span> si existen escalares <span class="math notranslate nohighlight">\(a_{1}\)</span>, <span class="math notranslate nohighlight">\(a_{2}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(a_{n}\)</span> tales que</p>
+<div class="math notranslate nohighlight">
+\[
+ v = a_{1}u_{1} + a_{2}u_{2} + a_{3}u_{3} + \dots + a_{n}u_{n}.
+\]</div>
+<p>La ecuación vectorial</p>
+<div class="math notranslate nohighlight">
+\[
+ v = x_{1}u_{1} + x_{2}u_{2} + x_{3}u_{3} + \dots + x_{n}u_{n},
+\]</div>
+<p>tiene una solución cuando los <span class="math notranslate nohighlight">\(x_{1}\)</span>, <span class="math notranslate nohighlight">\(x_{2}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(x_{n}\)</span> son escalares por determinar.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>Sean</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ v=\left\lbrack \begin{array}{c}
+2\\
+3\\
+-4
+\end{array}\right\rbrack ,
+u_1 =\left\lbrack \begin{array}{c}
+1\\
+1\\
+1
+\end{array}\right\rbrack ,
+u_2 =\left\lbrack \begin{array}{c}
+1\\
+1\\
+0
+\end{array}\right\rbrack,
+u_3 =\left\lbrack \begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right\rbrack \ldotp
+\end{split}\]</div>
+<p>Entonces <span class="math notranslate nohighlight">\(v\)</span> es una combinación lineal de <span class="math notranslate nohighlight">\(u_{1}\)</span>, <span class="math notranslate nohighlight">\(u_{2}\)</span> y <span class="math notranslate nohighlight">\(u_{3}\)</span> dado que el sistema o ecuación vectorial</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \left\lbrack \begin{array}{c}
+2\\
+3\\
+-4
+\end{array}\right\rbrack =x\;\left\lbrack \begin{array}{c}
+1\\
+1\\
+1
+\end{array}\right\rbrack +y\;\left\lbrack \begin{array}{c}
+1\\
+1\\
+0
+\end{array}\right\rbrack +z\;\left\lbrack \begin{array}{c}
+1\\
+0\\
+0
+\end{array}\right\rbrack ,
+\end{split}\]</div>
+<p>o bien</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  2 &amp;= x + y + z, \\
+  3 &amp;= x + y, \\
+  -4 &amp;= x,
+ \end{aligned}
+\end{split}\]</div>
+<p>tiene una solución <span class="math notranslate nohighlight">\(x=-4\)</span>, <span class="math notranslate nohighlight">\(y=7\)</span>, <span class="math notranslate nohighlight">\(z=-1\)</span>. Es decir</p>
+<div class="math notranslate nohighlight">
+\[
+ v = -4u_{1} + 7u_{2} - u_{3}.
+\]</div>
+</section>
+<section id="dependencia-lineal">
+<h2>Dependencia lineal<a class="headerlink" href="#dependencia-lineal" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="dependencia-lineal">
+<p class="admonition-title"><span class="caption-number">Definición 4 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Los vectores <span class="math notranslate nohighlight">\(u_{1}\)</span>, <span class="math notranslate nohighlight">\(u_{2}\)</span>, <span class="math notranslate nohighlight">\(u_{3}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(u_{n}\in \mathbb{R}\)</span> son <strong>linealmente dependientes</strong> si existen escalares <span class="math notranslate nohighlight">\(a_{1}\)</span>, <span class="math notranslate nohighlight">\(a_{2}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(a_{n}\)</span> no todos nulos tales que</p>
+<div class="math notranslate nohighlight">
+\[
+ a_{1}u_{1} + a_{2}u_{2} + a_{3}u_{3} + \dots + a_{n}u_{n} = 0.
+\]</div>
+<p>La ecuación vectorial</p>
+<div class="math notranslate nohighlight">
+\[
+ x_{1}u_{1} + x_{2}u_{2} + x_{3}u_{3} + \dots + x_{n}u_{n} = 0,
+\]</div>
+<p>tiene una solución no nula donde los escalares <span class="math notranslate nohighlight">\(x_{1}\)</span>, <span class="math notranslate nohighlight">\(x_{2}\)</span>, <span class="math notranslate nohighlight">\(x_{3}\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(x_{n}\)</span> se deben determinar. En otro caso, los vectores son llamados <strong>linealmente independientes</strong>.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>La solución de</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  x\;\left\lbrack \begin{array}{c}
+  1\\
+  1\\
+  1
+ \end{array}\right\rbrack +y\;\left\lbrack \begin{array}{c}
+  2\\
+  -1\\
+  3
+ \end{array}\right\rbrack +z\;\left\lbrack \begin{array}{c}
+  1\\
+  -5\\
+  3
+ \end{array}\right\rbrack =\left\lbrack \begin{array}{c}
+  0\\
+  0\\
+  0
+ \end{array}\right\rbrack ,
+\end{split}\]</div>
+<p>o bien</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   x + 2y + z &amp;= 0, \\
+   x -y -5z &amp;= 0, \\
+   x + 3y + 3z &amp;= 0.
+  \end{aligned}
+\end{split}\]</div>
+<p>¿Cómo llegamos a lo siguiente?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   x + y + z = 0, \\
+   x + y = 0, \\
+   x = 0,
+  \end{aligned}
+\end{split}\]</div>
+<p>cuya representación queda</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  x\left\lbrack \begin{array}{c}
+  1\\
+  1\\
+  1
+ \end{array}\right\rbrack +y\left\lbrack \begin{array}{c}
+  1\\
+  1\\
+  0
+ \end{array}\right\rbrack +z\left\lbrack \begin{array}{c}
+  1\\
+  0\\
+  0
+ \end{array}\right\rbrack =\left\lbrack \begin{array}{c}
+  0\\
+  0\\
+  0
+ \end{array}\right\rbrack,
+\end{split}\]</div>
+<p>es la solución no nula <span class="math notranslate nohighlight">\(x=y=z=0\)</span>. Por lo tanto, los tres vectores son linealmente independientes.</p>
+<p>El sistema de ecuaciones lineales</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  x\;\left\lbrack \begin{array}{c}
+  1\\
+  1\\
+  1
+ \end{array}\right\rbrack +y\;\left\lbrack \begin{array}{c}
+  2\\
+  -1\\
+  3
+ \end{array}\right\rbrack +z\;\left\lbrack \begin{array}{c}
+  1\\
+  -5\\
+  3
+ \end{array}\right\rbrack =\left\lbrack \begin{array}{c}
+  0\\
+  0\\
+  0
+\end{array}\right\rbrack ,
+\end{split}\]</div>
+<p>o bien</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  x + 2y + z &amp;= 0, \\
+  x - y - 5z &amp;= 0, \\
+  x + 3y + 3z &amp;= 0,
+ \end{aligned}
+\end{split}\]</div>
+<p>tiene una solución no nula <span class="math notranslate nohighlight">\((x,y,z)=(3,-2,1)\)</span>. Por lo tanto, estos tres vectores son linealmente dependientes.</p>
+<p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>Realice la conversión de la siguiente ecuación vectorial en un sistema de ecuaciones lineales equivalente y resuélvalo</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \left\lbrack \begin{array}{c}
+1\\
+-6\\
+5
+\end{array}\right\rbrack =\;x\;\left\lbrack \begin{array}{c}
+1\\
+2\\
+3
+\end{array}\right\rbrack +y\;\left\lbrack \begin{array}{c}
+2\\
+5\\
+8
+\end{array}\right\rbrack +z\;\left\lbrack \begin{array}{c}
+3\\
+2\\
+3
+\end{array}\right\rbrack =\left\lbrack \begin{array}{c}
+x+2y+3z\\
+2x+5y+2z\\
+3x+8y+3z
+\end{array}\right\rbrack \ldotp
+\end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>Escriba el vector <span class="math notranslate nohighlight">\(v=(1,-2,5)\)</span> como combinación lineal de los vectores <span class="math notranslate nohighlight">\(u_{1} = (1,1,1)\)</span>, <span class="math notranslate nohighlight">\(u_{2} = (1,2,3)\)</span> y <span class="math notranslate nohighlight">\(u_{3}=(2,-1,1)\)</span>.</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Determine si los siguientes vectores son linealmente independientes o dependientes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u_{1} = (1,1,1)\)</span>, <span class="math notranslate nohighlight">\(u_{2} = (2,-1,3)\)</span> y <span class="math notranslate nohighlight">\(u_{3} = (1,-5,3)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(u_{1} = (1,-2,-3)\)</span>, <span class="math notranslate nohighlight">\(u_{2} = (2,3,-1)\)</span> y <span class="math notranslate nohighlight">\(u_{3} = (3,2,1)\)</span>.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modelos_analiticos.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Modelos analíticos de estudio de sistemas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ecuaciones_lineales.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Ecuaciones lineales y sus soluciones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaciones-lineales">Combinaciones lineales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencia-lineal">Dependencia lineal</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Jesús Emmanuel Solís Pérez
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

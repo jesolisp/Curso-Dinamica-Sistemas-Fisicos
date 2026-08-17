@@ -1,0 +1,1157 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modelado de sistemas mecánicos &#8212; Dinámica de Sistemas Físicos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/modelado_sistemas_mec';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/modelado_sistemas_mec.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Modelado de sistemas eléctricos y electro-mecánicos" href="modelado_sistemas_elec.html" />
+    <link rel="prev" title="Polinomio de Hurwitz" href="polinomio_hurwitz.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dynamic_systems.png" class="logo__image only-light" alt="Dinámica de Sistemas Físicos - Home"/>
+    <script>document.write(`<img src="../_static/dynamic_systems.png" class="logo__image only-dark" alt="Dinámica de Sistemas Físicos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">I. Introducción a la dinámica de los sistemas lineales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conceptos.html">Conceptos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices_error.html">Índices de error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos_analiticos.html">Modelos analíticos de estudio de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II. Antecedentes matemáticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algebra_lineal.html">Álgebra Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_lineales.html">Ecuaciones lineales y sus soluciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matriz_escalonada.html">Matrices escalonadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sistemaseclin_homogeneos.html">Sistema de ecuaciones lineales homogéneos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algebra_matrices.html">Álgebra de matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_diferenciales.html">Ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sol_ecuaciones_diferenciales.html">Soluciones de ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformada_Laplace.html">Transformada de Laplace</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">III. Modelado en el dominio de la frecuencia</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="funcion_transferencia.html">Función de transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polinomio_hurwitz.html">Polinomio de Hurwitz</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelado de sistemas mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_elec.html">Modelado de sistemas eléctricos y electro-mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_hidt.html">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otros_sistemas.html">Otro tipo de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IV. Modelado en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="variables_estado.html">Ecuaciones en variables de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sist_ee.html">Modelado de sistemas mediante ecuaciones de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relacion_ee_ft.html">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">V. Análisis de dinámicas de sistemas en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="analisis_dinamica_dt.html">Análisis de dinámicas de sistemas en el dominio del tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_estabilidad_sdl.html">Análisis de la estabilidad de sistemas dinámicos linealizados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="respuesta_estado_est.html">Respuesta de estado estacionario</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="metodo_poshenloh.html">Método de Po-Shen Loh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo_ruffini.html">Método de Ruffini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regla_cadena.html">Regla de la cadena</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/modelado_sistemas_mec.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/modelado_sistemas_mec.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/modelado_sistemas_mec.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/issues/new?title=Issue%20on%20page%20%2Fdocs/modelado_sistemas_mec.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/modelado_sistemas_mec.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modelado de sistemas mecánicos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#movimiento-de-traslacion">Movimiento de traslación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leyes-de-newton">Leyes de Newton</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ley-de-hooke">Ley de Hooke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#friccion-para-el-movimiento-de-traslacion">Fricción para el movimiento de traslación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-masa-resorte">Sistema masa-resorte</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-a-partir-del-enfoque-euler-lagrange">Modelado a partir del enfoque Euler-Lagrange</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-masa-resorte-amortiguador">Sistema masa-resorte-amortiguador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendulo-simple">Péndulo simple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-a-partir-de-leyes-fisicas">Modelado a partir de leyes físicas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Modelado a partir del enfoque Euler-Lagrange</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modelado-de-sistemas-mecanicos">
+<h1>Modelado de sistemas mecánicos<a class="headerlink" href="#modelado-de-sistemas-mecanicos" title="Link to this heading">#</a></h1>
+<section id="movimiento-de-traslacion">
+<h2>Movimiento de traslación<a class="headerlink" href="#movimiento-de-traslacion" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="def_masa">
+<p class="admonition-title"><span class="caption-number">Definición 20 </span> (Masa)</p>
+<section class="definition-content" id="proof-content">
+<p>Propiedad de un elemento de almacenar energía cinética del movimiento de traslación <span id="id1">[<a class="reference internal" href="references.html#id2" title="B.C. Kuo. Sistemas de control automático. Prentice Hall Hispanoamericana, 1996. ISBN 9789688807231. URL: https://books.google.com.mx/books?id=GyWr6cT8SEsC.">Kuo, 1996</a>]</span>.</p>
+</section>
+</div></section>
+<section id="leyes-de-newton">
+<h2>Leyes de Newton<a class="headerlink" href="#leyes-de-newton" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="def_primera_ley_Newton">
+<p class="admonition-title"><span class="caption-number">Definición 21 </span> (Primera ley de Newton)</p>
+<section class="definition-content" id="proof-content">
+<p>Un objeto permanece en reposo o se sigue moviéndose con velocidad constante en módulo y dirección si ninguna fuerza neta actúa sobre el objeto <span id="id2">[<a class="reference internal" href="references.html#id3" title="J.W. Kane, M.M. Sternheim, J.C. Vázquez, and D.J. Mirabent. Física. Editorial Reverté, 1989. ISBN 9788429143188. URL: https://books.google.com.mx/books?id=lj5kLw2uxGIC.">Kane <em>et al.</em>, 1989</a>]</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="def_segunda_ley_Newton">
+<p class="admonition-title"><span class="caption-number">Definición 22 </span> (Segunda ley de Newton)</p>
+<section class="definition-content" id="proof-content">
+<p>La fuerza <span class="math notranslate nohighlight">\(\vec{F}\)</span> necesaria para producir una aceleración <span class="math notranslate nohighlight">\(\vec{a}\)</span> está dada por la siguiente expresión <span id="id3">[<a class="reference internal" href="references.html#id3" title="J.W. Kane, M.M. Sternheim, J.C. Vázquez, and D.J. Mirabent. Física. Editorial Reverté, 1989. ISBN 9788429143188. URL: https://books.google.com.mx/books?id=lj5kLw2uxGIC.">Kane <em>et al.</em>, 1989</a>]</span></p>
+<div class="math notranslate nohighlight" id="equation-eqn-seg-ley-newton">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-seg-ley-newton" title="Link to this equation">#</a></span>\[
+ \sum \vec{F} = m\cdot \vec{a} ; \quad \sum F_{x} = m\cdot a_{x}, \quad \sum F_{y} = m\cdot a_{y},
+\]</div>
+<p>o en término de sus componentes como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-seg-ley-newton-comp">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-seg-ley-newton-comp" title="Link to this equation">#</a></span>\[
+ \sum F_{x} = m\cdot a_{x}, \quad \sum F_{y} = m\cdot a_{y},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(m\)</span> es la masa del objeto.</p>
+</section>
+</div><div class="proof definition admonition" id="def_tercera_ley_Newton">
+<p class="admonition-title"><span class="caption-number">Definición 23 </span> (Tercera ley de Newton)</p>
+<section class="definition-content" id="proof-content">
+<p>Para toda acción, existe una fuerza de reacción de igual magnitud pero en sentido contrario, donde las fuerzas de acción y reacción actúan sobre objetos diferentes <span id="id4">[<a class="reference internal" href="references.html#id3" title="J.W. Kane, M.M. Sternheim, J.C. Vázquez, and D.J. Mirabent. Física. Editorial Reverté, 1989. ISBN 9788429143188. URL: https://books.google.com.mx/books?id=lj5kLw2uxGIC.">Kane <em>et al.</em>, 1989</a>]</span>.</p>
+</section>
+</div></section>
+<section id="ley-de-hooke">
+<h2>Ley de Hooke<a class="headerlink" href="#ley-de-hooke" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definición 24 </span> (Ley de Hooke)</p>
+<section class="definition-content" id="proof-content">
+<p>La fuerza requerida para estirar o comprimir un resorte <span class="math notranslate nohighlight">\(x\)</span> unidades de longitud a partir de su longitud natural es proporcional a <span class="math notranslate nohighlight">\(x\)</span> como sigue <span id="id5">[<a class="reference internal" href="references.html#id5" title="G.B. Thomas, M.D. Weir, J. Hass, and F.R. Giordano. Cálculo: una variable. Cálculo. Pearson Educación, 2005. ISBN 9789702606437. URL: https://books.google.com.mx/books?id=AD1S4y6jumgC.">Thomas <em>et al.</em>, 2005</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[
+ F = kx,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(k\)</span> denota la constante del resorte o constante de fuerza del resorte.</p>
+</section>
+</div><figure class="align-default" id="ley-hooke">
+<a class="reference internal image-reference" href="../_images/ley_hooke.png"><img alt="../_images/ley_hooke.png" src="../_images/ley_hooke.png" style="height: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 2 </span><span class="caption-text">La fuerza <span class="math notranslate nohighlight">\(\vec{F}\)</span> requerida para estirar o comprimir un es proporcional al desplazamiento en <span class="math notranslate nohighlight">\(x\)</span>.</span><a class="headerlink" href="#ley-hooke" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="friccion-para-el-movimiento-de-traslacion">
+<h2>Fricción para el movimiento de traslación<a class="headerlink" href="#friccion-para-el-movimiento-de-traslacion" title="Link to this heading">#</a></h2>
+<p>Existen tres tipos de fricción que se pueden encontrar en sistemas prácticos: fricción viscosa, fricción estática y fricción de Coulomb las cuales definiremos a continuación.</p>
+<div class="proof definition admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definición 25 </span> (Fricción viscosa)</p>
+<section class="definition-content" id="proof-content">
+<p>Según <span id="id6">Kuo [<a class="reference internal" href="references.html#id2" title="B.C. Kuo. Sistemas de control automático. Prentice Hall Hispanoamericana, 1996. ISBN 9789688807231. URL: https://books.google.com.mx/books?id=GyWr6cT8SEsC.">1996</a>]</span>, este tipo de fricción representa una fuerza que es una relación lineal entre la fuerza aplicada y la velocidad.</p>
+</section>
+</div><p>Suele representarse como un <strong>amortiguador</strong> como se muestra en la <a class="reference internal" href="#amortiguador"><span class="std std-numref">Figura 3</span></a> y su expresión matemática está dada como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-friccion-viscosa">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-friccion-viscosa" title="Link to this equation">#</a></span>\[
+ F_{k} = b \dot{x},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(b\)</span> denota el coeficiente de fricción viscosa.</p>
+<figure class="align-default" id="amortiguador">
+<a class="reference internal image-reference" href="../_images/amortiguador.png"><img alt="../_images/amortiguador.png" src="../_images/amortiguador.png" style="height: 150px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 3 </span><span class="caption-text">Representación gráfica de un amortiguador para fricción viscosa.</span><a class="headerlink" href="#amortiguador" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof definition admonition" id="definition-6">
+<p class="admonition-title"><span class="caption-number">Definición 26 </span> (Fricción estática)</p>
+<section class="definition-content" id="proof-content">
+<p>Es una fuerza que previene el movimiento desde el inicio <span id="id7">[<a class="reference internal" href="references.html#id2" title="B.C. Kuo. Sistemas de control automático. Prentice Hall Hispanoamericana, 1996. ISBN 9789688807231. URL: https://books.google.com.mx/books?id=GyWr6cT8SEsC.">Kuo, 1996</a>]</span> y está representada por la siguiente ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+ F_{e} = \left.\pm(F_{s})\right|_{\dot{y}=0}.
+\]</div>
+</section>
+</div><p>Este tipo de fricción sólo existe cuando el cuerpo se encuentra estático pero puede moverse. Aquí, el signo de la fricción representa la dirección del movimiento o bien, la dirección inicial de la velocidad.</p>
+<div class="proof definition admonition" id="definition-7">
+<p class="admonition-title"><span class="caption-number">Definición 27 </span> (Fricción de Coulomb)</p>
+<section class="definition-content" id="proof-content">
+<p>Es una fuerza que posee una amplitud constante con respecto al cambio de la velocidad. Sin embargo, el signo de la fuerza de fricción cambia al invertir la dirección de la velocidad <span id="id8">[<a class="reference internal" href="references.html#id2" title="B.C. Kuo. Sistemas de control automático. Prentice Hall Hispanoamericana, 1996. ISBN 9789688807231. URL: https://books.google.com.mx/books?id=GyWr6cT8SEsC.">Kuo, 1996</a>]</span>. La relación para este tipo de fricción está dada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ F_{Co} = F_{c} \frac{\dot{x}}{|\dot{x}|},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(F_{c}\)</span> denota el coeficiente de la fricción de Coulomb.</p>
+</section>
+</div><div class="proof definition admonition" id="definition-8">
+<p class="admonition-title"><span class="caption-number">Definición 28 </span> (Movimiento de rotación)</p>
+<section class="definition-content" id="proof-content">
+<p>Se define como el movimiento alrededor de un eje fijo. Nos dice que está la suma de los momentos o pares alrededor de un eje fijo es igual al producto de la inercia por la aceleración angular</p>
+<div class="math notranslate nohighlight">
+\[
+ \sum F = J\cdot \alpha,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(J\)</span> denota la inercia, <span class="math notranslate nohighlight">\(a\)</span> la aceleración angular. Otras variables utilizadas para el movimento rotacional son: par (<span class="math notranslate nohighlight">\(\tau\)</span>), velocidad angular (<span class="math notranslate nohighlight">\(\omega\)</span>) y desplazamiento angular (<span class="math notranslate nohighlight">\(\theta\)</span>).</p>
+</section>
+</div><div class="proof definition admonition" id="definition-9">
+<p class="admonition-title"><span class="caption-number">Definición 29 </span> (Inercia)</p>
+<section class="definition-content" id="proof-content">
+<p>Propiedad de un elemento de almacenar energía cinética del movimento de rotación. Depende de la composición geométrica al rededor del eje de rotación.</p>
+<p>La ecucación que describe el par aplicado a un cuerpo con inercia <span class="math notranslate nohighlight">\(J\)</span>, está dada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \tau(t) = J\cdot \alpha(t) \equiv J \dot{w}(t) \equiv J \ddot{\theta}(t),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\theta(t)\)</span> es el desplazamiento angular, <span class="math notranslate nohighlight">\(\omega(t)\)</span> la velocidad angular y <span class="math notranslate nohighlight">\(\alpha(t)\)</span> la aceleración angular.</p>
+</section>
+</div></section>
+<section id="sistema-masa-resorte">
+<h2>Sistema masa-resorte<a class="headerlink" href="#sistema-masa-resorte" title="Link to this heading">#</a></h2>
+<p>Considere una masa <span class="math notranslate nohighlight">\(m\)</span> que se desliza sobre una superficie horizontal y que se encuentra sujeta a una superficie vertical a través de un resorte con constante de fuerza <span class="math notranslate nohighlight">\(k\)</span> como se muestra en la <a class="reference internal" href="#mass-spring"><span class="std std-numref">Figura 4</span></a>.</p>
+<figure class="align-default" id="mass-spring">
+<a class="reference internal image-reference" href="../_images/mass_spring.png"><img alt="../_images/mass_spring.png" src="../_images/mass_spring.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 4 </span><span class="caption-text">Diagrama del sistema masa-resorte.</span><a class="headerlink" href="#mass-spring" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Si definimos <span class="math notranslate nohighlight">\(x\)</span> como el desplazamiento desde el punto de referencia <span class="math notranslate nohighlight">\(x_{0}\)</span>; asumimos  que la masa se desplaza sin fricción y aplicamos la Segunda ley de Newton así como la Ley de Hooke obtenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-modelo-mr-lh-sln">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-modelo-mr-lh-sln" title="Link to this equation">#</a></span>\[
+ ma +  kx = F_{x}.
+\]</div>
+<p>Dado que la aceleración <span class="math notranslate nohighlight">\(a\)</span> está definida como <span class="math notranslate nohighlight">\(\ddot{x}\)</span> y que la fuerza <span class="math notranslate nohighlight">\(F_{x}\)</span> está a nuestra disposición, sustituimos en la ecuación anterior para obtener el modelo del sistema masa-resorte como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ m\ddot{x} +  kx = 0.
+\]</div>
+<p>Para un desplazamiento largo, la fuerza restauradora (<span class="math notranslate nohighlight">\(kx\)</span>) podría depender de manera no lineal de <span class="math notranslate nohighlight">\(x\)</span>, por ejemplo, expresada por la siguiente función</p>
+<div class="math notranslate nohighlight">
+\[
+ g(x) = k\left( 1 - a^{2}x^{2} \right)x, \quad |ax|&lt;1,
+\]</div>
+<p>representa al modelo llamado <strong>softening spring</strong>, donde un gran incremento de desplazamiento produce un incremento pequeño de fuerza.</p>
+<p>Por otro lado, si tenemos la siguiente función</p>
+<div class="math notranslate nohighlight">
+\[
+ g(x) = k\left(1 + a^{2}y^{2} \right)x,
+\]</div>
+<p>es posible obtener el modelo llamado <strong>hardening spring</strong> donde un incremento pequeño de desplazamiento produce un gran incremento de fuerza.</p>
+<section id="modelado-a-partir-del-enfoque-euler-lagrange">
+<h3>Modelado a partir del enfoque Euler-Lagrange<a class="headerlink" href="#modelado-a-partir-del-enfoque-euler-lagrange" title="Link to this heading">#</a></h3>
+<p>Cualquier sistema debe satisfacer las ecuaciones de <strong>Lagrange</strong> dadas por</p>
+<div class="math notranslate nohighlight" id="equation-eqn-sistema-conservativo">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-sistema-conservativo" title="Link to this equation">#</a></span>\[
+ 
+ \frac{\mathrm{d}}{\mathrm{d}t}\left[\frac{\partial \mathcal{L}}{\partial\dot{q}} \right] - \frac{\partial \mathcal{L}}{\partial q} + \frac{\partial J}{\partial \dot{q}} = 0,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> es el <strong>Lagrangiano</strong> del sistema y se define como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathcal{L}(q,\dot{q}) = U^{*}(\dot{q})-T(q).
+\]</div>
+<p>Además</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U\)</span>, representa la coenergía total en las reservas de flujo del sistema expresada como una función de las coordenadas de esfuerzo generalizado.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span>, la energía total en los almacenes de esfuerzo del sistema expresada como una función de las coordenadas de acumulación de esfuerzo generalizadas.</p></li>
+<li><p><span class="math notranslate nohighlight">\(J\)</span>, el co-contenido total en los disipadores del sistema expresado como una función de las coordenadas de esfuerzo generalizado.</p></li>
+<li><p><span class="math notranslate nohighlight">\(q\)</span>, el vector de coordenadas generalizadas definida como el conjunto de coordenadas linealmente independientes que definen la configuración del sistema.</p></li>
+</ul>
+<p>Para un sistema mecánico no conservativo, las ecuaciones de Lagrange están dadas como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-sistema-no-conservativo">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-sistema-no-conservativo" title="Link to this equation">#</a></span>\[
+ \frac{\mathrm{d}}{\mathrm{d}t}\left[\frac{\partial \mathcal{L}}{\partial\dot{q}_{j}} \right] - \frac{\partial \mathcal{L}}{\partial q_{j}} + \frac{\partial J}{\partial \dot{q}_{j}} = \tau_{j}, \quad j = 1,\dots,l,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\tau_{j}\)</span> denota las fuerzas generalizadas.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>En este contexto conservativo significa libre de disipación y entradas de fuerzas externas.</p>
+</div>
+<div class="proof definition admonition" id="definition-10">
+<p class="admonition-title"><span class="caption-number">Definición 30 </span> (Masa traslacional)</p>
+<section class="definition-content" id="proof-content">
+<p>Una masa traslacional pura es un objeto rígido el cual se mueve a través de un entorno no disipativo. De acuerdo con la Segunda ley de Newton, el momento <span class="math notranslate nohighlight">\(p\)</span> de la masa está linealmente relacionado a la velocidad del objeto como se da a continuación</p>
+<div class="math notranslate nohighlight">
+\[
+ p = mv,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(m\)</span> es la <strong>masa Newtoniana</strong> del objeto. El momento <span class="math notranslate nohighlight">\(p\)</span>, está definido por</p>
+<div class="math notranslate nohighlight">
+\[
+ p = \int_{t_{0}}^{t} F\mathrm{d}t + p(t_{0}), \quad F = \frac{\mathrm{d}p}{\mathrm{d}t},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(F\)</span> denota fuerza.</p>
+</section>
+</div><p>De acuerdo con la analogía de movilidad, la cantidad de momento es formalmente análoga a la acumulación de flujo. Por lo tanto, una masa pura translacional puede ser clasificada como un almacenamiento de flujo.</p>
+<p>La masa Newtoniana, tiene una relación constitutiva lineal intríseca, por consiguiente, la energía almacenada <span class="math notranslate nohighlight">\(U\)</span> (energía cinética) es igual</p>
+<div class="math notranslate nohighlight">
+\[
+ U = \frac{1}{2}mv^{2}.
+\]</div>
+<div class="proof definition admonition" id="definition-11">
+<p class="admonition-title"><span class="caption-number">Definición 31 </span> (Resorte traslacional)</p>
+<section class="definition-content" id="proof-content">
+<p>Es un objeto mecánico que cuando está sujeto a una fuerza se comprime o alarga sin aceleración significativa de sus componentes, o pérdida de energía debido a la fricción o falta de la deformación. El mecanismo de almacenamiento de energía de un resorte puro es el desplazamiento neto del resorte desde su estado de reposo. Por lo tanto, la variable desplazamiento se define como</p>
+<div class="math notranslate nohighlight">
+\[
+ x = \int_{t_{0}}^{t}v\mathrm{d}t + x(t_{0}), \quad v = \frac{\mathrm{d}x}{\mathrm{d}t}.
+\]</div>
+</section>
+</div><p>Un resorte lineal ideal obedece la ley de Hooke y tiene una relación constitutiva</p>
+<div class="math notranslate nohighlight">
+\[
+ x = \frac{1}{k}F,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(k\)</span> se conoce como la rigidez del resorte.</p>
+<p>De acuerdo con la analogía de movilidad, un resorte es un almacén de esfuerzo, ya que el desplazamiento  representa una acumulación de la variable esfuerzo (velocidad). Por lo tanto, la energía almacenada en un resorte es <span class="math notranslate nohighlight">\(T\)</span> (energía potencial) y puede ser evaluada por la siguiente relación constitutiva</p>
+<div class="math notranslate nohighlight">
+\[
+ T = \frac{1}{2k}F^{2}.
+\]</div>
+<div class="proof definition admonition" id="definition-12">
+<p class="admonition-title"><span class="caption-number">Definición 32 </span> (Disipación traslacional)</p>
+<section class="definition-content" id="proof-content">
+<p>Un disipador puro es aquel en el que los fenómenos de almacenamiento de energía cinética y potencial están ausentes. Por lo tanto, un objeto rígido y liviano que se mueve a través de un fluido viscoso o se desliza sobre una superficie rugosa tendrá una relación constitutiva que relaciona estáticamente la fuerza aplicada y la velocidad relativa del objeto.</p>
+</section>
+</div><p>La potencia absorbida por un disipador es el producto de las variables esfuerzo y caudal, y se obtiene de la relación constitutiva como la suma del contenido y cocontenido del disipador. La relación constitutiva de un disipador lineal está dada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ J = G = \frac{1}{2}bv^{2}.
+\]</div>
+<p>En este caso, vamos a tratar de obtener el modelo dinámico del sistema masa-resorte utilizando las ecuaciones de Euler-Lagrange. Para ello, definimos la siguiente coordenada generalizada</p>
+<div class="math notranslate nohighlight">
+\[
+ q = x, \quad \dot{q} = \dot{x}.
+\]</div>
+<p>Expresamos las energías en función de la coordenada generalizada para obtener el Lagrangiano del sistema. Donde, la energía potencial del sistema se obtiene a partir de la siguiente relación</p>
+<div class="math notranslate nohighlight" id="equation-eqn-area-triangulo">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-area-triangulo" title="Link to this equation">#</a></span>\[
+ A = \frac{\text{base}\cdot \text{altura}}{2},
+\]</div>
+<p>Sustituyendo la Ley de Hooke en <a class="reference internal" href="#equation-eqn-area-triangulo">(10)</a>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ T = \frac{qkq}{2} \equiv \frac{kq^{2}}{2},
+\]</div>
+<p>mientras que la co-energía cinética está dada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ U^{*} = \frac{m\dot{q}^{2}}{2}.
+\]</div>
+<p>Por consiguiente, el Lagrangiano del sistema se define como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-lagrangiano-mr">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eqn-lagrangiano-mr" title="Link to this equation">#</a></span>\[
+ \mathcal{L}(q,\dot{q}) = \frac{m\dot{q}^{2}}{2} - \frac{kq^{2}}{2}.
+\]</div>
+<p>Calculando las ecuaciones de Lagrange <a class="reference internal" href="#equation-eqn-sistema-no-conservativo">(9)</a> a partir de la Ec. {eq}`eqn:Lagrangiano_mr, obtenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial \mathcal{L}}{\partial \dot{q}} = m\dot{q}
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-euler-lagrange-mr-a">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eqn-euler-lagrange-mr-a" title="Link to this equation">#</a></span>\[
+ \frac{\mathrm{d}}{\mathrm{d}t} \left[ \frac{\partial \mathcal{L}}{\partial \dot{q}} \right]  = m\ddot{q}
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-euler-lagrange-mr-b">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eqn-euler-lagrange-mr-b" title="Link to this equation">#</a></span>\[
+ \frac{\partial \mathcal{L}}{\partial q} = -kq
+\]</div>
+<p>Finalmente, sustituimos las Ecs. <a class="reference internal" href="#equation-eqn-euler-lagrange-mr-a">(12)</a> y <a class="reference internal" href="#equation-eqn-euler-lagrange-mr-b">(13)</a> en la Ec. <a class="reference internal" href="#equation-eqn-sistema-no-conservativo">(9)</a></p>
+<div class="math notranslate nohighlight">
+\[
+ m\ddot{x} + kx = F_{x}.
+\]</div>
+</section>
+</section>
+<section id="sistema-masa-resorte-amortiguador">
+<h2>Sistema masa-resorte-amortiguador<a class="headerlink" href="#sistema-masa-resorte-amortiguador" title="Link to this heading">#</a></h2>
+<p>Considere el sistema masa-resorte-amortiguador mostrado en la <a class="reference internal" href="#mass-spring-damp"><span class="std std-numref">Figura 5</span></a>. Dicho sistema consiste en una masa <span class="math notranslate nohighlight">\(m\)</span> sujeta a un elemento de amortiguamiento con constante de viscosidad <span class="math notranslate nohighlight">\(b\)</span> y un resorte con rigidez <span class="math notranslate nohighlight">\(k\)</span>. Podemos observar que el sistema se desplaza sobre un plano horizontal a partir de una fuerza <span class="math notranslate nohighlight">\(F_{x}\)</span> aplicada.</p>
+<p>Podemos partir del modelo dado en la Ec. <a class="reference internal" href="#equation-eqn-modelo-mr-lh-sln">(7)</a> y modelando el amortiguador con la relación dada en la Ec. <a class="reference internal" href="#equation-eqn-friccion-viscosa">(6)</a>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ m\ddot{x} + b\dot{x} + kx = F_{x}.
+\]</div>
+<p>De manera análoga, podemos obtener aplicar las ecuaciones de Lagrange {eq}`eqn:sistema_no_conservativo considerando que existe una fuerza de fricción viscosa como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ m\ddot{x} + kx = F_{x} - b\dot{x}.
+\]</div>
+<figure class="align-default" id="mass-spring-damp">
+<a class="reference internal image-reference" href="../_images/mass_spring_damp.png"><img alt="../_images/mass_spring_damp.png" src="../_images/mass_spring_damp.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 5 </span><span class="caption-text">Sistema masa-resorte-amortiguador.</span><a class="headerlink" href="#mass-spring-damp" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pendulo-simple">
+<h2>Péndulo simple<a class="headerlink" href="#pendulo-simple" title="Link to this heading">#</a></h2>
+<p>Considere el péndulo simple mostrado en la <a class="reference internal" href="#single-pendulum"><span class="std std-numref">Figura 6</span></a></p>
+<figure class="align-default" id="single-pendulum">
+<a class="reference internal image-reference" href="../_images/single_pendulum.png"><img alt="../_images/single_pendulum.png" src="../_images/single_pendulum.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 6 </span><span class="caption-text">Péndulo simple.</span><a class="headerlink" href="#single-pendulum" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>donde <span class="math notranslate nohighlight">\(l\)</span> denota la longitud de la barra, y <span class="math notranslate nohighlight">\(m\)</span> la masa de la bola. Asuma que la barra es rígida y de masa despreciable. Suponga entonces, <span class="math notranslate nohighlight">\(\theta\)</span> como el ángulo entre la barra y el eje vertical a través del pivote. Además, el péndulo se mueve libremente sobre un plano vertical formando un círculo de radio <span class="math notranslate nohighlight">\(l\)</span>. Para obtener la ecuación que describe el movimiento del péndulo es necesario identificar las fuerzas que interactúan sobre la bola o bien, utilizar el enfoque de Euler-Lagrange.</p>
+<section id="modelado-a-partir-de-leyes-fisicas">
+<h3>Modelado a partir de leyes físicas<a class="headerlink" href="#modelado-a-partir-de-leyes-fisicas" title="Link to this heading">#</a></h3>
+<p>En un sistema mecánico de tipo rotacional, las leyes físicas que rigen el sistema están dadas por la Segunda ley de Newton, donde las fuerzas positivas están dadas hacia la derecha mientras que las negativas hacia el lado contrario. Si realizamos un diagrama de cuerpo libre para observar las fuerzas que interactúan con la masa como se muestra a continuación</p>
+<figure class="align-default" id="free-body">
+<a class="reference internal image-reference" href="../_images/free_body.png"><img alt="../_images/free_body.png" src="../_images/free_body.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 7 </span><span class="caption-text">Diagrama de cuerpo libre de la masa en el péndulo simple.</span><a class="headerlink" href="#free-body" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Podemos observar que hay una fuerza gravitacional <span class="math notranslate nohighlight">\(mg\)</span>, donde <span class="math notranslate nohighlight">\(g\)</span> es la aceleración de la gravedad. Así mismo, existe una fuerza de tensión <span class="math notranslate nohighlight">\(\vec{T}\)</span> con componentes <span class="math notranslate nohighlight">\(T_{x}\)</span> y <span class="math notranslate nohighlight">\(T_{y}\)</span>.</p>
+<p>Podemos observar que la única fuerza que interactúa en <span class="math notranslate nohighlight">\(x\)</span> es <span class="math notranslate nohighlight">\(T_{x}\)</span>. Recordando que esta tensión tiene una fuerza negativa, por lo tanto la definimos como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-componente-x">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eqn-componente-x" title="Link to this equation">#</a></span>\[
+ -T\sin(\theta) = m \ddot{x},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(T\)</span> denota la magnitud de la tensión y <span class="math notranslate nohighlight">\(\ddot{x}:=\frac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}\)</span>.</p>
+<p>Para el análisis de las fuerzas que interactúan en el eje <span class="math notranslate nohighlight">\(y\)</span>, tenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-componente-y">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eqn-componente-y" title="Link to this equation">#</a></span>\[
+ -mg + T\cos(\theta) = m\ddot{y}.
+\]</div>
+<p>Observamos entonces que tenemos dos variables que ecuaciones. Por ello, vamos a relizar el siguiente despeje</p>
+<div class="math notranslate nohighlight" id="equation-eqn-componente-x-desp">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eqn-componente-x-desp" title="Link to this equation">#</a></span>\[
+ T = -\frac{m \ddot{x}}{\sin(\theta)}.
+\]</div>
+<p>Sustituyendo <a class="reference internal" href="#equation-eqn-componente-x-desp">(16)</a> en <a class="reference internal" href="#equation-eqn-componente-y">(15)</a>, tenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-componentes">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eqn-componentes" title="Link to this equation">#</a></span>\[
+ -mg + \left(-\frac{m\ddot{x}}{\sin(\theta)}\right)\cos(\theta) = m \ddot{y}.
+\]</div>
+<p>Simplificamos la expresión obtenida multiplicando ambos lados de la igualdad por el término <span class="math notranslate nohighlight">\(\sin(\theta)\)</span> y resulta</p>
+<div class="math notranslate nohighlight" id="equation-eqn-componentes-simp">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eqn-componentes-simp" title="Link to this equation">#</a></span>\[
+ -mg\sin(\theta) - m\ddot{x}\cos(\theta) = m \ddot{y}\sin(\theta).
+\]</div>
+<p>Observando el diagrama de la <a class="reference internal" href="#single-pendulum"><span class="std std-numref">Figura 6</span></a>, tenemos que la posición de la masa está dada por sus componentes <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> dentro de un plano cartesiano. Así mismo, tenemos que <span class="math notranslate nohighlight">\(l\)</span> y <span class="math notranslate nohighlight">\(\theta\)</span> están en un sistema de coordenadas polares. Por lo tanto, podemos utilizar la relación que hay entre estos sistemas para establecer las siguientes relaciones</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ecs-polares">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eqn-ecs-polares" title="Link to this equation">#</a></span>\[
+ x = l\sin(\theta), \quad y = -l\cos(\theta).
+\]</div>
+<p>Puesto que necesitamos la aceleración a lo largo del eje <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span>, derivamos la expresión dada en la Ec. <a class="reference internal" href="#equation-eqn-ecs-polares">(19)</a> recordando la regla de la cadena (ver <a class="reference internal" href="regla_cadena.html#chain_rule">Teorema 12</a>)</p>
+<div class="math notranslate nohighlight" id="equation-eqn-der-ecs-polares-a">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eqn-der-ecs-polares-a" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= l\cos(\theta)\dot{\theta}, \\
+  \dot{y} &amp;= l\sin(\theta)\dot{\theta}, \\
+ \end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-der-ecs-polares-b">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eqn-der-ecs-polares-b" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \ddot{x} &amp;= l \left[\ddot{\theta}\cos(\theta) - \dot{\theta}^{2}\sin(\theta) \right],\\
+  \ddot{y} &amp;= l \left[\ddot{\theta}\sin(\theta) + \dot{\theta}^{2}\cos(\theta) \right]. \\
+ \end{aligned}
+\end{split}\]</div>
+<p>Sustituyendo <a class="reference internal" href="#equation-eqn-der-ecs-polares-a">(20)</a> y <a class="reference internal" href="#equation-eqn-der-ecs-polares-b">(21)</a> en <a class="reference internal" href="#equation-eqn-componentes-simp">(18)</a></p>
+<div class="math notranslate nohighlight" id="equation-eqn-desp-simp">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eqn-desp-simp" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  -mg\sin(\theta) - ml\ddot{\theta}\cos^{2}(\theta) + ml\dot{\theta}^{2}\sin(\theta) \cos(\theta) &amp;= ml \ddot{\theta}\sin^{2}(\theta) + ml\dot{\theta}^{2}\cos(\theta) \sin(\theta), \\
+  -mg\sin(\theta) - ml\ddot{\theta}\cos^{2}(\theta) &amp;= ml \ddot{\theta}\sin^{2}(\theta), \\
+  -mg\sin(\theta) &amp;= ml\ddot{\theta} \left[\sin^{2}(\theta) + \cos^{2}(\theta)\right], \\
+ \end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-pendulum-wof">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eqn-pendulum-wof" title="Link to this equation">#</a></span>\[
+ ml\ddot{\theta} = -mg\sin(\theta).
+\]</div>
+<p>Suponiendo que hay una fuerza proporcional a la velocidad de la masa con un coeficiente <span class="math notranslate nohighlight">\(k_{f}\)</span> que resiste el movimiento, el modelo de péndulo simple con fuerza de fricción} queda dado por la siguiente ecuación</p>
+<div class="math notranslate nohighlight" id="equation-eqn-pendulum-wf">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eqn-pendulum-wf" title="Link to this equation">#</a></span>\[
+ ml\ddot{\theta} = -mg\sin(\theta) - k_{f}l\dot{\theta}.
+\]</div>
+<p>Por lo tanto, la dinámica del péndulo simple con y sin fricción están dadas por ecuaciones diferenciales de segundo orden. Para resolver las Ec. <a class="reference internal" href="#equation-eqn-pendulum-wof">(23)</a> y <a class="reference internal" href="#equation-eqn-pendulum-wf">(24)</a> realizamos un cambio de variable y definimos como variables de estado <span class="math notranslate nohighlight">\(x_{1} = \theta\)</span> y <span class="math notranslate nohighlight">\(x_{1} = \dot{\theta}\)</span>. Por consiguiente, el sistema queda representado como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-single-pendulum-wf">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eqn-single-pendulum-wf" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= x_{2}, \\
+  \dot{x}_{2} &amp;= -\frac{g}{l} \sin(x_{1}) - \frac{k_{f}}{m}x_{2}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Una variante del sistema de péndulo simple se puede obtener agregando una entrada exógena <span class="math notranslate nohighlight">\(\tau\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= x_{2}, \\
+  \dot{x}_{2} &amp;= -\frac{g}{l} \sin(x_{1}) - \frac{k_{f}}{m}x_{2} + \frac{\tau}{ml^{2}}.
+ \end{aligned}
+\end{split}\]</div>
+</section>
+<section id="id9">
+<h3>Modelado a partir del enfoque Euler-Lagrange<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>El sistema mostrado en la <a class="reference internal" href="#single-pendulum"><span class="std std-numref">Figura 6</span></a>, sólo posee un grado de libertad denotado como <span class="math notranslate nohighlight">\(\theta\)</span>. Entonces, definimos las siguientes coordenadas generalizadas</p>
+<div class="math notranslate nohighlight">
+\[
+ q := \theta, \quad \dot{q} := \dot{\theta}.
+\]</div>
+<p>Además, definimos como fuerza generalizada la variable <span class="math notranslate nohighlight">\(u\)</span>, <em>i.e.</em></p>
+<div class="math notranslate nohighlight">
+\[
+ \tau_{i} = 0.
+\]</div>
+<p>Ahora bien, podemos representar la Ec. <a class="reference internal" href="#equation-eqn-ecs-polares">(19)</a> en forma vectorial como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-vector-pm">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eqn-vector-pm" title="Link to this equation">#</a></span>\[\begin{split}
+ p_{m} = \begin{bmatrix}
+  x_{m} \\
+  y_{m}
+ \end{bmatrix} =
+ \begin{bmatrix}
+  l\sin(\theta) \\
+  -l\cos(\theta)
+ \end{bmatrix},
+\end{split}\]</div>
+<p>y el vector de velocidad <a class="reference internal" href="#equation-eqn-der-ecs-polares-a">(20)</a> como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-vector-vm">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eqn-vector-vm" title="Link to this equation">#</a></span>\[\begin{split}
+ v_{m} = \begin{bmatrix}
+  \dot{x}_{m} \\
+  \dot{y}_{m} \\
+ \end{bmatrix} =
+ \begin{bmatrix}
+  l\cos(\theta)\dot{\theta} \\
+  l\sin(\theta)\dot{\theta} \\
+ \end{bmatrix}.
+\end{split}\]</div>
+<p>La energía co-cinética del sistema está dada por</p>
+<div class="math notranslate nohighlight" id="equation-eqn-cinetica">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-cinetica" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  U^{*} = \frac{1}{2}mv^{2} &amp;\equiv \frac{1}{2}m\|v_{m}\|^{2}\\
+  &amp;= \frac{1}{2}mv_{m}^{T}v_{m}.
+ \end{aligned}
+\end{split}\]</div>
+<p>mientras que la energía potencial del sistema por</p>
+<div class="math notranslate nohighlight" id="equation-eqn-potencial">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eqn-potencial" title="Link to this equation">#</a></span>\[
+ T = mgh \equiv m\vec{g}^{T}p_{m},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\vec{g} = \begin{bmatrix} 0 &amp; g \end{bmatrix}^{T}\)</span>, con <span class="math notranslate nohighlight">\(g \in \mathbb{R}^{2}\)</span>.</p>
+<p>Sustituyendo <a class="reference internal" href="#equation-eqn-vector-vm">(27)</a> en <a class="reference internal" href="#equation-eqn-cinetica">(28)</a>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+   U^{*} &amp;= \frac{1}{2}m \begin{bmatrix}
+   l\cos(\theta)\dot{\theta} &amp; l\sin(\theta)\dot{\theta}
+  \end{bmatrix}
+  \begin{bmatrix}
+   l\cos(\theta)\dot{\theta} \\
+   l\sin(\theta)\dot{\theta} \\
+  \end{bmatrix} \\
+  &amp;= \frac{1}{2}m \left( l^{2}\cos^{2}(\theta)\dot{\theta}^{2} + l^{2}\sin^{2}(\theta)\dot{\theta}^{2} \right), \\
+  &amp;= \frac{1}{2} ml^{2}\dot{\theta}^{2} \left( \cos^{2}(\theta) + \sin^{2}(\theta) \right), \\
+  &amp;= \frac{1}{2} ml^{2}\dot{\theta}^{2}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Ahora, sustituyendo <a class="reference internal" href="#equation-eqn-vector-pm">(26)</a> en <a class="reference internal" href="#equation-eqn-potencial">(29)</a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  T &amp;= m \begin{bmatrix} 0 &amp; g \end{bmatrix} \begin{bmatrix}
+  l\sin(\theta) \\
+  -l\cos(\theta)
+ \end{bmatrix}, \\
+ &amp;= -mgl\cos(\theta)
+ \end{aligned}
+\end{split}\]</div>
+<p>Entonces, el Lagrangiano del sistema se define como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathcal{L} = \frac{1}{2}ml^{2}\dot{\theta}^{2} + mgl\cos(\theta).
+\]</div>
+<p>Obtenemos las derivadas parciales</p>
+<div class="math notranslate nohighlight" id="equation-eqn-parcial1">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eqn-parcial1" title="Link to this equation">#</a></span>\[
+ \frac{\partial \mathcal{L}}{\partial \dot{\theta}} = ml^{2}\dot{\theta},
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-parcial2">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eqn-parcial2" title="Link to this equation">#</a></span>\[
+ \frac{\mathrm{d}}{\mathrm{d}t}\left[ \frac{\partial \mathcal{L}}{\partial \dot{\theta}} \right]= ml^{2}\ddot{\theta},
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-parcial3">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eqn-parcial3" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \frac{\partial \mathcal{L}}{\partial \theta} &amp;= \frac{\partial}{\partial \theta} \left( \frac{1}{2}ml^{2}\dot{\theta}^{2} + mgl\cos(\theta) \right), \\
+  &amp;= -mgl\sin(\theta),
+ \end{aligned}
+\end{split}\]</div>
+<p>Sustituyendo, <a class="reference internal" href="#equation-eqn-parcial1">(30)</a>-<a class="reference internal" href="#equation-eqn-parcial3">(32)</a> en <a class="reference internal" href="#equation-eqn-sistema-no-conservativo">(9)</a> y considerando que <span class="math notranslate nohighlight">\(\tau=0\)</span> tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ ml^{2}\ddot{\theta} + mgl\sin(\theta) = 0.
+\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="polinomio_hurwitz.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Polinomio de Hurwitz</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="modelado_sistemas_elec.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Modelado de sistemas eléctricos y electro-mecánicos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#movimiento-de-traslacion">Movimiento de traslación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leyes-de-newton">Leyes de Newton</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ley-de-hooke">Ley de Hooke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#friccion-para-el-movimiento-de-traslacion">Fricción para el movimiento de traslación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-masa-resorte">Sistema masa-resorte</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-a-partir-del-enfoque-euler-lagrange">Modelado a partir del enfoque Euler-Lagrange</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-masa-resorte-amortiguador">Sistema masa-resorte-amortiguador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendulo-simple">Péndulo simple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado-a-partir-de-leyes-fisicas">Modelado a partir de leyes físicas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Modelado a partir del enfoque Euler-Lagrange</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Jesús Emmanuel Solís Pérez
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

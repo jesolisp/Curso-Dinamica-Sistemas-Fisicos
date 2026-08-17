@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Análisis de dinámicas de sistemas en el dominio del tiempo &#8212; Dinámica de Sistemas Físicos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/analisis_dinamica_dt';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/analisis_dinamica_dt.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Análisis de la estabilidad de sistemas dinámicos linealizados" href="analisis_estabilidad_sdl.html" />
+    <link rel="prev" title="Relación entre el modelo en variables de estado y la función de transferencia" href="relacion_ee_ft.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dynamic_systems.png" class="logo__image only-light" alt="Dinámica de Sistemas Físicos - Home"/>
+    <script>document.write(`<img src="../_static/dynamic_systems.png" class="logo__image only-dark" alt="Dinámica de Sistemas Físicos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">I. Introducción a la dinámica de los sistemas lineales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conceptos.html">Conceptos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices_error.html">Índices de error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos_analiticos.html">Modelos analíticos de estudio de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II. Antecedentes matemáticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algebra_lineal.html">Álgebra Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_lineales.html">Ecuaciones lineales y sus soluciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matriz_escalonada.html">Matrices escalonadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sistemaseclin_homogeneos.html">Sistema de ecuaciones lineales homogéneos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algebra_matrices.html">Álgebra de matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_diferenciales.html">Ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sol_ecuaciones_diferenciales.html">Soluciones de ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformada_Laplace.html">Transformada de Laplace</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">III. Modelado en el dominio de la frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="funcion_transferencia.html">Función de transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polinomio_hurwitz.html">Polinomio de Hurwitz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_mec.html">Modelado de sistemas mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_elec.html">Modelado de sistemas eléctricos y electro-mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_hidt.html">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otros_sistemas.html">Otro tipo de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IV. Modelado en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="variables_estado.html">Ecuaciones en variables de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sist_ee.html">Modelado de sistemas mediante ecuaciones de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relacion_ee_ft.html">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">V. Análisis de dinámicas de sistemas en el dominio del tiempo</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Análisis de dinámicas de sistemas en el dominio del tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_estabilidad_sdl.html">Análisis de la estabilidad de sistemas dinámicos linealizados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="respuesta_estado_est.html">Respuesta de estado estacionario</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="metodo_poshenloh.html">Método de Po-Shen Loh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo_ruffini.html">Método de Ruffini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regla_cadena.html">Regla de la cadena</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/analisis_dinamica_dt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/analisis_dinamica_dt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/analisis_dinamica_dt.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/issues/new?title=Issue%20on%20page%20%2Fdocs/analisis_dinamica_dt.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/analisis_dinamica_dt.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Análisis de dinámicas de sistemas en el dominio del tiempo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#localizacion-de-los-puntos-de-equilibrio">Localización de los puntos de equilibrio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linealizacion-de-sistemas-en-torno-a-un-punto-de-equilibrio">Linealización de sistemas en torno a un punto de equilibrio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linealizacion">Linealización</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-de-dinamicas-de-sistemas-en-el-dominio-del-tiempo">
+<h1>Análisis de dinámicas de sistemas en el dominio del tiempo<a class="headerlink" href="#analisis-de-dinamicas-de-sistemas-en-el-dominio-del-tiempo" title="Link to this heading">#</a></h1>
+<p>Considere un sistema autónomo representado por la siguiente ecuación</p>
+<div class="math notranslate nohighlight" id="equation-eqn-sys-aut">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-sys-aut" title="Link to this equation">#</a></span>\[
+ \dot{x} = f(x),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(f:D\leftarrow R^{n}\)</span> es un mapa local de Lipschitz de un dominio <span class="math notranslate nohighlight">\(D\subset R^{n}\)</span> en <span class="math notranslate nohighlight">\(R^{n}\)</span>.</p>
+<p>Para poder estudiar la estabilidad del sistema <a class="reference internal" href="#equation-eqn-sys-aut">(48)</a>, es necesario obtener <span class="math notranslate nohighlight">\(\bar{x}\in D\)</span> que denota el punto de equilibrio</p>
+<div class="math notranslate nohighlight">
+\[
+ f(\bar{x}) = 0.
+\]</div>
+<section id="localizacion-de-los-puntos-de-equilibrio">
+<h2>Localización de los puntos de equilibrio<a class="headerlink" href="#localizacion-de-los-puntos-de-equilibrio" title="Link to this heading">#</a></h2>
+<div class="proof definition admonition" id="punto-equilibrio">
+<p class="admonition-title"><span class="caption-number">Definición 40 </span></p>
+<section class="definition-content" id="proof-content">
+<p>El punto de equilibrio <span class="math notranslate nohighlight">\(x=0\)</span> de <span class="math notranslate nohighlight">\(\dot{x} = f(x)\)</span> es</p>
+<p>estable si, para cada <span class="math notranslate nohighlight">\(\varepsilon &gt;0\)</span>, hay un <span class="math notranslate nohighlight">\(\delta = \delta(\varepsilon)&gt;0\)</span> tal que</p>
+<div class="math notranslate nohighlight">
+\[
+  \|x(0)\| &lt; \delta \Rightarrow \|x(t)\| &lt; \varepsilon, \quad \forall t\geq 0
+ \]</div>
+<ul class="simple">
+<li><p>inestable si no es estable.</p></li>
+<li><p>asintóticamente estable si este es estable y <span class="math notranslate nohighlight">\(\delta\)</span> se escoge tal que.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  \|x(0)\| &lt; \delta \Rightarrow \lim \limits_{t\rightarrow \infty} x(t) = 0.
+ \]</div>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Considere las ecuaciones del péndulo simple y obtenga sus puntos de equilibrio</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= x_{2}, \\
+  \dot{x}_{2} &amp;= - \frac{g}{l}\sin(x_{1}) - \frac{k}{m}x_{2}.
+ \end{aligned}
+\end{split}\]</div>
+</section>
+<section id="linealizacion-de-sistemas-en-torno-a-un-punto-de-equilibrio">
+<h2>Linealización de sistemas en torno a un punto de equilibrio<a class="headerlink" href="#linealizacion-de-sistemas-en-torno-a-un-punto-de-equilibrio" title="Link to this heading">#</a></h2>
+<p>Un sistema (LTI) de la forma</p>
+<div class="math notranslate nohighlight" id="equation-eqn-lti">
+<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-lti" title="Link to this equation">#</a></span>\[
+ \dot{x} = Ax,
+\]</div>
+<p>tiene un punto de equilibrio en el origen. Este punto de equilibrio está aislado si y sólo si <span class="math notranslate nohighlight">\(\text{det}(A)\neq0\)</span>. Si <span class="math notranslate nohighlight">\(\text{det}(A)=0\)</span>, la matriz <span class="math notranslate nohighlight">\(A\)</span> tiene un espacio nulo no trivial.</p>
+<p>Las propiedades de estabilidad del origen pueden ser caracterizadas por las ubicaciones de los <em>eigenvalores</em> de la matriz <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Recordemos que la solución al sistema <span class="math notranslate nohighlight">\(\dot{x}=Ax\)</span> dada una condición inicial <span class="math notranslate nohighlight">\(x_{0}\)</span> está dada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ x(t) = \exp(At)x_{0}.
+\]</div>
+<p>Además, para cualquier matriz <span class="math notranslate nohighlight">\(A\)</span> existe una matriz <span class="math notranslate nohighlight">\(P\)</span> no \myindex{singular} que transforma <span class="math notranslate nohighlight">\(A\)</span> en su forma de <strong>Jordan</strong>, <em>i.e.</em></p>
+<div class="math notranslate nohighlight">
+\[
+ P^{-1}AP = J = \text{block} \text{diag}\left[J_{1}, J_{2},\dots, J_{r} \right],
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(J_{i}\)</span> es el bloque de Jordan asociado con el eigenvalor <span class="math notranslate nohighlight">\(\lambda_{i}\)</span> de A.</p>
+<p>La forma generalizada del bloque de Jordan, considerando un orden <span class="math notranslate nohighlight">\(m\)</span>, tiene la forma siguiente</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ J_{i} = \begin{bmatrix}
+  \lambda_{i} &amp; 1 &amp; 0 &amp; \cdots &amp; \cdots &amp; 0 \\
+  0 &amp; \lambda_{i} &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  \vdots &amp; &amp; \ddots &amp; &amp; &amp; \vdots \\
+  \vdots &amp; &amp; &amp; \ddots &amp; &amp; 0 \\
+  \vdots &amp; &amp; &amp; &amp; \ddots &amp; 1 \\
+  0 &amp; \cdots &amp; \cdots &amp; \cdots &amp; 0 &amp; \lambda_{i}
+ \end{bmatrix}_{m\times m},
+\end{split}\]</div>
+<p>por consiguiente</p>
+<div class="math notranslate nohighlight">
+\[
+ \exp(At) = P \exp(Jt)P^{-1} = \sum_{i=1}^{r} \sum_{k=1}^{m_{i}} t^{k-1} \exp(\lambda_{i}t) R_{ik},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(m_{i}\)</span> es el orden del bloque de Jordan asociado con el eigenvalor <span class="math notranslate nohighlight">\(\lambda_{i}\)</span>.</p>
+<div class="proof theorem admonition" id="globalmente-asintoticamente">
+<p class="admonition-title"><span class="caption-number">Teorema 11 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>El punto de equilibrio <span class="math notranslate nohighlight">\(x=0\)</span> de <span class="math notranslate nohighlight">\(\dot{x} = Ax\)</span> es estable si y sólo si todos los eigenvalores de <span class="math notranslate nohighlight">\(A\)</span> satisfacen <span class="math notranslate nohighlight">\(\text{Re}(\lambda_{i})\leq 0\)</span> y cada eigenvalor con <span class="math notranslate nohighlight">\(\text{Re}(\lambda_{i})= 0\)</span> tiene un bloque de Jordan asociado de uno. El punto de equilibrio <span class="math notranslate nohighlight">\(x=0\)</span> es (globalmente) asintóticamente estable sí y sólo sí todos los eigencalores de <span class="math notranslate nohighlight">\(A\)</span> satisfacen <span class="math notranslate nohighlight">\(\text{Re}(\lambda_{i})&lt; 0\)</span>.</p>
+</section>
+</div><p>La demostración de este teorema se puede consultar en Khalil (2002).</p>
+<section id="linealizacion">
+<h3>Linealización<a class="headerlink" href="#linealizacion" title="Link to this heading">#</a></h3>
+<p>Suponga que las funciones <span class="math notranslate nohighlight">\(f_{1}\)</span> y <span class="math notranslate nohighlight">\(f_{2}\)</span> del sistema autónomo de segundo orden</p>
+<div class="math notranslate nohighlight" id="equation-eqn-second-order-aut">
+<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-second-order-aut" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= f_{1}(x_{1},x_{2}), \\
+  \dot{x}_{2} &amp;= f_{2}(x_{1},x_{2}), \\
+ \end{aligned}
+\end{split}\]</div>
+<p>son continuamente diferenciables y que además <span class="math notranslate nohighlight">\(p=(p_{1},p_{2})\)</span> es un punto de equilibrio, el sistema <a class="reference internal" href="#equation-eqn-second-order-aut">(50)</a> se puede expandir mediante serie de Taylor en torno a <span class="math notranslate nohighlight">\((p_{1},p_{2})\)</span> como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= f_{1}(p_{1},p_{2}) + a_{11}(x_{1}-p_{1}) + a_{12}(x_{2}-p_{2}) + \text{H.O.T}, \\
+  \dot{x}_{2} &amp;= f_{2}(p_{1},p_{2}) + a_{21}(x_{1}-p_{1}) + a_{22}(x_{2}-p_{2}) + \text{H.O.T},
+ \end{aligned}
+\end{split}\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  a_{11} = \left. \frac{\partial f_{1}(x_{1},x_{2})}{\partial x_{1}} \right|_{x_{1}=p_{1},x_{2}=p_{2}}, \quad a_{12} = \left. \frac{\partial f_{1}(x_{1},x_{2})}{\partial x_{2}} \right|_{x_{1}=p_{1},x_{2}=p_{2}}, \\
+  a_{21} = \left. \frac{\partial f_{2}(x_{1},x_{2})}{\partial x_{1}} \right|_{x_{1}=p_{1},x_{2}=p_{2}}, \quad a_{22} = \left. \frac{\partial f_{2}(x_{1},x_{2})}{\partial x_{2}} \right|_{x_{1}=p_{1},x_{2}=p_{2}}, 
+ \end{aligned}
+\end{split}\]</div>
+<p>y H.O.T. denota los términos de orden superior de la expansión de Taylor, es decir <span class="math notranslate nohighlight">\((x_{1}-p_{1})^{2},(x_{2}-p_{2})^{2},(x_{1}-p_{1})\times (x_{2}-p_{2})\)</span>, y así sucesivamente.</p>
+<p>Dado que <span class="math notranslate nohighlight">\((p_{1},p_{2})\)</span> denota el punto de equilibrio, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ f_{1}(p_{1},p_{2}) = f_{2}(p_{1},p_{2}) = 0.
+\]</div>
+<p>Puesto que consideramos trayectorias cercanas a este punto, definimos</p>
+<div class="math notranslate nohighlight">
+\[
+ y_{1} = x_{1} - p_{1}, \quad y_{2} = x_{2} - p_{2}.
+\]</div>
+<p>Por consiguiente, las ecuaciones de estado quedan de la siguiente forma</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{y}_{1} &amp;= \dot{x}_{1} = a_{11}y_{1} + a_{12}y_{2} + \text{H.O.T}, \\
+  \dot{y}_{2} &amp;= \dot{x}_{2} = a_{21}y_{1} + a_{22}y_{2} + \text{H.O.T}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Si consideramos una vecindad cercana al punto de equilibrio, entonces podemos decir que los términos H.O.T son despreciables y por consiguiente, realizamos una aproximación de la ecuación de estado no lineal por la ecuación de estado lineal como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{y}_{1} &amp;= \dot{x}_{1} = a_{11}y_{1} + a_{12}y_{2},\\
+  \dot{y}_{2} &amp;= \dot{x}_{2} = a_{21}y_{1} + a_{22}y_{2}. \\
+ \end{aligned}
+\end{split}\]</div>
+<p>Reescribiendo lo anterior en una forma vectorial, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{y} = Ay,
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix}
+  a_{11} &amp; a_{12} \\
+  a_{21} &amp; a_{22}  
+ \end{bmatrix} =
+ \left.
+  \begin{bmatrix}
+   \frac{\partial f_{1}}{\partial x_{1}} &amp; \frac{\partial f_{1}}{\partial x_{2}} \\
+   \frac{\partial f_{2}}{\partial x_{1}} &amp; \frac{\partial f_{2}}{\partial x_{2}}
+  \end{bmatrix} \right|_{x=p} =
+  \left.
+   \frac{\partial f}{\partial x}
+  \right|_{x=p}
+\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La matrix <span class="math notranslate nohighlight">\([\partial f/\partial x]\)</span> es llamada la matriz Jacobiana de <span class="math notranslate nohighlight">\(f(x)\)</span> mientras que <span class="math notranslate nohighlight">\(A\)</span> es la matriz Jacobiana evaluada en el punto de equilibrio <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+<p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>Considere el circuito de diodo tunel que se muestra a continuación</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/diodo_tunel.png"><img alt="../_images/diodo_tunel.png" src="../_images/diodo_tunel.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 14 </span><span class="caption-text">Diodo túnel.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>donde los elementos de almacenamiento de energía son el capacitor <span class="math notranslate nohighlight">\(C\)</span> y el inductor <span class="math notranslate nohighlight">\(L\)</span> mientras que el diodo tunel es representado por la relación <span class="math notranslate nohighlight">\(i_{R} = h(v_{R})\)</span>. Asumiendo que los elementos del circuito son lineales e invariantes en el tiempo, el circuito de diodo tunel se puede representar matemáticamente como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-diodo-tunel">
+<span class="eqno">(51)<a class="headerlink" href="#equation-eqn-diodo-tunel" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  i_{C} &amp;= C \frac{\mathrm{d}v_{C}}{\mathrm{d}t}, \\
+  v_{L} &amp;= L \frac{\mathrm{d}i_{L}}{\mathrm{d}t}, \\
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(v\)</span> representan la corriente y el voltaje a través de los elementos, respectivamente.</p>
+<p>Considere que los parámetros del modelo son <span class="math notranslate nohighlight">\(u=1.2V\)</span>, <span class="math notranslate nohighlight">\(R=1.5k\Omega = 1.5\times 10^{3}\Omega\)</span>, <span class="math notranslate nohighlight">\(C=2pF = 2\times 10^{-12}F\)</span>, <span class="math notranslate nohighlight">\(L=5\mu H = 5\times 10^{-6}H\)</span>. Además, suponga que <span class="math notranslate nohighlight">\(h(\cdot)\)</span> está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ h(x_{1}) = 17.76x_{1} - 103.79x_{1}^{2} + 229.62x_{1}^{3} - 226.31x_{1}^{4} + 83.72x_{1}^{5}.
+\]</div>
+<ol class="arabic simple">
+<li><p>Utilice las Leyes de Kirchhoff para reescribir las ecuaciones anteriores.</p></li>
+<li><p>Encuentre los puntos de equilibrio.</p></li>
+<li><p>Linealice el sistema.</p></li>
+<li><p>Evalúe la matriz Jacobiana en los puntos de equilibrio.</p></li>
+</ol>
+<p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>Considere el péndulo simple mostrado en la siguiente</p></li>
+</ul>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/single_pendulum.png"><img alt="../_images/single_pendulum.png" src="../_images/single_pendulum.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 15 </span><span class="caption-text">Diagrama de péndulo simple sin fuerza externa.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>donde <span class="math notranslate nohighlight">\(l\)</span> denota la longitud de la varilla, y <span class="math notranslate nohighlight">\(m\)</span> la masa de la bola.</p>
+<p>Cuya representación en espacio de estados está dada como sigue</p>
+<div class="math notranslate nohighlight" id="equation-eqn-single-pendulum">
+<span class="eqno">(52)<a class="headerlink" href="#equation-eqn-single-pendulum" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x_{1}} &amp;= x_{2}, \\
+  \dot{x_{2}} &amp;= -\frac{g}{l}\sin(x_{1}) - \frac{k}{m}x_{2}.
+ \end{aligned}
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Encuentre los puntos de equilibrio.</p></li>
+<li><p>Linealice el sistema.</p></li>
+<li><p>Evalúe la matriz Jacobiana en los puntos de equilibrio.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="relacion_ee_ft.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Relación entre el modelo en variables de estado y la función de transferencia</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="analisis_estabilidad_sdl.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Análisis de la estabilidad de sistemas dinámicos linealizados</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#localizacion-de-los-puntos-de-equilibrio">Localización de los puntos de equilibrio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linealizacion-de-sistemas-en-torno-a-un-punto-de-equilibrio">Linealización de sistemas en torno a un punto de equilibrio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linealizacion">Linealización</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Jesús Emmanuel Solís Pérez
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

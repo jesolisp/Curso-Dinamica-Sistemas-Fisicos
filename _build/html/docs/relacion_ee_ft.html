@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Relación entre el modelo en variables de estado y la función de transferencia &#8212; Dinámica de Sistemas Físicos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/relacion_ee_ft';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/relacion_ee_ft.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Análisis de dinámicas de sistemas en el dominio del tiempo" href="analisis_dinamica_dt.html" />
+    <link rel="prev" title="Modelado de sistemas mediante ecuaciones de estado" href="modelado_sist_ee.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dynamic_systems.png" class="logo__image only-light" alt="Dinámica de Sistemas Físicos - Home"/>
+    <script>document.write(`<img src="../_static/dynamic_systems.png" class="logo__image only-dark" alt="Dinámica de Sistemas Físicos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">I. Introducción a la dinámica de los sistemas lineales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conceptos.html">Conceptos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices_error.html">Índices de error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos_analiticos.html">Modelos analíticos de estudio de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II. Antecedentes matemáticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algebra_lineal.html">Álgebra Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_lineales.html">Ecuaciones lineales y sus soluciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matriz_escalonada.html">Matrices escalonadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sistemaseclin_homogeneos.html">Sistema de ecuaciones lineales homogéneos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algebra_matrices.html">Álgebra de matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_diferenciales.html">Ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sol_ecuaciones_diferenciales.html">Soluciones de ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformada_Laplace.html">Transformada de Laplace</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">III. Modelado en el dominio de la frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="funcion_transferencia.html">Función de transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polinomio_hurwitz.html">Polinomio de Hurwitz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_mec.html">Modelado de sistemas mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_elec.html">Modelado de sistemas eléctricos y electro-mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_hidt.html">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otros_sistemas.html">Otro tipo de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IV. Modelado en el dominio del tiempo</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="variables_estado.html">Ecuaciones en variables de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sist_ee.html">Modelado de sistemas mediante ecuaciones de estado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">V. Análisis de dinámicas de sistemas en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="analisis_dinamica_dt.html">Análisis de dinámicas de sistemas en el dominio del tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_estabilidad_sdl.html">Análisis de la estabilidad de sistemas dinámicos linealizados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="respuesta_estado_est.html">Respuesta de estado estacionario</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="metodo_poshenloh.html">Método de Po-Shen Loh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo_ruffini.html">Método de Ruffini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regla_cadena.html">Regla de la cadena</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/relacion_ee_ft.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/relacion_ee_ft.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/relacion_ee_ft.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/issues/new?title=Issue%20on%20page%20%2Fdocs/relacion_ee_ft.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/relacion_ee_ft.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Relación entre el modelo en variables de estado y la función de transferencia</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="relacion-entre-el-modelo-en-variables-de-estado-y-la-funcion-de-transferencia">
+<h1>Relación entre el modelo en variables de estado y la función de transferencia<a class="headerlink" href="#relacion-entre-el-modelo-en-variables-de-estado-y-la-funcion-de-transferencia" title="Link to this heading">#</a></h1>
+<p>Considere el siguiente sistema</p>
+<div class="math notranslate nohighlight" id="equation-eqn-lti-ss-ex">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eqn-lti-ss-ex" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= Ax + Bu, \\
+  y &amp;= Cx.
+ \end{aligned}
+\end{split}\]</div>
+<p>Podemos obtener la función de transferencia <span class="math notranslate nohighlight">\(G(s)\)</span> del sistema <a class="reference internal" href="#equation-eqn-lti-ss-ex">(44)</a> si aplicamos <em>Laplace</em> en ambos lados de la igualdad</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \mathscr{L}\left\{\dot{x}\right\} = A\mathscr{L}\left\{x\right\} + B\mathscr{L}\left\{u\right\}, \\
+\end{split}\]</div>
+<p>de <a class="reference internal" href="transformada_Laplace.html#equation-eqn-laplace-df-dt">(1)</a>, tenemos</p>
+<div class="math notranslate nohighlight" id="equation-eqn-xs-tf">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eqn-xs-tf" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  s X(s) - X(0) &amp;= AX(s) + bU(s), \\
+  s X(s) - AX(s) &amp;= BU(s) + X(0), \\
+  \left(sI - A \right)X(s) &amp;= BU(s) + X(0), \\
+  X(s) &amp;= \left(sI - A \right)^{-1}\left[ BU(s) + x_{0} \right].
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(x_{0}:=X(0)\)</span>.</p>
+<p>Recordando que <span class="math notranslate nohighlight">\(y = Cx\)</span>, aplicando Laplace tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathscr{L}\left\{y\right\} = C\mathscr{L}\left\{x\right\},
+\]</div>
+<p>por consiguiente</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ys-tf">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eqn-ys-tf" title="Link to this equation">#</a></span>\[
+ Y(s) = CX(s).
+\]</div>
+<p>Sustituyendo <a class="reference internal" href="#equation-eqn-xs-tf">(45)</a> en <a class="reference internal" href="#equation-eqn-ys-tf">(46)</a></p>
+<div class="math notranslate nohighlight" id="equation-eqn-ys-tf-2">
+<span class="eqno">(47)<a class="headerlink" href="#equation-eqn-ys-tf-2" title="Link to this equation">#</a></span>\[\begin{split}
+ \begin{aligned}
+  Y(s) &amp;= C\left(sI - A \right)^{-1}\left[ BU(s) + x_{0} \right], \\
+   &amp;= C\left(sI - A \right)^{-1}BU(s) + C\left(sI - A \right)^{-1}x_{0}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Asumiendo condiciones iniciales iguales a cero <span class="math notranslate nohighlight">\(x_{0} = 0\)</span>, podemos obtener la función de transferencia del sistema <a class="reference internal" href="#equation-eqn-lti-ss-ex">(44)</a> como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ G(s) := \frac{Y(s)}{U(s)} = C\left(sI - A \right)^{-1}B.
+\]</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modelado_sist_ee.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Modelado de sistemas mediante ecuaciones de estado</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="analisis_dinamica_dt.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Análisis de dinámicas de sistemas en el dominio del tiempo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Jesús Emmanuel Solís Pérez
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

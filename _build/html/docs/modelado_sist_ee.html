@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modelado de sistemas mediante ecuaciones de estado &#8212; Dinámica de Sistemas Físicos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/modelado_sist_ee';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/modelado_sist_ee.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Relación entre el modelo en variables de estado y la función de transferencia" href="relacion_ee_ft.html" />
+    <link rel="prev" title="Ecuaciones en variables de estado" href="variables_estado.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dynamic_systems.png" class="logo__image only-light" alt="Dinámica de Sistemas Físicos - Home"/>
+    <script>document.write(`<img src="../_static/dynamic_systems.png" class="logo__image only-dark" alt="Dinámica de Sistemas Físicos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">I. Introducción a la dinámica de los sistemas lineales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conceptos.html">Conceptos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices_error.html">Índices de error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos_analiticos.html">Modelos analíticos de estudio de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II. Antecedentes matemáticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algebra_lineal.html">Álgebra Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_lineales.html">Ecuaciones lineales y sus soluciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matriz_escalonada.html">Matrices escalonadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sistemaseclin_homogeneos.html">Sistema de ecuaciones lineales homogéneos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algebra_matrices.html">Álgebra de matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_diferenciales.html">Ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sol_ecuaciones_diferenciales.html">Soluciones de ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformada_Laplace.html">Transformada de Laplace</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">III. Modelado en el dominio de la frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="funcion_transferencia.html">Función de transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polinomio_hurwitz.html">Polinomio de Hurwitz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_mec.html">Modelado de sistemas mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_elec.html">Modelado de sistemas eléctricos y electro-mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_hidt.html">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otros_sistemas.html">Otro tipo de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IV. Modelado en el dominio del tiempo</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="variables_estado.html">Ecuaciones en variables de estado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelado de sistemas mediante ecuaciones de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relacion_ee_ft.html">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">V. Análisis de dinámicas de sistemas en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="analisis_dinamica_dt.html">Análisis de dinámicas de sistemas en el dominio del tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_estabilidad_sdl.html">Análisis de la estabilidad de sistemas dinámicos linealizados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="respuesta_estado_est.html">Respuesta de estado estacionario</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="metodo_poshenloh.html">Método de Po-Shen Loh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo_ruffini.html">Método de Ruffini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regla_cadena.html">Regla de la cadena</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/modelado_sist_ee.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/modelado_sist_ee.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/modelado_sist_ee.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/issues/new?title=Issue%20on%20page%20%2Fdocs/modelado_sist_ee.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/modelado_sist_ee.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modelado de sistemas mediante ecuaciones de estado</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-no-lineales">Sistemas no lineales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-euler">Método de Euler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-runge-kutta">Método de Runge-Kutta</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modelado-de-sistemas-mediante-ecuaciones-de-estado">
+<h1>Modelado de sistemas mediante ecuaciones de estado<a class="headerlink" href="#modelado-de-sistemas-mediante-ecuaciones-de-estado" title="Link to this heading">#</a></h1>
+<section id="sistemas-no-lineales">
+<h2>Sistemas no lineales<a class="headerlink" href="#sistemas-no-lineales" title="Link to this heading">#</a></h2>
+<p>La solución de una ecuación diferencial elemental</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=g(x),
+\]</div>
+<p>está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ x(t) = x(0) + \int_{0}^{t}g(s)\mathrm{d}s,
+\]</div>
+<p>si <span class="math notranslate nohighlight">\(g\)</span> es integrable.</p>
+<p>Para tratar con sistemas dinámicos que son modelados por un número finito de ecuaciones diferenciales de primer orden acopladas</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= f_{1}(t,x_{1},\dots,x_{n},u_{1},\dots,u_{p}), \\
+  \dot{x}_{2} &amp;= f_{2}(t,x_{1},\dots,x_{n},u_{1},\dots,u_{p}), \\
+  \vdots &amp;= \vdots \\
+  \dot{x}_{n} &amp;= f_{n}(t,x_{1},\dots,x_{n},u_{1},\dots,u_{p}),
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\dot{x}_{i}\)</span> denota la derivada de <span class="math notranslate nohighlight">\({x}_{i}\)</span> con respecto a la variable tiempo <span class="math notranslate nohighlight">\(t\)</span> y <span class="math notranslate nohighlight">\(u_{1},u_{2},\dots,u_{p}\)</span>. Del mismo modo, llamamos a las variables <span class="math notranslate nohighlight">\(x_{1},x_{2},\dots,x_{n}\)</span> <strong>variables de estado</strong>.</p>
+<p>Usualmente utilizamos la notación vectorial para escribir estas ecuaciones de una forma compacta, <em>i.e.</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \dot{x} = \begin{bmatrix} {x}_{1} \\ {x}_{2} \\ {x}_{3} \\ \vdots \\ x_{n} \end{bmatrix}, \quad
+ u = \begin{bmatrix} {u}_{1} \\ {u}_{2} \\ {u}_{3} \\ \vdots \\ u_{p} \end{bmatrix}, \quad
+ f(t,x,u) = \begin{bmatrix} f_{1}(t,x,u) \\ f_{2}(t,x,u) \\ f_{3}(t,x,u) \\ \vdots \\ f_{n}(t,x,u) \end{bmatrix}
+\end{split}\]</div>
+<p>y reescribimos las <span class="math notranslate nohighlight">\(n\)</span> ecuaciones diferenciales diferenciales de primer orden como una ecuación diferencial vectorial de primer orden de dimensión <span class="math notranslate nohighlight">\(n\)</span>, <em>i.e.</em></p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=f(t,x,u),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(x\)</span> es el estado y <span class="math notranslate nohighlight">\(u\)</span> como la entrada. Aquí, definimos la salida del sistema como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ y=h(t,x,u).
+\]</div>
+</section>
+<section id="metodo-de-euler">
+<h2>Método de Euler<a class="headerlink" href="#metodo-de-euler" title="Link to this heading">#</a></h2>
+<p>Considere una Ecuación Diferencial Ordinaria (<em>EDO</em>) de la forma</p>
+<div class="math notranslate nohighlight" id="equation-eqn-edoform">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eqn-edoform" title="Link to this equation">#</a></span>\[
+ \dot{y} = f(x),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(f\)</span> es una función. La solución general a la Ec. <a class="reference internal" href="#equation-eqn-edoform">(43)</a> está dada por la siguiente expresión</p>
+<div class="math notranslate nohighlight">
+\[
+ y = \int f(x)\mathrm{d}x + c,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(c\)</span> es una constante arbitraria. Para obtener una solución, dependemos de un valor inicial de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ y\left(x_{0}\right) = y_{0}.
+\]</div>
+<p>Para la mayoría de problemas de valor inicial no es posible encontrar una solución exacta (analítica) ya que las ecuaciones son no lineales, discontinuas, o estocásticas. Por ejemplo, <span class="math notranslate nohighlight">\(\dot{y} = e^{{xy}^{4}}\)</span>. Por lo tanto, necesitamos de un método numérico para aproximar la solución.</p>
+<p>Es posible aproximar el término del lado izquierdo de un problema de valor inicial <span class="math notranslate nohighlight">\(\frac{\mathrm{d}f}{\mathrm{d}x}\)</span> utilizando el <em>teorema de Taylor</em> alrededor de un punto dado <span class="math notranslate nohighlight">\(x_{0}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(x_{1}\right) = f\left(x_{0}\right) + \left(x_{1}-x_{0}\right)\dot{f}\left(x_{0}\right) + \tau,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\tau\)</span> es el error de truncamiento</p>
+<div class="math notranslate nohighlight">
+\[
+ \tau = \frac{\left(x_{1} - x_{0}\right)^{2}}{2!}\ddot{f}\left(\xi \right), \quad \xi\in\left[x_{0}, x_{1}\right].
+\]</div>
+<p>Recordando que <span class="math notranslate nohighlight">\(h = x_{1} - x_{0}\)</span>, las ecuación anterior queda definida como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}\left(x_{0}\right) = \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{h} - \frac{h}{2}\ddot{f}\left(\xi\right)
+\]</div>
+<p>Es posible obtener el método de Euler directo utilizando una variación de la <em>interpolación de Lagrange</em> llamada <em>diferencia dividida</em>.</p>
+<p>Podemos aproximar cualquier función <span class="math notranslate nohighlight">\(f(x)\)</span> utilizando un polinomio de grado <span class="math notranslate nohighlight">\(P_{n}(x)\)</span> y un término de error</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  f(x) &amp;= P_{n}(x) + \text{error}, \\
+  &amp;= f\left(x_{0}\right) + f\left[x_{0}, x_{1}\right]\left(x - x_{0}\right) + f\left[x_{0}, x_{1}, x_{2}\right]\left(x - x_{0}\right)\left(x - x_{1}\right), \\
+  &amp;+ \cdots + f\left[x_{0},\dots,x_{n}\right]\prod_{i=0}^{n-1}\left(x - x_{1}\right) + \text{error},
+ \end{aligned}
+\end{split}\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  f\left[x_{0}, x_{1}\right] &amp;= \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{x_{1} - x_{0}}, \\
+  f\left[x_{0}, x_{1}, x_{2}\right] &amp;= \frac{f\left[x_{1},x_{2}\right] - f\left[x_{0},x_{1}\right]}{x_{2} - x_{0}}, \\
+  f\left[x_{0}, x_{1}, \dots, x_{n}\right] &amp;= \frac{f\left[x_{1},x_{2},\dots,x_{n}\right] - f\left[x_{0},x_{1},\dots,x_{n-1}\right]}{x_{n} - x_{0}}. \\
+ \end{aligned}
+\end{split}\]</div>
+<p>Derivando <span class="math notranslate nohighlight">\(P_{n}(x)\)</span>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{P}_{n}(x) &amp;= f\left[x_{0},x_{1}\right] + f\left[x_{0},x_{1},x_{2}\right]\left\{\left(x - x_{0}\right) + \left(x - x_{1}\right) \right\}, \\
+  &amp;+ \cdots + f\left[x_{0},\dots,x_{n}\right]\sum_{i=0}^{n-1} \frac{\left(x - x_{0}\right)\dots\left(x - x_{n-1}\right)}{\left(x - x_{i}\right)},
+ \end{aligned}
+\end{split}\]</div>
+<p>por consiguiente el error se define como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \text{error} = \left(x - x_{0}\right)\dots\left(x - x_{n}\right)\frac{f^{n+1}\left(\xi\right)}{\left(n + 1\right)!}.
+\]</div>
+<p>Definimos entonces la primer derivada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}(x) = \left[x_{0}, x_{1}\right] = \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{x_{1} - x_{0}},
+\]</div>
+<p>lo que implica</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}(x) =  \frac{f\left(x_{1}\right) - f\left(x_{0}\right)}{x_{1} - x_{0}} + O\left(h\right), \quad \text{Euler},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}(x) =  \frac{f\left(x_{1}\right) - f\left(x_{-1}\right)}{x_{1} - x_{-1}} + O\left(h^{2}\right), \quad \text{Central}.
+\]</div>
+<p>Utilizando el mismo método, obtenemos una aproximación a la segunda derivada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \ddot{f}\left(x_{0}\right) = \frac{f_{2} - 2f_{1} + f_{0}}{h^{2}} + O\left(h^{2} \right),
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \ddot{f}\left(x_{0}\right) = \frac{f_{1} - 2f_{0} + f_{-1}}{h^{2}} + O\left(h^{2} \right), \quad \text{central}.
+\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Resuelva numéricamente la ecuación diferencial de primer orden</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+   \dot{y} = f\left(x,y\right), \\
+   a \leq x \leq b.
+  \end{aligned}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Aplique la fórmula de Euler a la ecuación de primer orden con una entrada oscilante</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{y} = \sin(x), \quad 0 \leq x \leq 10.
+\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>El crecimiento demográfico simple está descrito por una ecuación diferencial de primer orden de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{y} = \varepsilon y,
+\]</div>
+<p>cuya solución exacta está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ y = Ce^{\varepsilon x}.
+\]</div>
+<p>Dada la siguiente condición inicial</p>
+<div class="math notranslate nohighlight">
+\[
+ y\left(0\right) = 1,
+\]</div>
+<p>con una tasa de cambio de <span class="math notranslate nohighlight">\(\varepsilon = 0.5\)</span>, la solución analítica queda expresada como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ y = e^{0.5 x}.
+\]</div>
+<p>Aplique la fórmula de Euler para obtener una solución aproximada.</p>
+</section>
+<section id="metodo-de-runge-kutta">
+<h2>Método de Runge-Kutta<a class="headerlink" href="#metodo-de-runge-kutta" title="Link to this heading">#</a></h2>
+<p>El método de Runge-Kutta (<em>RK</em>) está relacionado con la expansión de la <em>serie de Taylor</em>, con la diferencia de que no es necesaria la diferenciación de <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Los métodos RK se escriben de la siguiente forma</p>
+<div class="math notranslate nohighlight">
+\[
+ w_{n+1} = w_{n} + hF\left(t,w,h; f\right), \quad n\geq 0,
+\]</div>
+<p>donde el error de truncamiento está definido por</p>
+<div class="math notranslate nohighlight">
+\[
+ T_{n}\left(y\right) = y\left(t_{n+1}\right) - y\left(t_{n}\right) - hF\left(t_{n},y\left(t_{n}\right),h;f\right),
+\]</div>
+<p>tal que el error está dado como sigue <span class="math notranslate nohighlight">\(\tau_{n}\left(y\right)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ T_{n} = h\tau_{n}\left(y\right).
+\]</div>
+<p>Reescribiendo términos, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ y\left(t_{n+1}\right) = y\left(t_{n}\right) - hF \left(t_{n}, y\left(t_{n}\right), h; f \right) + h\tau_{n}\left(y\right).
+\]</div>
+<p>Considere el método explícito de un paso</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{w_{i+1} - w_{i}}{h} = F\left(f, t_{i}, w_{i},h \right),
+\]</div>
+<p>con</p>
+<div class="math notranslate nohighlight">
+\[
+ F\left(f, t, y, h \right) = a_{0}k_{1} + a_{1}k_{2},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ F\left(f, t, y, h \right) = a_{0}\left(t, y \right) + a_{1}\left(t + \alpha_{1}, y + \beta_{1} \right),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\alpha_{0} + \alpha_{1} = 1\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En la formulación del <em>método de Runge-Kutta</em> existe un parámetro libre. En este caso, <span class="math notranslate nohighlight">\(\alpha_{0}\)</span>.</p>
+</div>
+<div class="proof theorem admonition" id="thm:polynomial">
+<p class="admonition-title"><span class="caption-number">Teorema 10 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(f\left(t,y\right)\)</span> y todas sus derivadas parciales de orden menor o igual a <span class="math notranslate nohighlight">\(n+1\)</span> continuas sobre <span class="math notranslate nohighlight">\(D = \left\{ \left(t,y \right) | a \leq t \leq b, c \leq y \leq d \right\}\)</span> y sea <span class="math notranslate nohighlight">\(\left(t_{0}, y_{0}\right)\in D\)</span> para cada <span class="math notranslate nohighlight">\(\left(t, y\right) \in D\)</span>, <span class="math notranslate nohighlight">\(\exists \xi \in \left(t, t_{0}\right)\)</span> y <span class="math notranslate nohighlight">\(\mu \in \left(y, y_{0}\right)\)</span> con</p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(t,y\right) = P_{n} \left(t,y\right) + R_{n}\left(t,y\right),
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  P_{n}\left(t,y\right) &amp;= f\left(t_{0},y_{0}\right) + \left[ \left(t - t_{0}\right) \frac{\partial f}{\partial t}\left(t_{0},y_{0}\right) + \left(y - y_{0}\right)\frac{\partial f}{\partial y}\left(t_{0}, y_{0}\right) \right] \\
+  &amp;+ \left[ \frac{\left(t -t_{0}\right)^{2}}{2}\frac{\partial^{2}f}{\partial t^{2}}\left(t_{0}, y_{0}\right) + \left(y - y_{0}\right)\left(t - t_{0}\right) \frac{\partial^{2} f}{\partial y\partial t}\left(t_{0}, y_{0}\right) \right. \\
+  &amp;+ \left. \frac{\left(y - y_{0}\right)^{2}}{2}\frac{\partial^{2} f}{\partial y^{2}} \left(t_{0}, y_{0} \right) \right] \\
+  &amp;+ \dots + \\
+  &amp;+ \left[ \frac{1}{n!} \sum_{j=0}^{n} \binom{n}{j} \left(t - t_{0}\right)^{n-j}\left(y - y_{0}\right)^{j}\frac{\partial^{n} f}{\partial y^{j}\partial t^{n-j}}\left(t_{0},y_{0}\right) \right].
+ \end{aligned}
+\end{split}\]</div>
+</section>
+</div><p>Podemos utilizar el <a class="reference internal" href="#thm:polynomial">Teorema 10</a> para encontrar los valores <span class="math notranslate nohighlight">\(a_{1}\)</span>, <span class="math notranslate nohighlight">\(\alpha_{1}\)</span> y <span class="math notranslate nohighlight">\(\beta_{1}\)</span> considerando que <span class="math notranslate nohighlight">\(\alpha_{1}f\left(t+\alpha_{1}, y + \beta_{1}\right)\)</span> aproxima a Taylor de segundo orden</p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(t,y\right) + \frac{h}{2}\dot{f}\left(t,y\right)
+\]</div>
+<p>con un error no mayor a <span class="math notranslate nohighlight">\(O\left(h^{2}\right)\)</span>.</p>
+<p>Utilizando</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{f}\left(t,y\right) = \frac{\partial f}{\partial t}\left(y,t\right) + \frac{\partial f}{\partial y}\left(t,y\right)\dot{y}(t),
+\]</div>
+<p>la expresión de Taylor de segundo orden se puede escribir como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ f\left(t,y\right) + \frac{h}{2}\frac{\partial f}{\partial t}\left(y,t\right) + \frac{h}{2}\frac{\partial f}{\partial y}\left(t,y\right)f\left(t,y\right).
+\]</div>
+<p>Expandiendo <span class="math notranslate nohighlight">\(\alpha_{1}f\left(t+\alpha_{1}, y + \beta_{1}\right)\)</span> y su <em>polinomio de Taylor</em> de grado uno alrededor de <span class="math notranslate nohighlight">\(\left(t,y\right)\)</span>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+ \alpha_{1}f\left(t+\alpha_{1}, y + \beta_{1}\right) = \alpha_{1}f\left(t, y\right) + a_{1}\alpha_{1}\frac{\partial f}{\partial t}\left(t, y\right) + a_{1}\beta_{1}\frac{\partial f}{\partial y} + a_{1}R_{1}\left(t + \alpha_{1}, y + \beta_{1}\right),
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+ R_{1}\left(t + \alpha_{1}, y + \beta_{1} \right) = \frac{\alpha_{1}^{2}}{2}\frac{\partial^{2}f}{\partial t^{2}}\left(\xi, \mu \right) + \alpha_{1}\beta_{1} \frac{\partial^{2}f}{\partial t\partial y}\left(\xi,\mu \right) + \frac{\beta_{1}^{2}}{2}\frac{\partial^{2}f}{\partial y^{2}}\left(\xi,\mu \right),
+\]</div>
+<p>para algún <span class="math notranslate nohighlight">\(\xi \in \left[t,t + \alpha_{1} \right]\)</span> y <span class="math notranslate nohighlight">\(\mu \in \left[y,y + \beta_{1} \right]\)</span>.</p>
+<p>Los métodos de orden mayor se obtienen de forma similar. Por ejemplo, Runge-Kutta de tercer orden se expresa como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{w_{i+1} - w_{i}}{h} = F\left(f, t_{i}, w_{i}, h \right),
+\]</div>
+<p>con</p>
+<div class="math notranslate nohighlight">
+\[
+ F\left(f, t, w, h \right) = a_{0}k_{1} + a_{1}k_{2} + a_{2}k_{3},
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+ a_{0} + a_{1} + a_{2} = 1,
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  k_{1} &amp;= f\left(t_{i}, w_{i} \right), \\
+  k_{2} &amp;= f\left(t_{i} + \alpha_{1}h, t_{i} + \beta_{11}k_{1} \right), \\
+  k_{3} &amp;= f\left(t_{i} + \alpha_{2}h, t_{i} + \beta_{21}k_{1} + \beta_{22}k_{2} \right).
+ \end{aligned}
+\end{split}\]</div>
+<p>Escogiendo <span class="math notranslate nohighlight">\(\alpha_{2} = 1\)</span>, <span class="math notranslate nohighlight">\(\beta_{11} = \frac{1}{2}\)</span>, obtenemos la siguiente ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+ w_{i+1} = w_{i} + \frac{h}{6}\left(k_{1} + 4k_{2} + k_{3} \right),
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  k_{1} &amp;= f\left(t_{i}, w_{i} \right), \\
+  k_{2} &amp;= f\left(t_{n} + \frac{h}{2}, w_{n} + \frac{h}{2}k_{1} \right), \\
+  k_{3} &amp;= f\left(t_{n} + h, w_{n} - hk_{1} + 2hk_{2} \right). \\
+ \end{aligned}
+\end{split}\]</div>
+<p>Para obtener el método de Runge-Kutta de cuarto orden, consideramos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  w_{0} &amp;= \alpha, \\
+  k_{1} &amp;= hf\left(t_{i}, w_{i} \right), \\
+  k_{2} &amp;= hf\left(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{1}}{2} \right), \\
+  k_{3} &amp;= hf\left(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{2}}{2} \right), \\
+  k_{4} &amp;= hf\left(t_{i+1}, w_{i} + k_{3} \right), \\
+  w_{i+1} &amp;= w_{i} + \frac{1}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4} \right).
+ \end{aligned}
+\end{split}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="variables_estado.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Ecuaciones en variables de estado</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="relacion_ee_ft.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Relación entre el modelo en variables de estado y la función de transferencia</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-no-lineales">Sistemas no lineales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-euler">Método de Euler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-runge-kutta">Método de Runge-Kutta</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Jesús Emmanuel Solís Pérez
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

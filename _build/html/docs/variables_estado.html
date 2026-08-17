@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ecuaciones en variables de estado &#8212; Dinámica de Sistemas Físicos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ed684290" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/variables_estado';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://jesolisp.github.io/Curso-Dinamica-Sistemas-Fisicos/docs/variables_estado.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Modelado de sistemas mediante ecuaciones de estado" href="modelado_sist_ee.html" />
+    <link rel="prev" title="Otro tipo de sistemas" href="otros_sistemas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dynamic_systems.png" class="logo__image only-light" alt="Dinámica de Sistemas Físicos - Home"/>
+    <script>document.write(`<img src="../_static/dynamic_systems.png" class="logo__image only-dark" alt="Dinámica de Sistemas Físicos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">I. Introducción a la dinámica de los sistemas lineales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conceptos.html">Conceptos básicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices_error.html">Índices de error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos_analiticos.html">Modelos analíticos de estudio de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">II. Antecedentes matemáticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algebra_lineal.html">Álgebra Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_lineales.html">Ecuaciones lineales y sus soluciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matriz_escalonada.html">Matrices escalonadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sistemaseclin_homogeneos.html">Sistema de ecuaciones lineales homogéneos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algebra_matrices.html">Álgebra de matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecuaciones_diferenciales.html">Ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sol_ecuaciones_diferenciales.html">Soluciones de ecuaciones diferenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformada_Laplace.html">Transformada de Laplace</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">III. Modelado en el dominio de la frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="funcion_transferencia.html">Función de transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polinomio_hurwitz.html">Polinomio de Hurwitz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_mec.html">Modelado de sistemas mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_elec.html">Modelado de sistemas eléctricos y electro-mecánicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sistemas_hidt.html">Modelado de sistemas hidráulicos y térmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otros_sistemas.html">Otro tipo de sistemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IV. Modelado en el dominio del tiempo</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ecuaciones en variables de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelado_sist_ee.html">Modelado de sistemas mediante ecuaciones de estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relacion_ee_ft.html">Relación entre el modelo en variables de estado y la función de transferencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">V. Análisis de dinámicas de sistemas en el dominio del tiempo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="analisis_dinamica_dt.html">Análisis de dinámicas de sistemas en el dominio del tiempo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_estabilidad_sdl.html">Análisis de la estabilidad de sistemas dinámicos linealizados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="respuesta_estado_est.html">Respuesta de estado estacionario</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="metodo_poshenloh.html">Método de Po-Shen Loh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo_ruffini.html">Método de Ruffini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regla_cadena.html">Regla de la cadena</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/jesolisp/Curso-Dinamica-Sistemas-Fisicos/master?urlpath=tree/docs/variables_estado.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jesolisp/Curso-Dinamica-Sistemas-Fisicos/blob/master/docs/variables_estado.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/edit/main/docs/variables_estado.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jesolisp/Curso-Dinamica-Sistemas-Fisicos/issues/new?title=Issue%20on%20page%20%2Fdocs/variables_estado.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/variables_estado.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ecuaciones en variables de estado</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-los-factores-integrantes">Método de los factores integrantes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-lineales-desacoplados">Sistemas lineales desacoplados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonalizacion">Diagonalización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ecuaciones en variables de estado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-definido-en-espacio-de-estados">Sistema definido en espacio de estados</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ecuaciones-en-variables-de-estado">
+<h1>Ecuaciones en variables de estado<a class="headerlink" href="#ecuaciones-en-variables-de-estado" title="Link to this heading">#</a></h1>
+<section id="metodo-de-los-factores-integrantes">
+<h2>Método de los factores integrantes<a class="headerlink" href="#metodo-de-los-factores-integrantes" title="Link to this heading">#</a></h2>
+<p>Para resolver una ecuación diferencial ordinaria de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ ax''+bx'+cx=0,
+\]</div>
+<p>podemos sustituir <span class="math notranslate nohighlight">\(u(t) = e^{mt}\)</span> en la ecuación anterior, para obtener</p>
+<div class="math notranslate nohighlight">
+\[
+ (am^{2}+bm+c)e^{mt} = 0.
+\]</div>
+<p>Puesto que <span class="math notranslate nohighlight">\(e^{mt}\)</span> no se anula, tenemos la siguiente ecuación característica</p>
+<div class="math notranslate nohighlight">
+\[
+ am^{2}+ bm + c = 0,
+\]</div>
+<p>de donde tenemos tres casos que considerar:</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(b^{2}-4ac&gt;0\)</span>, la ecuación anterior tiene dos soluciones reales <span class="math notranslate nohighlight">\(m_{1}\)</span> y <span class="math notranslate nohighlight">\(m_{2}\)</span>. Entonces la solución general es <span class="math notranslate nohighlight">\(u(t) = c_{1}e^{m_{1}t} + c_{2}e^{m_{2}t}\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(b^{2}-4ac&lt;0\)</span>, la ecuación tiene dos raíces complejas conjugadas <span class="math notranslate nohighlight">\(\mu\pm i\sigma\)</span>. Entonces la solución general es <span class="math notranslate nohighlight">\(u(t) = e^{\mu t}(c_{1}\cos(\sigma t)+ c_{2}\sin(\sigma t))\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(b^{2}-4ac=0\)</span>, la ecuación tiene una raíz doble <span class="math notranslate nohighlight">\(m\)</span>. Entonces la solución general es <span class="math notranslate nohighlight">\(u(t)=e^{mt}(c_{1}+c_{2}t)\)</span>.</p></li>
+</ul>
+</section>
+<section id="sistemas-lineales-desacoplados">
+<h2>Sistemas lineales desacoplados<a class="headerlink" href="#sistemas-lineales-desacoplados" title="Link to this heading">#</a></h2>
+<p>El método de factores integrantes se puede usar para resolver la ecuación diferencial lineal de primer orden de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x} = Ax.
+\]</div>
+<p>La rescribimos como <span class="math notranslate nohighlight">\(\dot{x}-Ax = 0\)</span>, la multiplicamos por <span class="math notranslate nohighlight">\(e^{-at}\)</span> para obtener</p>
+<div class="math notranslate nohighlight">
+\[
+ (xe^{-at})'=0,
+\]</div>
+<p>con lo que <span class="math notranslate nohighlight">\(xe^{-at} = c\)</span>, donde <span class="math notranslate nohighlight">\(c\)</span> es una constante. La solución general está dada por</p>
+<div class="math notranslate nohighlight">
+\[
+ x(t) = ce^{at},
+\]</div>
+<p>donde la constante <span class="math notranslate nohighlight">\(c=x(0)\)</span>, es el valor de la función en el tiempo <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Consideremos ahora el sistema lineal desacoplado</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= -x_{1}, \\
+  \dot{x}_{2} &amp;= 2x_{2}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Este sistema se puede escribir en forma matricial como</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=Ax,
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix} -1 &amp; 0 \\ 0 &amp; 2 \end{bmatrix}
+\end{split}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Observe que <span class="math notranslate nohighlight">\(A\)</span> es una matriz diagonal, y en general siempre que <span class="math notranslate nohighlight">\(A\)</span> sea una matriz diagonal, el sistema se reduce a un sistema lineal desacoplado.</p>
+</div>
+<p>La solución general del sistema desacoplado anterior puede obtenerse mediante el método de los factores integrantes (o usando el de separación de variables) y se expresa como</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  x_{1}(t) &amp;= c_{1}e^{-t}, \\
+  x_{2}(t) &amp;= c_{2}e^{2t},
+ \end{aligned}
+\end{split}\]</div>
+<p>o equivalentemente por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ x(t) = \begin{bmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{2t} \end{bmatrix}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(c=x(0)\)</span>.</p>
+<div class="proof definition admonition" id="def:retrato-fase">
+<p class="admonition-title"><span class="caption-number">Definición 35 </span></p>
+<section class="definition-content" id="proof-content">
+<p>El <strong>retrato fase</strong>, o <strong>diagrama de órbitas</strong>, de un sistema de ecuaciones diferenciales tales con <span class="math notranslate nohighlight">\(x\in \mathbb{R}^{n}\)</span>, es el conjunto de todas las curvas integrales en el espacio fase.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Consideremos el siguiente sistema lineal desacoplado en</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= x_{1}, \\
+  \dot{x}_{2} &amp;= x_{2}, \\
+  \dot{x}_{3} &amp;= -x_{3},
+ \end{aligned}
+\end{split}\]</div>
+<p>cuya solución general está dada por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  x_{1}(t) &amp;= c_{1}e^{t}, \\
+  x_{2}(t) &amp;= c_{2}e^{t}, \\
+  x_{3}(t) &amp;= c_{3}e^{-t}.
+ \end{aligned}
+\end{split}\]</div>
+<p>El retrato fase para este sistema se muestra a continuación</p>
+<p>El plano <span class="math notranslate nohighlight">\(x_{1}x_{2}\)</span> se define como <em>subespacio inestable</em> y al eje <span class="math notranslate nohighlight">\(x_{3}\)</span> se le llama el <em>subespacio estable</em>.</p>
+</section>
+<section id="diagonalizacion">
+<h2>Diagonalización<a class="headerlink" href="#diagonalizacion" title="Link to this heading">#</a></h2>
+<p>Se pueden usar las técnicas algebraicas para diagonalizar una matriz <span class="math notranslate nohighlight">\(A\)</span> cuadrada para reducir el sistema lineal</p>
+<div class="math notranslate nohighlight">
+\[
+ \dot{x}=Ax,
+\]</div>
+<p>a un sistema lineal desacoplado. Primero consideramos el caso cuando <span class="math notranslate nohighlight">\(A\)</span> tiene eigenvalores reales y distintos. El siguiente teorema del Algebra Lineal nos ayudará a resolver este problema.</p>
+<div class="proof theorem admonition" id="thm:eigenvectores">
+<p class="admonition-title"><span class="caption-number">Teorema 8 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Si los eigenvalores <span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\dots,\lambda_{n}\)</span> de una matriz <span class="math notranslate nohighlight">\(A\)</span> de orden <span class="math notranslate nohighlight">\(n\times n\)</span> son reales y distintos, entonces cualquier conjunto de eigenvectores correpondientes <span class="math notranslate nohighlight">\(v_{1},v_{2},\dots,v_{n}\)</span> forma una base para <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span>, la matriz <span class="math notranslate nohighlight">\(P = [v_{1}~v_{2}~\dots~v_{n}]\)</span> es invertible y</p>
+<div class="math notranslate nohighlight">
+\[
+ P^{-1}AP=diag\left[\lambda_{1},\lambda_{2},\dots,\lambda_{n} \right].
+\]</div>
+</section>
+</div><div class="proof definition admonition" id="def:poli-caracteristico">
+<p class="admonition-title"><span class="caption-number">Definición 36 </span> (Polinomio característico)</p>
+<section class="definition-content" id="proof-content">
+<p>Sean <span class="math notranslate nohighlight">\(A, I~ \in \mathbb{R}^{n\times n}\)</span> con <span class="math notranslate nohighlight">\(I\)</span> definida como la matriz identidad. Sea <span class="math notranslate nohighlight">\(\lambda\in \mathbb{R}\)</span>, entonces</p>
+<ul class="simple">
+<li><p>La matriz característica de <span class="math notranslate nohighlight">\(A\)</span> se define como <span class="math notranslate nohighlight">\(A-\lambda I\)</span>.</p></li>
+<li><p>El determinante de la matriz característica de <span class="math notranslate nohighlight">\(A\)</span> es un polinomio en <span class="math notranslate nohighlight">\(\lambda\)</span>; se denomina <em>polinomio característico</em> de <span class="math notranslate nohighlight">\(A\)</span> y se define como <span class="math notranslate nohighlight">\(\phi_{A}(\lambda) = \left| A - \lambda I \right|\)</span>.</p></li>
+<li><p>La <em>ecuación característica</em> de <span class="math notranslate nohighlight">\(A\)</span> se define como <span class="math notranslate nohighlight">\(\phi_{A}(\lambda) = \left| A - \lambda I \right| = 0\)</span>.</p></li>
+</ul>
+</section>
+</div><div class="proof definition admonition" id="def:eigenvalores">
+<p class="admonition-title"><span class="caption-number">Definición 37 </span> (Eigenvalores)</p>
+<section class="definition-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n\times n}\)</span>. Se dice que un escalar <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span> es un <em>eigenvalor</em> de <span class="math notranslate nohighlight">\(A\)</span> si satisface la ecuación característica de A</p>
+<div class="math notranslate nohighlight">
+\[
+ \phi_{A}(\lambda) = \left| A - \lambda I \right| = 0.
+\]</div>
+<p>Si <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n\times n}\)</span> y <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span>, entonces <span class="math notranslate nohighlight">\(\phi_{A}(\lambda) = \left| A - \lambda I \right| = 0\)</span> sí, y sólo sí, el sistema</p>
+<div class="math notranslate nohighlight">
+\[
+ (A-\lambda I)\nu = 0,
+\]</div>
+<p>tiene soluciones no triviales. La ecuación anterior se puede expresar como</p>
+<div class="math notranslate nohighlight">
+\[
+ A\nu = \lambda \nu.
+\]</div>
+<p>Así, tenemos que <span class="math notranslate nohighlight">\(\lambda \in \mathbb{R}\)</span> es un <em>eigenvalor</em> de <span class="math notranslate nohighlight">\(A\)</span> si existe un <span class="math notranslate nohighlight">\(\nu \mathbb{R}^{n}\)</span>, con <span class="math notranslate nohighlight">\(\nu \neq 0\)</span> tal que <span class="math notranslate nohighlight">\((A - \lambda I)\nu = 0\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="def:eigenvectores">
+<p class="admonition-title"><span class="caption-number">Definición 38 </span> (Eigenvectores)</p>
+<section class="definition-content" id="proof-content">
+<p>Todo vector <span class="math notranslate nohighlight">\(\nu\)</span> que satisfaga <span class="math notranslate nohighlight">\((A- \lambda I )\nu = 0\)</span>, se llama un <em>Eigenvector</em> de <span class="math notranslate nohighlight">\(A\)</span> correspondiente a <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</section>
+</div><div class="proof theorem admonition" id="thm:cayley_hamilton">
+<p class="admonition-title"><span class="caption-number">Teorema 9 </span> (Cayley-Hamilton)</p>
+<section class="theorem-content" id="proof-content">
+<p>Sea <span class="math notranslate nohighlight">\(A^{n\times n}\)</span> una matriz con polinomio característico <span class="math notranslate nohighlight">\(\phi_{A}(\lambda)\)</span> entonces <span class="math notranslate nohighlight">\(\phi_{A}(A) = 0\)</span>.</p>
+</section>
+</div><p>Considere la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix}
+  -6 &amp; -\frac{7}{2} \\
+  6 &amp; 4
+ \end{bmatrix},
+\end{split}\]</div>
+<p>cuyo polinomio característico está definido como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \phi_{A}(\lambda) &amp;= \left| \begin{bmatrix} -6 &amp; -\frac{7}{2} \\ 6 &amp; 4 \end{bmatrix} - \begin{bmatrix} \lambda &amp; 0 \\ 0 &amp; \lambda \end{bmatrix} \right| = \left| \begin{bmatrix} - 6 - \lambda &amp; -\frac{7}{2} \\ 6 &amp; 4 - \lambda \end{bmatrix} \right|, \\
+  &amp;= (-\lambda - 6)(4 - \lambda) - (6)\left(-\frac{7}{2}\right) = \lambda^{2} + 2\lambda - 3.
+ \end{aligned}
+\end{split}\]</div>
+<p>Entonces, <span class="math notranslate nohighlight">\(\phi_{A}(A)\)</span> se define como sigue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \phi_{A}(A) &amp;= A^{2} + 2A - 3I, \\
+  &amp;= \begin{bmatrix}
+  -6 &amp; -\frac{7}{2} \\
+  6 &amp; 4
+ \end{bmatrix}
+ \begin{bmatrix}
+  -6 &amp; -\frac{7}{2} \\
+  6 &amp; 4
+ \end{bmatrix} +
+ 2\begin{bmatrix}
+  -6 &amp; -\frac{7}{2} \\
+  6 &amp; 4
+ \end{bmatrix} -
+ \begin{bmatrix}
+  3 &amp; 0 \\
+  0 &amp; 3
+ \end{bmatrix}, \\
+ &amp;= \begin{bmatrix}
+  15 &amp; 7 \\
+  -12 &amp; -5
+ \end{bmatrix} +
+ \begin{bmatrix}
+  -12 &amp; -7 \\
+  12 &amp; 8
+ \end{bmatrix} -
+ \begin{bmatrix}
+  3 &amp; 0 \\
+  0 &amp; 3
+ \end{bmatrix}, \\
+ &amp;= \begin{bmatrix}
+  0 &amp; 0 \\
+  0 &amp; 0
+ \end{bmatrix}.
+ \end{aligned}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Considere el sistema lineal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= -x_{1}- 3x_{2}, \\
+  \dot{x}_{2} &amp;= 2x_{2}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Escriba el sistema anterior en la forma <span class="math notranslate nohighlight">\(\dot{x}=Ax\)</span>, encuentre los eigenvalores de <span class="math notranslate nohighlight">\(A\)</span> así como un par de eigenvectores correspondientes. A partir de esto, obtenga el sistema desacoplado.</p>
+<div class="proof definition admonition" id="subespacios">
+<p class="admonition-title"><span class="caption-number">Definición 39 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Supongamos que la matriz <span class="math notranslate nohighlight">\(A\)</span> de orden <span class="math notranslate nohighlight">\(n\times n\)</span> tiene <span class="math notranslate nohighlight">\(k\)</span> eigenvalores negativos <span class="math notranslate nohighlight">\(\lambda_{1},\lambda_{2},\dots,\lambda_{k}\)</span> y <span class="math notranslate nohighlight">\(n-k\)</span> eigenvalores positivos <span class="math notranslate nohighlight">\(\lambda_{k+1},\dots,\lambda_{n}\)</span> y que estos eigenvalores son distintos. Sea <span class="math notranslate nohighlight">\(\{v_{1},v_{2},\dots,v_{n}\}\)</span> el conjunto de eigenvectores correspondientes. Entonces los <em>subespacios estable</em> e <em>inestable</em> del sistema lineal, <span class="math notranslate nohighlight">\(E^{e}\)</span> y <span class="math notranslate nohighlight">\(E^{i}\)</span>, son los subespacios generados por <span class="math notranslate nohighlight">\(\{v_{1},v_{2},\dots,v_{k}\}\)</span> y <span class="math notranslate nohighlight">\(\{v_{k+1},\dots,v_{n}\}\)</span>, respectivamente, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+ E^{e} = gen\{v_{1},\dots,v_{k}\},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ E^{i} = gen\{v_{k+1},\dots,v_{n}\}.
+\]</div>
+<p>Si la matriz <span class="math notranslate nohighlight">\(A\)</span> tiene eigenvalores imaginarios puros, entonces también hay otro subespacio llamado el subespacio centro, <span class="math notranslate nohighlight">\(E^{c}\)</span>.</p>
+</section>
+</div><p><strong>Ejemplo</strong></p>
+<p>Encuentre los eigenvalores y eigenvectores de la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong>
+Encuentre los eigenvalores y eigenvectores de la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix} 1 &amp; 3 \\ 3 &amp; 1 \end{bmatrix}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong>
+Encuentre los eigenvalores y eigenvectores de la siguiente matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix} -1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Encuentre los eigenvalores y eigenvectores de la matriz <span class="math notranslate nohighlight">\(A\)</span>, resuelva el sistema lineal <span class="math notranslate nohighlight">\(\dot{x} = Ax\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 2 &amp; 0 \\ 1 &amp; 0 &amp; -2 \end{bmatrix}
+\end{split}\]</div>
+<p><strong>Ejemplo</strong></p>
+<p>Escriba las siguientes ecuaciones diferenciales lineales en la forma <span class="math notranslate nohighlight">\(\dot{x} = Ax\)</span> y resuelva</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\ddot{x}+\dot{x}-2x=0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ddot{x}+\dot{x}=0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dddot{x}-2\ddot{x}-x+2x=0\)</span>.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Ecuaciones en variables de estado<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>La representación de un sistema <em>LTI</em> en espacio de estados tiene la siguiente forma</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1}(t) &amp;= a_{11}x_{1}(t) + a_{12}x_{2}(t) + a_{13}x_{3}(t) + b_{1}u(t), \\
+  \dot{x}_{2}(t) &amp;= a_{21}x_{1}(t) + a_{22}x_{2}(t) + a_{23}x_{3}(t) + b_{2}u(t), \\
+  \dot{x}_{3}(t) &amp;= a_{31}x_{1}(t) + a_{22}x_{2}(t) + a_{33}x_{3}(t) + b_{3}u(t), \\
+  y(t) &amp;= c_{1}x_{1}(t) + c_{2}x_{2}(t) + c_{3}x_{3}(t) + du(t),
+ \end{aligned}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> son la entrada y la salida; <span class="math notranslate nohighlight">\(x_{i}, i=1,2,3\)</span> son llamadas las <em>variables de estado</em>; <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_{i}\)</span>, <span class="math notranslate nohighlight">\(c_{i}\)</span> y <span class="math notranslate nohighlight">\(d\)</span> son constantes; <span class="math notranslate nohighlight">\(\dot{x}_{i} := \mathrm{d}x_{i}(t)/\mathrm{d}t\)</span>.</p>
+</section>
+<section id="sistema-definido-en-espacio-de-estados">
+<h2>Sistema definido en espacio de estados<a class="headerlink" href="#sistema-definido-en-espacio-de-estados" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \dot{x} = \begin{bmatrix} \dot{x}_{1} \\ \dot{x}_{2} \\ \dot{x}_{3} \end{bmatrix}, \quad
+ x = \begin{bmatrix} x_{1} \\ x_{2} \\ x_{3} \end{bmatrix}, \quad
+ A = \begin{bmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33} \end{bmatrix}, \quad
+ b = \begin{bmatrix} b_{1} \\ b_{2} \\ b_{3} \end{bmatrix}
+\end{split}\]</div>
+<p>además <span class="math notranslate nohighlight">\(C = \begin{bmatrix} c_{1} &amp; c_{2} &amp; c_{3} \end{bmatrix}\)</span>.</p>
+<p>Considérese el sistema definido mediante</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x} &amp;= Ax + Bu, \\
+  y &amp;= Cx + Du,
+ \end{aligned}
+\end{split}\]</div>
+<p>donde</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> = vector de estado (vector de dimensión <span class="math notranslate nohighlight">\(n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> = vector de salida (vector de dimensión <span class="math notranslate nohighlight">\(m\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(u\)</span> = vector de control (vector de dimensión <span class="math notranslate nohighlight">\(r\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = matriz de estado (matriz de dimensión <span class="math notranslate nohighlight">\(n\times n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> = matriz de control (matriz de dimensión <span class="math notranslate nohighlight">\(n\times r\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> = matriz de salida (matriz de dimensión <span class="math notranslate nohighlight">\(m\times n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> = matriz de transmisión directa (matriz de dimensión <span class="math notranslate nohighlight">\(m\times r\)</span>)</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Considere el siguiente sistema</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \begin{aligned}
+  \dot{x}_{1} &amp;= -6x_{1} - 3.5x_{2} -u, \\
+  \dot{x}_{2} &amp;= 6 x_{1} + 4 x_{2} + u, \\
+  y &amp;= 4x_{1} + 5x_{2}.
+ \end{aligned}
+\end{split}\]</div>
+<p>Determine</p>
+<ul class="simple">
+<li><p>Si la función de transferencia es propia o impropia.</p></li>
+<li><p>Sus polos y zeros.</p></li>
+<li><p>La respuesta ante una entrada tipo escalón unitario <span class="math notranslate nohighlight">\(u(t)=1\)</span>.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="otros_sistemas.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Otro tipo de sistemas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="modelado_sist_ee.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Modelado de sistemas mediante ecuaciones de estado</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-los-factores-integrantes">Método de los factores integrantes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistemas-lineales-desacoplados">Sistemas lineales desacoplados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonalizacion">Diagonalización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ecuaciones en variables de estado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-definido-en-espacio-de-estados">Sistema definido en espacio de estados</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Jesús Emmanuel Solís Pérez
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
